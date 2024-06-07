@@ -1,0 +1,45 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    display: inline-block;
+    font-size: 15px;
+}
+
+#search-button {
+    float: right;
+    display: inline;
+    margin-top: 10px;
+}
+
+#search-input {
+    display: none;
+    visibility: hidden;
+
+}
+
+#hamburger {
+    float: right;
+    display: inline;
+    margin-top: 10px;
+    /* display: inline-block; */
+
+}
+
+#blast-price {
+    display: inline-block;
+}
+
+#token-table {
+    border: 0;
+}
+
+.table-h {
+    border: 1px solid;
+    height: 40px;
+    width: 100px;
+}
+
+table { border-collapse: collapse; }
