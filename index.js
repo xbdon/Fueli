@@ -8,8 +8,30 @@ const tokenStats = document.getElementById("token-stats");
 const supplyRow = document.getElementById("circ-supply");
 
 //create object placeholder for storing and updating tokens
-tokens = {
-  data: [],
+//creating a list that lets me rearrange the order for token marketcap
+tokenList = [
+  {
+    id: 0,
+    name: "name",
+    "market-cap": 1,
+    "24h": 24,
+    volume: 10,
+    liquidity: 10,
+    circ: 10,
+  },
+];
+
+// see search button functionality on example
+const search = (data) => {
+  fetchData();
+  const input = searchInput.value;
+  const { result } = data;
+  if (data === null) {
+    alert("Token does not exist");
+    return;
+  } else {
+    displayTokenData(data);
+  }
 };
 
 const fetchData = async () => {
@@ -19,20 +41,24 @@ const fetchData = async () => {
     const resPrice = await fetch(priceApi);
     const dataInfo = await resPrice.json();
     // add new api calls and create function to access tokens object
+    searchToken(dataSupply);
     displayTokenData(dataSupply);
   } catch (err) {
     console.log(err + " trouble obtaining data from api");
   }
 };
 
-// create an object for token Data
 const displayTokenData = (data) => {
   const { result } = data;
   tokenStats.innerHTML = `
     <tr>
+      <td id="token-name" class="stats">${1}</td>
+      <td id="price" class="stats">${1}</td>
+      <td id="mc" class="stats">${1}</td>
+      <td id="24" class="stats">${1}</td>
+      <td id="volume" class="stats">${1}</td>
+      <td id="liquidity" class="stats">${1}</td>
       <td id="circ-supply" class="stats">${result}</td>
     </tr>
   `;
 };
-
-fetchData();
