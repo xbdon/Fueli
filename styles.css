@@ -20,8 +20,11 @@ h1 {
 #search-input {
     display: none;
     visibility: hidden;
+}
 
-
+#menu {
+    display: none;
+    visibility: hidden;
 }
 
 
@@ -59,4 +62,6 @@ h1 {
 
 
 table { border-collapse: collapse; }
+
+
 
