@@ -1,5 +1,5 @@
 const supplyApi = `https://api.blastscan.io/api?module=stats&action=tokensupply&contractaddress=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&apikey=$$$$$$$$$`;
-const priceApi = `https://api.coingecko.com/api/v3/simple/price?ids=pacmoon&vs_currencies=usd&include_market_cap=true`;
+const priceApi = `https://api.coingecko.com/api/v3/simple/token_price/blast?id?contract_addresses=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
 const searchBtn = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const hamburger = document.getElementById("hamburger");
@@ -35,30 +35,35 @@ const search = (data) => {
   }
 };
 
+// figure out how to set headers for responses *for api-key of coingecko api
 const fetchData = async () => {
   try {
-    const resSupply = await fetch(supplyApi);
-    const dataSupply = await resSupply.json();
-    const resPrice = await fetch(priceApi);
-    const dataInfo = await resPrice.json();
-    // add new api calls and create function to access tokens object
-    displayTokenData(dataSupply);
+    const response = await fetch(priceApi);
+    const data = await response.json();
+    // const resSupply = await fetch(supplyApi);
+    // const dataSupply = await resSupply.json();
+    // const resPrice = await fetch(priceApi);
+    // const dataInfo = await resPrice.json();
+    // add all api calls to fetch data function
+    displayTokenData(data);
   } catch (err) {
     console.log(err + " trouble obtaining data from api");
   }
 };
 
-const displayTokenData = (data) => {
-  const { result } = data;
+// add another parameter to displayTokenData function for supply data
+const displayTokenData = (json) => {
+  const contractAddress = Object.keys(json)[0];
+
   tokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${1}</td>
-      <td id="price" class="stats">${1}</td>
+      <td id="price" class="stats">${json.contractAddress}</td>
       <td id="mc" class="stats">${1}</td>
       <td id="24" class="stats">${1}</td>
       <td id="volume" class="stats">${1}</td>
       <td id="liquidity" class="stats">${1}</td>
-      <td id="circ-supply" class="stats">${result}</td>
+      <td id="circ-supply" class="stats">${1}</td>
     </tr>
   `;
 };
@@ -72,4 +77,5 @@ const showOutput = () => {
 
 searchBtn.addEventListener("click", showOutput);
 fetchData();
+
 
