@@ -1,4 +1,4 @@
-const supplyApi = `https://api.blastscan.io/api?module=stats&action=tokensupply&contractaddress=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&apikey=ETKIDQEKK4GDP6W7I856IXAKQK1YWYHBJ2`;
+const supplyApi = `https://api.blastscan.io/api?module=stats&action=tokensupply&contractaddress=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&apikey=$$$`;
 const priceApi = `https://api.coingecko.com/api/v3/simple/token_price/blast?contract_addresses=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
 const searchBtn = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
@@ -41,7 +41,7 @@ const fetchData = async () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": "CG-HJLYvhcbXFb23J6LSvS37MQW",
+        "x-cg-demo-api-key": "$$$",
       },
     };
 
