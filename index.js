@@ -1,16 +1,23 @@
-const supplyApi = `https://api.blastscan.io/api?module=stats&action=tokensupply&contractaddress=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&apikey=$$$`;
-const priceApi = `https://api.coingecko.com/api/v3/simple/token_price/blast?contract_addresses=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
 const searchBtn = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const hamburger = document.getElementById("hamburger");
 const blastPrice = document.getElementById("blast-price");
 const tokenStats = document.getElementById("token-stats");
 const supplyRow = document.getElementById("circ-supply");
+// import("./config.js")
+//   .then((config) => {
+//     console.log(config.fetchData(displayTokenData));
+//   })
+//   .catch((error) => console.log("ERROR! Check server.js import"));
+// async function loadMyModule() {
+//   const myModule = await import("./server.js");
+// }
+// loadMyModule();
 
 //create object placeholder for storing and updating tokens
 //creating a list that lets me rearrange the order for token marketcap
 // maybe store data of tokens in later versions
-tokenList = [
+const tokenList = [
   {
     id: 0,
     name: "name",
@@ -24,7 +31,7 @@ tokenList = [
 
 // see search button functionality from example
 const search = (data) => {
-  fetchData();
+  // fetchData();
   const input = searchInput.value;
   const { result } = data;
   if (data === null) {
@@ -32,30 +39,6 @@ const search = (data) => {
     return;
   } else {
     displayTokenData(data);
-  }
-};
-
-const fetchData = async () => {
-  try {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": "$$$",
-      },
-    };
-
-    const jsonPrice = await fetch(
-      "https://api.coingecko.com/api/v3/simple/token_price/blast?contract_addresses=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true",
-      options
-    );
-    const resPrice = await jsonPrice.json();
-
-    const jsonSupply = await fetch(supplyApi);
-    const resSupply = await jsonSupply.json();
-    displayTokenData(resPrice, resSupply);
-  } catch (err) {
-    console.log(err + " trouble obtaining data from api");
   }
 };
 
@@ -91,7 +74,8 @@ const showOutput = () => {
 };
 
 searchBtn.addEventListener("click", showOutput);
-fetchData();
+fetchData(displayTokenData);
+
 
 
 
