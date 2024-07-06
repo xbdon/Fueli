@@ -1,22 +1,19 @@
+import * as fetchData from "./fueli-example/config.js";
 const searchBtn = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const hamburger = document.getElementById("hamburger");
 const blastPrice = document.getElementById("blast-price");
 const tokenStats = document.getElementById("token-stats");
 const supplyRow = document.getElementById("circ-supply");
-// import("./config.js")
-//   .then((config) => {
-//     console.log(config.fetchData(displayTokenData));
-//   })
-//   .catch((error) => console.log("ERROR! Check server.js import"));
-// async function loadMyModule() {
-//   const myModule = await import("./server.js");
-// }
-// loadMyModule();
+
+// const { supplyApi } = import("./fueli-example/config.js");
+// const { priceApi } = import("./fueli-example/config.js");
+// const { fetchData } = import("./fueli-example/config.js");
 
 //create object placeholder for storing and updating tokens
 //creating a list that lets me rearrange the order for token marketcap
 // maybe store data of tokens in later versions
+//ignore for now
 const tokenList = [
   {
     id: 0,
@@ -75,6 +72,8 @@ const showOutput = () => {
 
 searchBtn.addEventListener("click", showOutput);
 fetchData(displayTokenData);
+console.log("hgelleoela");
+
 
 
 
