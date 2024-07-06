@@ -93,6 +93,10 @@ const showOutput = () => {
 searchBtn.addEventListener("click", showOutput);
 fetchData();
 
-
+/*
+  1. create an input function that searches for input value(token)
+  2. when value found display token data in a seperate section(div)
+  3. the new displayed div, give ability clear div from the DOM
+*/
 
 
