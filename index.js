@@ -4,6 +4,8 @@ const searchBtn = document.getElementById("search-button");
 const searchInput = document.getElementById("search-input");
 const hamburger = document.getElementById("hamburger");
 const blastPrice = document.getElementById("blast-price");
+const searchedTokenTable = document.getElementById("searched-token-table");
+const searchedTokenStats = document.getElementById("searched-token-stats");
 const tokenStats = document.getElementById("token-stats");
 const supplyRow = document.getElementById("circ-supply");
 
@@ -71,13 +73,13 @@ const displayTokenData = (json) => {
   // const { result } = supply;
   // const circSupply = result;
   const name = json.id;
-  const price = json.market_data.usd;
-  const marketCap = json.market_data.market_cap;
+  const price = json.market_data.current_price.usd;
+  const marketCap = json.market_data.market_cap.usd;
   const twentyFourHr = json.market_data.price_change_percentage_24h;
   const volume = json.market_data.total_volume.usd;
   const circSupply = json.market_data.circulating_supply;
 
-  tokenStats.innerHTML = `
+  searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${name}</td>
       <td id="price" class="stats">${price}</td>
@@ -100,15 +102,18 @@ const showOutput = () => {
 searchBtn.addEventListener("click", showOutput);
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
+    searchedTokenTable.style.display =
+      searchedTokenTable.style.display === "block" ? "" : "block";
+    searchedTokenTable.style.visibility =
+      searchedTokenTable.style.visibility === "visible" ? "" : "visible";
     fetchData();
+    showOutput();
   }
 });
+// work on close button and enter logic
 
 /*
   1. create an input function that searches for input value(token)
   2. when value found display token data in a seperate section(div)
   3. the new displayed div, give ability clear div from the DOM
 */
-
-
-
