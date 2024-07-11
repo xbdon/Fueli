@@ -1,41 +1,16 @@
 // const supplyApi = `https://api.blastscan.io/api?module=stats&action=tokensupply&contractaddress=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&apikey=$$$`;
-const priceApi = `https://api.coingecko.com/api/v3/simple/token_price/blast?contract_addresses=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
+// const priceApi = `https://api.coingecko.com/api/v3/simple/token_price/blast?contract_addresses=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
+
 const searchBtn = document.getElementById("search-button");
-const searchInput = document.getElementById("search-input");
 const hamburger = document.getElementById("hamburger");
+const searchInput = document.getElementById("search-input");
 const blastPrice = document.getElementById("blast-price");
+
 const searchedTokenTable = document.getElementById("searched-token-table");
 const searchedTokenStats = document.getElementById("searched-token-stats");
+const closeBtn = document.getElementById("close-button");
+
 const tokenStats = document.getElementById("token-stats");
-const supplyRow = document.getElementById("circ-supply");
-
-//create object placeholder for storing and updating tokens
-//creating a list that lets me rearrange the order for token marketcap
-// maybe store data of tokens in later versions
-const tokenList = [
-  {
-    id: 0,
-    name: "name",
-    "market-cap": 1,
-    "24h": 24,
-    volume: 10,
-    liquidity: 10,
-    circ: 10,
-  },
-];
-
-// see search button functionality from example
-const search = (data) => {
-  fetchData();
-  const input = searchInput.value;
-  const { result } = data;
-  if (data === null) {
-    alert("Token does not exist");
-    return;
-  } else {
-    displayTokenData(data);
-  }
-};
 
 const fetchData = async () => {
   try {
@@ -52,12 +27,12 @@ const fetchData = async () => {
         searchInput.value,
       options
     );
-    const resPrice = await jsonPrice.json();
+    const resData = await jsonPrice.json();
 
     // const jsonSupply = await fetch(supplyApi);
     // const resSupply = await jsonSupply.json();
     // displayTokenData(resPrice, resSupply);
-    displayTokenData(resPrice);
+    displayTokenData(resData);
   } catch (err) {
     console.log(err + " trouble obtaining data from api");
   }
@@ -99,21 +74,29 @@ const showOutput = () => {
     searchInput.style.visibility === "visible" ? "" : "visible";
 };
 
+const closeSearch = () => {
+  searchedTokenTable.style.display = "none";
+  searchedTokenTable.style.visibility = "hidden";
+  closeBtn.style.display = "none";
+  closeBtn.style.visibility = "hidden";
+  searchInput.style.display = "none";
+  searchInput.style.visibility = "hidden";
+};
+
+closeBtn.addEventListener("click", closeSearch);
 searchBtn.addEventListener("click", showOutput);
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    searchedTokenTable.style.display =
-      searchedTokenTable.style.display === "block" ? "" : "block";
-    searchedTokenTable.style.visibility =
-      searchedTokenTable.style.visibility === "visible" ? "" : "visible";
     fetchData();
+    searchedTokenTable.style.display = "block";
+    searchedTokenTable.style.visibility = "visible";
+    closeBtn.style.display = "inline";
+    closeBtn.style.visibility = "visible";
     showOutput();
   }
 });
-// work on close button and enter logic
 
-/*
-  1. create an input function that searches for input value(token)
-  2. when value found display token data in a seperate section(div)
-  3. the new displayed div, give ability clear div from the DOM
-*/
+// add an else statement for fetchData() if failed to notify user
+// Next work on regex for API values generated
+
+
