@@ -21,7 +21,7 @@ h1 {
     visibility: hidden;
 }
 
-.close-button {
+#close-button {
     display: none;
     visibility: hidden;
     color:brown;
@@ -72,8 +72,4 @@ h1 {
 
 
 table { border-collapse: collapse; }
-
-
-
-
 
