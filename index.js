@@ -12,13 +12,18 @@ const closeBtn = document.getElementById("close-button");
 
 const tokenStats = document.getElementById("token-stats");
 
+/* checks result from fetchData() api call; 
+if no coin is found from search input,
+then value changes to false*/
+let fetchDataResult = true;
+
 const fetchData = async () => {
   try {
     const options = {
       method: "GET",
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": "$$$",
+        "x-cg-demo-api-key": "CG-5xZmbpcsysTuU7FC7NfGXtkM ",
       },
     };
 
@@ -39,14 +44,19 @@ const fetchData = async () => {
 };
 
 const displayTokenData = (json) => {
-  // const contractAddress = Object.keys(json)[0];
-  // const price = json[contractAddress].usd;
-  // const twentyFourHr = json[contractAddress].usd_24h_change;
-  // const twentyFourVolume = json[contractAddress].usd_24h_vol;
-  // const marketCap = json[contractAddress].usd_market_cap;
+  // checks if API call didn't find coin to then alert user
+  if (json.market_data === undefined) {
+    alert(
+      "Token search failed! Coin not found. Try a different token address."
+    );
+    fetchDataResult = false;
+    return;
+  }
 
-  // const { result } = supply;
-  // const circSupply = result;
+  /* reinitalizes variable to true to restart 
+  interaction for future use */
+  fetchDataResult = true;
+
   const name = json.id;
   const price = json.market_data.current_price.usd;
   const marketCap = json.market_data.market_cap.usd;
@@ -67,36 +77,43 @@ const displayTokenData = (json) => {
   `;
 };
 
-const showOutput = () => {
+const toggleSearchBar = () => {
   searchInput.style.display =
     searchInput.style.display === "block" ? "" : "block";
   searchInput.style.visibility =
     searchInput.style.visibility === "visible" ? "" : "visible";
 };
 
-const closeSearch = () => {
+const closeGeneratedTable = () => {
   searchedTokenTable.style.display = "none";
   searchedTokenTable.style.visibility = "hidden";
   closeBtn.style.display = "none";
   closeBtn.style.visibility = "hidden";
   searchInput.style.display = "none";
   searchInput.style.visibility = "hidden";
+  searchedTokenStats.innerHTML = "";
 };
 
-closeBtn.addEventListener("click", closeSearch);
-searchBtn.addEventListener("click", showOutput);
+closeBtn.addEventListener("click", closeGeneratedTable);
+searchBtn.addEventListener("click", toggleSearchBar);
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    fetchData();
-    searchedTokenTable.style.display = "block";
-    searchedTokenTable.style.visibility = "visible";
-    closeBtn.style.display = "inline";
-    closeBtn.style.visibility = "visible";
-    showOutput();
+    fetchData().then(() => {
+      if (fetchDataResult === false) {
+        return;
+      } else {
+        toggleSearchBar();
+        searchedTokenTable.style.display = "block";
+        searchedTokenTable.style.visibility = "visible";
+        closeBtn.style.display = "inline";
+        closeBtn.style.visibility = "visible";
+      }
+    });
+    console.log(fetchDataResult);
   }
 });
 
-// notify user when token search fails and clean up DOM interaction associated
 // Next work on regex for API values generated
+
 
 
