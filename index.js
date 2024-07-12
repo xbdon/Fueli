@@ -23,7 +23,7 @@ const fetchData = async () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": "CG-5xZmbpcsysTuU7FC7NfGXtkM ",
+        "x-cg-demo-api-key": "$$$",
       },
     };
 
