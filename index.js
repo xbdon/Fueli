@@ -96,7 +96,7 @@ searchInput.addEventListener("keydown", (e) => {
   }
 });
 
-// add an else statement for fetchData() if failed to notify user
+// notify user when token search fails and clean up DOM interaction associated
 // Next work on regex for API values generated
 
 
