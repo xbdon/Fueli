@@ -67,11 +67,11 @@ const displayTokenData = (json) => {
   searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${name}</td>
-      <td id="price" class="stats">${price}</td>
-      <td id="mc" class="stats">${marketCap}</td>
-      <td id="24" class="stats">${twentyFourHr}</td>
-      <td id="volume" class="stats">${volume}</td>
-      <td id="liquidity" class="stats">${"TBD"}</td>
+      <td id="price" class="stats">$${price}</td>
+      <td id="mc" class="stats">$${marketCap}</td>
+      <td id="24" class="stats">%${twentyFourHr}</td>
+      <td id="volume" class="stats">$${volume}</td>
+      <td id="liquidity" class="stats">$${"TBD"}</td>
       <td id="circ-supply" class="stats">${circSupply}</td>
     </tr>
   `;
