@@ -23,7 +23,7 @@ const fetchData = async () => {
       method: "GET",
       headers: {
         accept: "application/json",
-        "x-cg-demo-api-key": "$$$",
+        "x-cg-demo-api-key": "CG-AUqYR83rTfLYgx2vfEP7hbRA",
       },
     };
 
@@ -77,6 +77,19 @@ const displayTokenData = (json) => {
   `;
 };
 
+const fetchBaseTableData = async () => {
+  try {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "x-cg-demo-api-key": "$$$",
+      }
+    }
+    const jsonTableData
+  }
+}
+
 const toggleSearchBar = () => {
   searchInput.style.display =
     searchInput.style.display === "block" ? "" : "block";
@@ -113,7 +126,10 @@ searchInput.addEventListener("keydown", (e) => {
   }
 });
 
+// add blast price api to blast price element at top of page
 // Next work on regex for API values generated
+
+
 
 
 
