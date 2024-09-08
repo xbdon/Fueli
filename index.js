@@ -34,9 +34,6 @@ const fetchData = async () => {
     );
     const resData = await jsonPrice.json();
 
-    // const jsonSupply = await fetch(supplyApi);
-    // const resSupply = await jsonSupply.json();
-    // displayTokenData(resPrice, resSupply);
     displayTokenData(resData);
   } catch (err) {
     console.log(err + " trouble obtaining data from api");
