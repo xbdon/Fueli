@@ -24,7 +24,7 @@ h1 {
 #close-button {
     display: none;
     visibility: hidden;
-    color:brown;
+    color: brown;
 }
 
 #search-input {
@@ -48,7 +48,7 @@ h1 {
 }
 
 
-#blast-price {
+#ada-price {
     display: inline-block;
 }
 
@@ -72,4 +72,6 @@ h1 {
 }
 
 
-table { border-collapse: collapse; }
+table {
+    border-collapse: collapse;
+}
