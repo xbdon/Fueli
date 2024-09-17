@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css" />
+  <title>Home Page</title>
+</head>
+
+<body>
+  <h1>Fueli</h1>
+  <button id="search-button">Search</button>
+  <button id="hamburger">Hamburger</button>
+  <br />
+
+
+  <div id="blast-price"> Blast Price</div>
+  <input id="search-input" type="text" placeholder="Search Token" />
+  <table id="searched-token-table">
+    <thead>
+      <tr id="searched-header">
+        <th class="table-h"><button id="close-button"><span aria-hidden="true">&times;</span></button>Token</th>
+        <th class="table-h">Price</th>
+        <th class="table-h">Mcap</th>
+        <th class="table-h">24h</th>
+        <th class="table-h">Volume</th>
+        <th class="table-h">Liquidity</th>
+        <th class="table-h">Circ. Supply</th>
+      </tr>
+    </thead>
+    <tbody id="searched-token-stats">
+    </tbody>
+  </table>
+  <br />
+
+  <div id="menu">
+    <button id="login"></button>
+  </div>
+
+  <table id="token-table">
+    <thead>
+      <tr id="header">
+        <th class="table-h">Token</th>
+        <th class="table-h">Price</th>
+        <th class="table-h">Mcap</th>
+        <th class="table-h">24h</th>
+        <th class="table-h">Volume</th>
+        <th class="table-h">Liquidity</th>
+        <th class="table-h">Circ. Supply</th>
+      </tr>
+    </thead>
+    <tbody id="token-stats">
+
+    </tbody>
+  </table>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
