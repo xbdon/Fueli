@@ -1,13 +1,7 @@
-// const supplyApi = `https://api.blastscan.io/api?module=stats&action=tokensupply&contractaddress=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&apikey=$$$`;
-// const priceApi = `https://api.coingecko.com/api/v3/simple/token_price/blast?contract_addresses=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
-
-const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
-const api_params = '?type=mcap&page=1&perPage=20'
-
 const searchBtn = document.getElementById("search-button");
 const hamburger = document.getElementById("hamburger");
 const searchInput = document.getElementById("search-input");
-const blastPrice = document.getElementById("blast-price");
+const adaPrice = document.getElementById("ada-price");
 
 const searchedTokenTable = document.getElementById("searched-token-table");
 const searchedTokenStats = document.getElementById("searched-token-stats");
