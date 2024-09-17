@@ -1,6 +1,9 @@
 // const supplyApi = `https://api.blastscan.io/api?module=stats&action=tokensupply&contractaddress=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&apikey=$$$`;
 // const priceApi = `https://api.coingecko.com/api/v3/simple/token_price/blast?contract_addresses=0x5ffd9EbD27f2fcAB044c0f0a26A45Cb62fa29c06&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true`;
 
+const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
+const api_params = '?type=mcap&page=1&perPage=20'
+
 const searchBtn = document.getElementById("search-button");
 const hamburger = document.getElementById("hamburger");
 const searchInput = document.getElementById("search-input");
@@ -19,22 +22,10 @@ let fetchDataResult = true;
 
 const fetchData = async () => {
   try {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": "$$$",
-      },
-    };
+    const jsonData = await fetch("/api/coin-data/get");
+    const data = await jsonData.json();
 
-    const jsonPrice = await fetch(
-      "https://api.coingecko.com/api/v3/coins/blast/contract/" +
-        searchInput.value,
-      options
-    );
-    const resData = await jsonPrice.json();
-
-    displayTokenData(resData);
+    displayTokenData(data);
   } catch (err) {
     console.log(err + " trouble obtaining data from api");
   }
@@ -42,7 +33,8 @@ const fetchData = async () => {
 
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
-  if (json.market_data === undefined) {
+  console.log("sheeesh")
+  if (json[0] === undefined) {
     alert(
       "Token search failed! Coin not found. Try a different token address."
     );
@@ -54,20 +46,20 @@ const displayTokenData = (json) => {
   interaction for future use */
   fetchDataResult = true;
 
-  const name = json.id;
-  const price = json.market_data.current_price.usd;
-  const marketCap = json.market_data.market_cap.usd;
-  const twentyFourHr = json.market_data.price_change_percentage_24h;
-  const volume = json.market_data.total_volume.usd;
-  const circSupply = json.market_data.circulating_supply;
+  const name = json[0].ticker;
+  const price = json[0].price;
+  const marketCap = json[0].mcap;
+  // const twentyFourHr = json.market_data.price_change_percentage_24h;
+  // const volume = json.market_data.total_volume.usd;
+  const circSupply = json[0].circSupply;
 
   searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
-      <td id="24" class="stats">%${twentyFourHr}</td>
-      <td id="volume" class="stats">$${volume}</td>
+      <td id="24" class="stats">%${name}</td>
+      <td id="volume" class="stats">$${name}</td>
       <td id="liquidity" class="stats">$${"TBD"}</td>
       <td id="circ-supply" class="stats">${circSupply}</td>
     </tr>
@@ -111,6 +103,3 @@ searchInput.addEventListener("keydown", (e) => {
 });
 
 // Next work on regex for API values generated
-
-
-
