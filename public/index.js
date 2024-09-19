@@ -99,3 +99,7 @@ searchInput.addEventListener("keydown", (e) => {
 // Next work on regex for API values generated
 // learning how to use git
 // just more reassurance
+
+/* tomorrow we work on branches and to see if we can have
+all branches on github repo to reflect on 
+vscode(local? or remote? find out!) */
