@@ -103,3 +103,6 @@ searchInput.addEventListener("keydown", (e) => {
 /* tomorrow we work on branches and to see if we can have
 all branches on github repo to reflect on 
 vscode(local? or remote? find out!) */
+
+/* figure out how to get rid of license and readme
+ changes in local and not push those changes to repo */
