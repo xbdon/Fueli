@@ -96,7 +96,7 @@ searchInput.addEventListener("keydown", (e) => {
   }
 });
 
-// Next work on regex for API values generated
+// did we finally get it right progresssssss 
 // learning how to use git
 // just more reassurance
 
