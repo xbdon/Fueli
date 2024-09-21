@@ -60,6 +60,59 @@ const displayTokenData = (json) => {
   `;
 };
 
+const getHomePageTable = async () => {
+  try {
+    const jsonData = await fetch("/api/coin-data/get");
+    const data = await jsonData.json();
+    console.log("start up test")
+    displayHPTable(data);
+  } catch (err) {
+    console.log(err + " trouble obtaining data from api HOMEPAGE");
+  }
+}
+
+const displayHPTable = (json) => {
+  console.log("in display hp table funciton now")
+  console.log(json[0].ticker);
+  if (json[0] === undefined) {
+    //must complete after basic function ready
+    console.log("Will add an error message to front-end");
+    fetchDataResult = false;
+    return;
+  }
+
+  console.log("passed if statement")
+
+  /* reinitalizes variable to true to restart 
+  interaction for future use */
+  fetchDataResult = true;
+
+  const row = 20;
+  console.log(row.length);
+  console.log("below row variable")
+  for (let i = 0; i < row; i++) {
+    console.log(`WE MADE IT THIS MANY TIMES ${i}`)
+    let name = json[i].ticker;
+    let price = json[i].price;
+    let marketCap = json[i].mcap;
+    // let twentyFourHr = json.market_data.price_change_percentage_24h;
+    // let volume = json.market_data.total_volume.usd;
+    let circSupply = json[i].circSupply;
+
+    tokenStats.innerHTML = `
+      <tr>
+        <td id="token-name" class="stats">${name}</td>
+        <td id="price" class="stats">$${price}</td>
+        <td id="mc" class="stats">$${marketCap}</td>
+        <td id="24" class="stats">%${name}</td>
+        <td id="volume" class="stats">$${name}</td>
+        <td id="liquidity" class="stats">$${"TBD"}</td>
+        <td id="circ-supply" class="stats">${circSupply}</td>
+      </tr>
+    `;
+  }
+}
+
 const toggleSearchBar = () => {
   searchInput.style.display =
     searchInput.style.display === "block" ? "" : "block";
@@ -95,6 +148,8 @@ searchInput.addEventListener("keydown", (e) => {
     console.log(fetchDataResult);
   }
 });
+
+hamburger.addEventListener("click", getHomePageTable());
 
 // did we finally get it right progresssssss 
 // git branches take some work to understand like this exercise
