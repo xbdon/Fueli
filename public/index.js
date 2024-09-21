@@ -149,7 +149,7 @@ searchInput.addEventListener("keydown", (e) => {
   }
 });
 
-hamburger.addEventListener("click", getHomePageTable());
+hamburger.addEventListener("click", getHomePageTable);
 
 // did we finally get it right progresssssss 
 // git branches take some work to understand like this exercise
