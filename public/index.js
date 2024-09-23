@@ -88,10 +88,7 @@ const displayHPTable = (json) => {
   fetchDataResult = true;
 
   const row = 20;
-  console.log(row.length);
-  console.log("below row variable")
   for (let i = 0; i < row; i++) {
-    console.log(`WE MADE IT THIS MANY TIMES ${i}`)
     let name = json[i].ticker;
     let price = json[i].price;
     let marketCap = json[i].mcap;
@@ -99,15 +96,15 @@ const displayHPTable = (json) => {
     // let volume = json.market_data.total_volume.usd;
     let circSupply = json[i].circSupply;
 
-    tokenStats.innerHTML = `
+    tokenStats.innerHTML += `
       <tr>
-        <td id="token-name" class="stats">${name}</td>
-        <td id="price" class="stats">$${price}</td>
-        <td id="mc" class="stats">$${marketCap}</td>
-        <td id="24" class="stats">%${name}</td>
-        <td id="volume" class="stats">$${name}</td>
-        <td id="liquidity" class="stats">$${"TBD"}</td>
-        <td id="circ-supply" class="stats">${circSupply}</td>
+        <td id="token-name${i}" class="stats">${name}</td>
+        <td id="price${i}" class="stats">$${price}</td>
+        <td id="mc${i}" class="stats">$${marketCap}</td>
+        <td id="24-${i}" class="stats">%${name}</td>
+        <td id="volume${i}" class="stats">$${name}</td>
+        <td id="liquidity${i}" class="stats">$${"TBD"}</td>
+        <td id="circ-supply${i}" class="stats">${circSupply}</td>
       </tr>
     `;
   }
