@@ -13,6 +13,8 @@ const tokenStats = document.getElementById("token-stats");
 if no coin is found from search input,
 then value changes to false*/
 let fetchDataResult = true;
+// Regex for cutting prices to two decimal points
+const regex = `/^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$/`;
 
 const fetchData = async () => {
   try {
@@ -60,6 +62,7 @@ const displayTokenData = (json) => {
   `;
 };
 
+// find out how to add search input value to back-end server api call
 const getHomePageTable = async () => {
   try {
     const jsonData = await fetch("/api/coin-data/get");

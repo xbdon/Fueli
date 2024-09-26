@@ -10,4 +10,4 @@ const {
 router.get('/', getCoinData);
 router.get('/', getSearchToken);
 
-module.exports = router
+module.exports = router;
