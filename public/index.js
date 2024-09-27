@@ -16,6 +16,8 @@ let fetchDataResult = true;
 // Regex for cutting prices to two decimal points
 const regex = `/^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$/`;
 
+// Either searchToken() or fetchData() will replace eachother: 
+// this is a note for tomorrow's work
 const searchToken = async () => {
   try {
     const tokenData = await fetch("/api/search-coin/get" + searchInput);
