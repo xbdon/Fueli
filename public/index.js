@@ -16,6 +16,18 @@ let fetchDataResult = true;
 // Regex for cutting prices to two decimal points
 const regex = `/^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$/`;
 
+const searchToken = async () => {
+  try {
+    const tokenData = await fetch("/api/search-coin/get", {
+      body: JSON.stringify({ data: searchInput })
+    });
+
+    displayTokenData(tokenData);
+  } catch (err) {
+    console.log(err + " searchToken() bug");
+  }
+}
+
 const fetchData = async () => {
   try {
     const jsonData = await fetch("/api/coin-data/get");
@@ -134,7 +146,7 @@ closeBtn.addEventListener("click", closeGeneratedTable);
 searchBtn.addEventListener("click", toggleSearchBar);
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    fetchData().then(() => {
+    searchToken().then(() => {
       if (fetchDataResult === false) {
         return;
       } else {
