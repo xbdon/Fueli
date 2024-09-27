@@ -19,10 +19,6 @@ const regex = `/^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$/`;
 const searchToken = async () => {
   try {
     const tokenData = await fetch("/api/search-coin/get", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
       body: JSON.stringify({ data: searchInput })
     });
 
@@ -150,7 +146,7 @@ closeBtn.addEventListener("click", closeGeneratedTable);
 searchBtn.addEventListener("click", toggleSearchBar);
 searchInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
-    fetchData().then(() => {
+    searchToken().then(() => {
       if (fetchDataResult === false) {
         return;
       } else {

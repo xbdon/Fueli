@@ -27,8 +27,9 @@ const getCoinData = (request, response) => {
 }
 
 const getSearchToken = (request, response) => {
-    api_input_param = request.body;
-    console.log(api_input_param);
+    const { dynamic } = req.params;
+    console.log(dynamic);
+    api_input_param = dynamic;
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
