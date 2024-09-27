@@ -23,8 +23,12 @@ const searchToken = async () => {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ data: searchInput });
-    })
+      body: JSON.stringify({ data: searchInput })
+    });
+
+    displayTokenData(tokenData);
+  } catch (err) {
+    console.log(err + " searchToken() bug");
   }
 }
 

@@ -6,7 +6,7 @@ const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
 
 const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap';
-const api_input_param = ''
+let api_input_param = ''
 
 const getCoinData = (request, response) => {
     axios.defaults.headers.common = {
@@ -27,6 +27,8 @@ const getCoinData = (request, response) => {
 }
 
 const getSearchToken = (request, response) => {
+    api_input_param = request.body;
+    console.log(api_input_param);
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
