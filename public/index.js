@@ -20,54 +20,58 @@ const regex = `/^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$/`;
 // this is a note for tomorrow's work
 const searchToken = async () => {
   try {
-    const tokenData = await fetch("/api/search-coin/get" + searchInput);
+    console.log(searchInput.value);
+    const tokenData = await fetch("/api/search-coin/get/?" + `unit=${searchInput.value}`);
+    const data = tokenData.json();
 
-    displayTokenData(tokenData);
+    displayTokenData(data);
   } catch (err) {
     console.log(err + " searchToken() bug");
   }
 }
 
-const fetchData = async () => {
-  try {
-    const jsonData = await fetch("/api/coin-data/get");
-    const data = await jsonData.json();
+// const fetchData = async () => {
+//   try {
+//     const jsonData = await fetch("/api/coin-data/get");
+//     const data = await jsonData.json();
 
-    displayTokenData(data);
-  } catch (err) {
-    console.log(err + " trouble obtaining data from api");
-  }
-};
+//     displayTokenData(data);
+//   } catch (err) {
+//     console.log(err + " trouble obtaining data from api");
+//   }
+// };
 
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
-  console.log("sheeesh")
-  if (json[0] === undefined) {
+  console.log("made it to displayTokenData()")
+  console.log(json)
+  if (json === undefined) {
     alert(
       "Token search failed! Coin not found. Try a different token address."
     );
     fetchDataResult = false;
     return;
   }
+  // i may be using wrong controller fdunction
 
   /* reinitalizes variable to true to restart 
   interaction for future use */
   fetchDataResult = true;
 
-  const name = json[0].ticker;
-  const price = json[0].price;
-  const marketCap = json[0].mcap;
+  const name = json.ticker;
+  const price = json.price;
+  const marketCap = json.mcap;
   // const twentyFourHr = json.market_data.price_change_percentage_24h;
   // const volume = json.market_data.total_volume.usd;
-  const circSupply = json[0].circSupply;
+  const circSupply = json.circSupply;
 
   searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
-      <td id="24" class="stats">%${name}</td>
-      <td id="volume" class="stats">$${name}</td>
+      <td id="24" class="stats">%${"TBD"}</td>
+      <td id="volume" class="stats">$${"TBD"}</td>
       <td id="liquidity" class="stats">$${"TBD"}</td>
       <td id="circ-supply" class="stats">${circSupply}</td>
     </tr>

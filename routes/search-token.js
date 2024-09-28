@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-const { getCoinData } = require('../controllers/coin-data')
+const { getSearchToken } = require('../controllers/coin-data')
 
-router.get('/', getCoinData);
+router.get('/', getSearchToken);
 
 module.exports = router;
