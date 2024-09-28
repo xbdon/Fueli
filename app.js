@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const coinData = require('./routes/coin-data');
+const searchToken = require('./routes/search-token');
 
 app.use((express.static("./public")))
 

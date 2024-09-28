@@ -51,25 +51,26 @@ const displayTokenData = (json) => {
     fetchDataResult = false;
     return;
   }
+  // i may be using wrong controller fdunction
 
   /* reinitalizes variable to true to restart 
   interaction for future use */
   fetchDataResult = true;
 
-  const name = json[0].ticker;
-  const price = json[0].price;
-  const marketCap = json[0].mcap;
+  const name = json.ticker;
+  const price = json.price;
+  const marketCap = json.mcap;
   // const twentyFourHr = json.market_data.price_change_percentage_24h;
   // const volume = json.market_data.total_volume.usd;
-  const circSupply = json[0].circSupply;
+  const circSupply = json.circSupply;
 
   searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
-      <td id="24" class="stats">%${name}</td>
-      <td id="volume" class="stats">$${name}</td>
+      <td id="24" class="stats">%${"TBD"}</td>
+      <td id="volume" class="stats">$${"TBD"}</td>
       <td id="liquidity" class="stats">$${"TBD"}</td>
       <td id="circ-supply" class="stats">${circSupply}</td>
     </tr>
