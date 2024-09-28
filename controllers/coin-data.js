@@ -5,7 +5,7 @@ const { response } = require("express");
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
 
-const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap/';
+const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap';
 let api_input_param = ''
 
 const getCoinData = (request, response) => {
@@ -28,8 +28,9 @@ const getCoinData = (request, response) => {
 
 const getSearchToken = (request, response) => {
     const { unit } = request.query;
-    console.log(unit + " this far huh");
+    console.log(" this far huh " + unit);
     api_input_param = unit;
+    console.log(tt_api_search_coin + api_input_param)
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
