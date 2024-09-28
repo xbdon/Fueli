@@ -5,7 +5,7 @@ const { response } = require("express");
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
 
-const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap';
+const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap?unit=';
 let api_input_param = ''
 
 const getCoinData = (request, response) => {
