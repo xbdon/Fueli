@@ -5,7 +5,7 @@ const { response } = require("express");
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
 
-const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap';
+const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap/';
 let api_input_param = ''
 
 const getCoinData = (request, response) => {
@@ -27,7 +27,7 @@ const getCoinData = (request, response) => {
 }
 
 const getSearchToken = (request, response) => {
-    const { dynamic } = req.params;
+    const { dynamic } = request.params;
     console.log(dynamic);
     api_input_param = dynamic;
     axios.defaults.headers.common = {
@@ -39,7 +39,7 @@ const getSearchToken = (request, response) => {
             const searchedTokenData = response.json(res.data);
         })
         .catch((err) => {
-            console.log(err + "second api controller");
+            console.log(err + " second api controller");
         })
 }
 

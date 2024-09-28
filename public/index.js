@@ -20,7 +20,8 @@ const regex = `/^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$/`;
 // this is a note for tomorrow's work
 const searchToken = async () => {
   try {
-    const tokenData = await fetch("/api/search-coin/get/" + searchInput);
+    console.log(searchInput.value);
+    const tokenData = await fetch("/api/search-coin/get/" + searchInput.value);
     const data = tokenData.json();
 
     displayTokenData(data);
