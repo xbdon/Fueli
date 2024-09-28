@@ -20,29 +20,31 @@ const regex = `/^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$/`;
 // this is a note for tomorrow's work
 const searchToken = async () => {
   try {
-    const tokenData = await fetch("/api/search-coin/get" + searchInput);
+    const tokenData = await fetch("/api/search-coin/get/" + searchInput);
+    const data = tokenData.json();
 
-    displayTokenData(tokenData);
+    displayTokenData(data);
   } catch (err) {
     console.log(err + " searchToken() bug");
   }
 }
 
-const fetchData = async () => {
-  try {
-    const jsonData = await fetch("/api/coin-data/get");
-    const data = await jsonData.json();
+// const fetchData = async () => {
+//   try {
+//     const jsonData = await fetch("/api/coin-data/get");
+//     const data = await jsonData.json();
 
-    displayTokenData(data);
-  } catch (err) {
-    console.log(err + " trouble obtaining data from api");
-  }
-};
+//     displayTokenData(data);
+//   } catch (err) {
+//     console.log(err + " trouble obtaining data from api");
+//   }
+// };
 
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
-  console.log("sheeesh")
-  if (json[0] === undefined) {
+  console.log("made it to displayTokenData()")
+  console.log(json)
+  if (json === undefined) {
     alert(
       "Token search failed! Coin not found. Try a different token address."
     );
