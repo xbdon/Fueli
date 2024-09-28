@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use('/api/coin-data/get', coinData);
+// this is where my issue is edit and fix tmw
 app.use('/api/search-coin/get/:dynamic', searchToken);
 
 app.listen(3000, () => {
