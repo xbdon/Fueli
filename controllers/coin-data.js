@@ -27,9 +27,9 @@ const getCoinData = (request, response) => {
 }
 
 const getSearchToken = (request, response) => {
-    const { dynamic } = request.params;
-    console.log(dynamic);
-    api_input_param = dynamic;
+    const { unit } = request.query;
+    console.log(unit + " this far huh");
+    api_input_param = unit;
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
@@ -37,6 +37,7 @@ const getSearchToken = (request, response) => {
         .get(tt_api_search_coin + api_input_param)
         .then((res) => {
             const searchedTokenData = response.json(res.data);
+            console.log(searchedTokenData);
         })
         .catch((err) => {
             console.log(err + " second api controller");

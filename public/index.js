@@ -21,7 +21,7 @@ const regex = `/^(?!^0\.00$)(([1-9][\d]{0,6})|([0]))\.[\d]{2}$/`;
 const searchToken = async () => {
   try {
     console.log(searchInput.value);
-    const tokenData = await fetch("/api/search-coin/get/" + searchInput.value);
+    const tokenData = await fetch("/api/search-coin/get/?" + `unit=${searchInput.value}`);
     const data = tokenData.json();
 
     displayTokenData(data);
