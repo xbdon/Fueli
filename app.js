@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use('/api/coin-data/get', coinData);
 // this is where my issue is edit and fix tmw
-app.use('/api/search-coin/get/:dynamic', searchToken);
+app.use('/api/search-coin/get/', searchToken);
 
 app.listen(3000, () => {
   console.log("It's alive HAUHAHUAHUAHUA!!!!")
