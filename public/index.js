@@ -22,7 +22,7 @@ const searchToken = async () => {
   try {
     console.log(searchInput.value);
     const tokenData = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
-    const data = tokenData.json();
+    const data = await tokenData.json();
 
     displayTokenData(data);
   } catch (err) {
@@ -44,7 +44,7 @@ const searchToken = async () => {
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
   console.log("made it to displayTokenData()")
-  console.log(json)
+  console.log(circSupply)
   if (json === undefined) {
     alert(
       "Token search failed! Coin not found. Try a different token address."
