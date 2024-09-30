@@ -63,8 +63,8 @@ const displayTokenData = (json) => {
   searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${name}</td>
-      <td id="price" class="stats">$${price}</td>
-      <td id="mc" class="stats">$${marketCap}</td>
+      <td id="price" class="stats">₳${price}</td>
+      <td id="mc" class="stats">₳${marketCap}</td>
       <td id="24" class="stats">%${"TBD"}</td>
       <td id="volume" class="stats">$${"TBD"}</td>
       <td id="liquidity" class="stats">$${"TBD"}</td>
@@ -113,8 +113,8 @@ const displayHPTable = (json) => {
     tokenStats.innerHTML += `
       <tr>
         <td id="token-name${i}" class="stats">${name}</td>
-        <td id="price${i}" class="stats">$${price}</td>
-        <td id="mc${i}" class="stats">$${marketCap}</td>
+        <td id="price${i}" class="stats">₳${price}</td>
+        <td id="mc${i}" class="stats">₳${marketCap}</td>
         <td id="24-${i}" class="stats">%${name}</td>
         <td id="volume${i}" class="stats">$${name}</td>
         <td id="liquidity${i}" class="stats">$${"TBD"}</td>
