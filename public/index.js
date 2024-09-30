@@ -104,11 +104,11 @@ const displayHPTable = (json) => {
   const row = 20;
   for (let i = 0; i < row; i++) {
     let name = json[i].ticker;
-    let price = json[i].price;
-    let marketCap = json[i].mcap;
+    let price = Math.round(json[i].price * 1000000) / 1000000;
+    let marketCap = Math.round(json[i].mcap);
     // let twentyFourHr = json.market_data.price_change_percentage_24h;
     // let volume = json.market_data.total_volume.usd;
-    let circSupply = json[i].circSupply;
+    let circSupply = Math.round(json[i].circSupply);
 
     tokenStats.innerHTML += `
       <tr>
