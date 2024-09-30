@@ -43,8 +43,8 @@ const searchToken = async () => {
 
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
-  console.log("made it to displayTokenData()")
-  console.log(circSupply)
+  console.log("made it to displayTokenData()");
+
   if (json === undefined) {
     alert(
       "Token search failed! Coin not found. Try a different token address."
@@ -52,7 +52,6 @@ const displayTokenData = (json) => {
     fetchDataResult = false;
     return;
   }
-  // i may be using wrong controller fdunction
 
   /* reinitalizes variable to true to restart 
   interaction for future use */
