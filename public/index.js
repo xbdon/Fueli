@@ -14,13 +14,26 @@ if no coin is found from search input,
 then value changes to false*/
 let fetchDataResult = true;
 
+const getAdaPrice = async () => {
+  try {
+    const data = await fetch('/api/ada-price/get');
+    const adaData = await data.json();
+
+    adaPrice.innerHTML = adaData.data[2010].quote.USD.price;
+  } catch (err) {
+    console.log(err + " getAdaPrice() bug");
+  }
+}
+
+getAdaPrice();
+
 const searchToken = async () => {
   try {
     console.log(searchInput.value);
-    const tokenData = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
-    const data = await tokenData.json();
+    const data = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
+    const tokenData = await data.json();
 
-    displayTokenData(data);
+    displayTokenData(tokenData);
   } catch (err) {
     console.log(err + " searchToken() bug");
   }
