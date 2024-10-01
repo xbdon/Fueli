@@ -5,9 +5,6 @@ const { response } = require("express");
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
 
-const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap?unit=';
-let api_input_param = ''
-
 const getCoinData = (request, response) => {
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
@@ -26,11 +23,12 @@ const getCoinData = (request, response) => {
     // res.status(200).json();
 }
 
+const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap?unit=';
+let api_input_param = '';
+
 const getSearchToken = (request, response) => {
     const { unit } = request.query;
-    console.log(" this far huh " + unit);
     api_input_param = unit;
-    console.log(tt_api_search_coin + api_input_param)
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
@@ -38,13 +36,28 @@ const getSearchToken = (request, response) => {
         .get(tt_api_search_coin + api_input_param)
         .then((res) => {
             const searchedTokenData = response.json(res.data);
-            console.log(searchedTokenData);
         })
         .catch((err) => {
             console.log(err + " second api controller");
         })
 }
 
+const CMC_API = " https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=2010";
+
+const getAdaPrice = (request, response) => {
+    axios.defaults.headers.common = {
+        "X-CMC_PRO_API_KEY": process.env.CMC_API_KEY,
+    };
+    axios
+        .get(CMC_API)
+        .then((res) => {
+            const adaPrice = response.json(res.data);
+            console.log("made it to getAdaPrice() controller");
+        })
+        .catch((err) => {
+            console.log(err + " third api controller");
+        })
+}
 module.exports = {
     getCoinData,
     getSearchToken
