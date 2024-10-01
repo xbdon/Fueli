@@ -60,5 +60,6 @@ const getAdaPrice = (request, response) => {
 }
 module.exports = {
     getCoinData,
-    getSearchToken
+    getSearchToken,
+    getAdaPrice
 }
