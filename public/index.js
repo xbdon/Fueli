@@ -13,19 +13,26 @@ const tokenStats = document.getElementById("token-stats");
 if no coin is found from search input,
 then value changes to false*/
 let fetchDataResult = true;
+let adaDollarValue = 0;
 
 const getAdaPrice = async () => {
   try {
     const data = await fetch('/api/ada-price/get');
     const adaData = await data.json();
 
-    adaPrice.innerHTML = adaData.data[2010].quote.USD.price;
+    adaDollarValue = adaData.data[2010].quote.USD.price;
+    adaPrice.innerHTML += ` ${Math.round(adaData.data[2010].quote.USD.price * 1000) / 1000}`;
   } catch (err) {
     console.log(err + " getAdaPrice() bug");
   }
 }
 
 getAdaPrice();
+
+// tmw will work on this function that abbreviates token marketcaps
+const shortcapMcap = async (mcap) => {
+  if (mcap)
+}
 
 const searchToken = async () => {
   try {
@@ -67,8 +74,8 @@ const displayTokenData = (json) => {
   fetchDataResult = true;
 
   const name = json.ticker;
-  const price = Math.round(json.price * 1000000) / 1000000;
-  const marketCap = Math.round(json.mcap);
+  const price = Math.round((json.price * adaDollarValue) * 1000000) / 1000000;
+  const marketCap = Math.round(json.mcap * adaDollarValue);
   // const twentyFourHr = json.market_data.price_change_percentage_24h;
   // const volume = json.market_data.total_volume.usd;
   const circSupply = Math.round(json.circSupply);
@@ -76,8 +83,8 @@ const displayTokenData = (json) => {
   searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${name}</td>
-      <td id="price" class="stats">₳${price}</td>
-      <td id="mc" class="stats">₳${marketCap}</td>
+      <td id="price" class="stats">$${price}</td>
+      <td id="mc" class="stats">$${marketCap}</td>
       <td id="24" class="stats">%${"TBD"}</td>
       <td id="volume" class="stats">$${"TBD"}</td>
       <td id="liquidity" class="stats">$${"TBD"}</td>
@@ -117,8 +124,8 @@ const displayHPTable = (json) => {
   const row = 20;
   for (let i = 0; i < row; i++) {
     let name = json[i].ticker;
-    let price = Math.round(json[i].price * 1000000) / 1000000;
-    let marketCap = Math.round(json[i].mcap);
+    let price = Math.round((json[i].price * adaDollarValue) * 1000000) / 1000000;
+    let marketCap = Math.round(json[i].mcap * adaDollarValue);
     // let twentyFourHr = json.market_data.price_change_percentage_24h;
     // let volume = json.market_data.total_volume.usd;
     let circSupply = Math.round(json[i].circSupply);
@@ -126,8 +133,8 @@ const displayHPTable = (json) => {
     tokenStats.innerHTML += `
       <tr>
         <td id="token-name${i}" class="stats">${name}</td>
-        <td id="price${i}" class="stats">₳${price}</td>
-        <td id="mc${i}" class="stats">₳${marketCap}</td>
+        <td id="price${i}" class="stats">$${price}</td>
+        <td id="mc${i}" class="stats">$${marketCap}</td>
         <td id="24-${i}" class="stats">%${name}</td>
         <td id="volume${i}" class="stats">$${name}</td>
         <td id="liquidity${i}" class="stats">$${"TBD"}</td>
