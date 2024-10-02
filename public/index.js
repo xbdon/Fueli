@@ -30,7 +30,7 @@ const getAdaPrice = async () => {
 getAdaPrice();
 
 // tmw will work on this function that abbreviates token marketcaps
-const shortcapMcap = async (mcap) => {
+const shorthandMcap = async (mcap) => {
   if (mcap)
 }
 
