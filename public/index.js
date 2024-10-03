@@ -29,9 +29,13 @@ const getAdaPrice = async () => {
 
 getAdaPrice();
 
-// tmw will work on this function that abbreviates token marketcaps
-const shorthandMcap = async (mcap) => {
-  if (mcap)
+const shorthandMcap = (mcap) => {
+  const mcapPlaceValues = mcap.toString().split('');
+  if (mcapPlaceValues.length > 7) {
+    return mcapPlaceValues.slice(0, mcapPlaceValues.length - 6).join("") + "M";
+  } else {
+    return mcap;
+  }
 }
 
 const searchToken = async () => {
@@ -75,10 +79,10 @@ const displayTokenData = (json) => {
 
   const name = json.ticker;
   const price = Math.round((json.price * adaDollarValue) * 1000000) / 1000000;
-  const marketCap = Math.round(json.mcap * adaDollarValue);
+  const marketCap = shorthandMcap(Math.round(json.mcap * adaDollarValue));
   // const twentyFourHr = json.market_data.price_change_percentage_24h;
   // const volume = json.market_data.total_volume.usd;
-  const circSupply = Math.round(json.circSupply);
+  const circSupply = shorthandMcap(Math.round(json.circSupply));
 
   searchedTokenStats.innerHTML = `
     <tr>
@@ -125,10 +129,10 @@ const displayHPTable = (json) => {
   for (let i = 0; i < row; i++) {
     let name = json[i].ticker;
     let price = Math.round((json[i].price * adaDollarValue) * 1000000) / 1000000;
-    let marketCap = Math.round(json[i].mcap * adaDollarValue);
+    let marketCap = shorthandMcap(Math.round(json[i].mcap * adaDollarValue));
     // let twentyFourHr = json.market_data.price_change_percentage_24h;
     // let volume = json.market_data.total_volume.usd;
-    let circSupply = Math.round(json[i].circSupply);
+    let circSupply = shorthandMcap(Math.round(json[i].circSupply));
 
     tokenStats.innerHTML += `
       <tr>
