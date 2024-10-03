@@ -31,7 +31,11 @@ getAdaPrice();
 
 // tmw will work on this function that abbreviates token marketcaps
 const shorthandMcap = async (mcap) => {
-  if (mcap)
+  const mcapPlaceValues = mcap.split('');
+  if (mcapPlaceValues.length > 7) {
+    return mcapPlaceValues.slice(0, mcapPlaceValues.length - 6);
+  }
+  return mcap;
 }
 
 const searchToken = async () => {
