@@ -79,7 +79,7 @@ const displayTokenData = (json) => {
 
   const name = json.ticker;
   const price = Math.round((json.price * adaDollarValue) * 1000000) / 1000000;
-  const marketCap = Math.round(json.mcap * adaDollarValue);
+  const marketCap = shorthandMcap(Math.round(json.mcap * adaDollarValue));
   // const twentyFourHr = json.market_data.price_change_percentage_24h;
   // const volume = json.market_data.total_volume.usd;
   const circSupply = Math.round(json.circSupply);
