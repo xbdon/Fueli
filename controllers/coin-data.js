@@ -5,6 +5,11 @@ const { response } = require("express");
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
 
+/* learning postgres but on the to do list is adding a controller function
+that calls upon two API's specifically in the search token function so i can add the 
+percentage change to the table values
+/*
+
 const getCoinData = (request, response) => {
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
