@@ -30,6 +30,7 @@ const getCoinData = (request, response) => {
 const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap?unit=';
 let api_input_param = '';
 
+// will refactor function to use axios.all two request two different apis
 const getSearchToken = (request, response) => {
     const { unit } = request.query;
     api_input_param = unit;
