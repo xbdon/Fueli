@@ -29,6 +29,8 @@ const getCoinData = (request, response) => {
 
 const tt_api_search_coin = 'https://openapi.taptools.io/api/v1/token/mcap?unit=';
 let api_input_param = '';
+const tt_api_percent = 'https://openapi.taptools.io/api/v1/token/prices/chg?unit=';
+const percent_params = '&timeframes=1h,24h,7d,30d'
 
 // will refactor function to use axios.all two request two different apis
 const getSearchToken = (request, response) => {
@@ -37,6 +39,11 @@ const getSearchToken = (request, response) => {
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
+
+    axios.all([
+        axios.get(tt_api_search_coin + api_input_param),
+        axios.get()
+    ])
     axios
         .get(tt_api_search_coin + api_input_param)
         .then((res) => {
