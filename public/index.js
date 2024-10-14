@@ -43,6 +43,7 @@ const searchToken = async () => {
     console.log(searchInput.value);
     const data = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
     const tokenData = await data.json();
+    console.log(tokenData);
 
     displayTokenData(tokenData);
   } catch (err) {
@@ -50,22 +51,11 @@ const searchToken = async () => {
   }
 }
 
-// const fetchData = async () => {
-//   try {
-//     const jsonData = await fetch("/api/coin-data/get");
-//     const data = await jsonData.json();
-
-//     displayTokenData(data);
-//   } catch (err) {
-//     console.log(err + " trouble obtaining data from api");
-//   }
-// };
-
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
   console.log("made it to displayTokenData()");
 
-  if (json === undefined) {
+  if (json[0] === undefined) {
     alert(
       "Token search failed! Coin not found. Try a different token address."
     );
@@ -180,7 +170,7 @@ searchInput.addEventListener("keydown", (e) => {
         closeBtn.style.visibility = "visible";
       }
     });
-    console.log(fetchDataResult);
+    // console.log(fetchDataResult);
   }
 });
 

@@ -40,18 +40,17 @@ const getSearchToken = (request, response) => {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
 
-    axios.all([
-        axios.get(tt_api_search_coin + api_input_param),
-        axios.get()
-    ])
-    axios
-        .get(tt_api_search_coin + api_input_param)
-        .then((res) => {
-            const searchedTokenData = response.json(res.data);
-        })
-        .catch((err) => {
-            console.log(err + " second api controller");
-        })
+    axios.get(tt_api_search_coin + api_input_param);
+    axios.get(tt_api_percent + api_input_param + percent_params);
+
+    // axios
+    //     .get(tt_api_search_coin + api_input_param)
+    //     .then((res) => {
+    //         const searchedTokenData = response.json(res.data);
+    //     })
+    //     .catch((err) => {
+    //         console.log(err + " second api controller");
+    //     })
 }
 
 const CMC_API = " https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?id=2010";
@@ -64,7 +63,6 @@ const getAdaPrice = (request, response) => {
         .get(CMC_API)
         .then((res) => {
             const adaPrice = response.json(res.data);
-            console.log("made it to getAdaPrice() controller");
         })
         .catch((err) => {
             console.log(err + " third api controller");
