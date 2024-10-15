@@ -40,8 +40,8 @@ const shorthandMcap = (mcap) => {
 
 const searchToken = async () => {
   try {
-    console.log(searchInput.value);
     const data = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
+    console.log("promise.all bug testing");
     const tokenData = await data.json();
     console.log(tokenData);
 
@@ -54,6 +54,7 @@ const searchToken = async () => {
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
   console.log("made it to displayTokenData()");
+  console.log(json);
 
   if (json[0] === undefined) {
     alert(

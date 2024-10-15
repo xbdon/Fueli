@@ -40,8 +40,19 @@ const getSearchToken = (request, response) => {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
 
-    axios.get(tt_api_search_coin + api_input_param);
-    axios.get(tt_api_percent + api_input_param + percent_params);
+    const basicData = axios.get(tt_api_search_coin + api_input_param);
+    const percentData = axios.get(tt_api_percent + api_input_param + percent_params);
+
+    return Promise.all([basicData, percentData])
+        .then((res) => {
+            const dataBasic = response.json({
+                dataBasic: res[0].data,
+                dataPercent: res[1].data
+            });
+        })
+        .catch((err) => {
+            console.log("getSearchToken promise err: " + err)
+        })
 
     // axios
     //     .get(tt_api_search_coin + api_input_param)
