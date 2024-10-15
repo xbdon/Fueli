@@ -70,7 +70,7 @@ const displayTokenData = (json) => {
   const name = json.dataBasic.ticker;
   const price = Math.round((json.dataBasic.price * adaDollarValue) * 1000000) / 1000000;
   const marketCap = shorthandMcap(Math.round(json.dataBasic.mcap * adaDollarValue));
-  const twentyFourHr = json.dataPercent["24h"];
+  const twentyFourHr = Math.round(json.dataPercent["24h"] * 100000);
   const oneHr = json.dataPercent["1h"];
   const sevenDay = json.dataPercent["7d"];
   const thirtyDay = json.dataPercent["30d"];
