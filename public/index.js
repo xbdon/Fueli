@@ -70,10 +70,10 @@ const displayTokenData = (json) => {
   const name = json.dataBasic.ticker;
   const price = Math.round((json.dataBasic.price * adaDollarValue) * 1000000) / 1000000;
   const marketCap = shorthandMcap(Math.round(json.dataBasic.mcap * adaDollarValue));
-  const twentyFourHr = Math.round(json.dataPercent["24h"] * 100000) / 100;
-  const oneHr = Math.round(json.dataPercent["1h"] * 100000) / 100;
-  const sevenDay = Math.round(json.dataPercent["7d"] * 100000) / 100;
-  const thirtyDay = Math.round(json.dataPercent["30d"] * 100000) / 100;
+  const twentyFourHr = Math.round(json.dataPercent["24h"] * 10000) / 100;
+  const oneHr = Math.round(json.dataPercent["1h"] * 10000) / 100;
+  const sevenDay = Math.round(json.dataPercent["7d"] * 10000) / 100;
+  const thirtyDay = Math.round(json.dataPercent["30d"] * 10000) / 100;
   // const volume = json.market_data.total_volume.usd;
   const circSupply = shorthandMcap(Math.round(json.dataBasic.circSupply));
 
@@ -82,10 +82,10 @@ const displayTokenData = (json) => {
       <td id="token-name" class="stats">${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
-      <td id="24h" class="stats">%${twentyFourHr}</td>
-      <td id="1h" class="stats">%${oneHr}</td>
-      <td id="7d" class="stats">%${sevenDay}</td>
-      <td id="30d" class="stats">%${thirtyDay}</td>
+      <td id="24h" class="stats">${twentyFourHr}%</td>
+      <td id="1h" class="stats">${oneHr}%</td>
+      <td id="7d" class="stats">${sevenDay}%</td>
+      <td id="30d" class="stats">${thirtyDay}%</td>
       <td id="volume" class="stats">$${"TBD"}</td>
       <td id="liquidity" class="stats">$${"TBD"}</td>
       <td id="circ-supply" class="stats">${circSupply}</td>
