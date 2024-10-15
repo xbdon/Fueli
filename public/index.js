@@ -67,19 +67,25 @@ const displayTokenData = (json) => {
   interaction for future use */
   fetchDataResult = true;
 
-  const name = json.ticker;
-  const price = Math.round((json.price * adaDollarValue) * 1000000) / 1000000;
-  const marketCap = shorthandMcap(Math.round(json.mcap * adaDollarValue));
-  // const twentyFourHr = json.market_data.price_change_percentage_24h;
+  const name = json.dataBasic.ticker;
+  const price = Math.round((json.dataBasic.price * adaDollarValue) * 1000000) / 1000000;
+  const marketCap = shorthandMcap(Math.round(json.dataBasic.mcap * adaDollarValue));
+  const twentyFourHr = json.dataPercent["24h"];
+  const oneHr = json.dataPercent["1h"];
+  const sevenDay = json.dataPercent["7d"];
+  const thirtyDay = json.dataPercent["30d"];
   // const volume = json.market_data.total_volume.usd;
-  const circSupply = shorthandMcap(Math.round(json.circSupply));
+  const circSupply = shorthandMcap(Math.round(json.dataBasic.circSupply));
 
   searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
-      <td id="24" class="stats">%${"TBD"}</td>
+      <td id="24h" class="stats">%${twentyFourHr}</td>
+      <td id="1h" class="stats">%${oneHr}</td>
+      <td id="7d" class="stats">%${sevenDay}</td>
+      <td id="30d" class="stats">%${thirtyDay}</td>
       <td id="volume" class="stats">$${"TBD"}</td>
       <td id="liquidity" class="stats">$${"TBD"}</td>
       <td id="circ-supply" class="stats">${circSupply}</td>
