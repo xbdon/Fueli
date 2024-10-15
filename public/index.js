@@ -54,9 +54,8 @@ const searchToken = async () => {
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
   console.log("made it to displayTokenData()");
-  console.log(json);
 
-  if (json[0] === undefined) {
+  if (json.dataBasic.circSupply === undefined) {
     alert(
       "Token search failed! Coin not found. Try a different token address."
     );
