@@ -40,9 +40,10 @@ const shorthandMcap = (mcap) => {
 
 const searchToken = async () => {
   try {
-    console.log(searchInput.value);
     const data = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
+    console.log("promise.all bug testing");
     const tokenData = await data.json();
+    console.log(tokenData);
 
     displayTokenData(tokenData);
   } catch (err) {
@@ -50,22 +51,11 @@ const searchToken = async () => {
   }
 }
 
-// const fetchData = async () => {
-//   try {
-//     const jsonData = await fetch("/api/coin-data/get");
-//     const data = await jsonData.json();
-
-//     displayTokenData(data);
-//   } catch (err) {
-//     console.log(err + " trouble obtaining data from api");
-//   }
-// };
-
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
   console.log("made it to displayTokenData()");
 
-  if (json === undefined) {
+  if (json.dataBasic.circSupply === undefined) {
     alert(
       "Token search failed! Coin not found. Try a different token address."
     );
@@ -77,19 +67,25 @@ const displayTokenData = (json) => {
   interaction for future use */
   fetchDataResult = true;
 
-  const name = json.ticker;
-  const price = Math.round((json.price * adaDollarValue) * 1000000) / 1000000;
-  const marketCap = shorthandMcap(Math.round(json.mcap * adaDollarValue));
-  // const twentyFourHr = json.market_data.price_change_percentage_24h;
+  const name = json.dataBasic.ticker;
+  const price = Math.round((json.dataBasic.price * adaDollarValue) * 1000000) / 1000000;
+  const marketCap = shorthandMcap(Math.round(json.dataBasic.mcap * adaDollarValue));
+  const twentyFourHr = Math.round(json.dataPercent["24h"] * 10000) / 100;
+  const oneHr = Math.round(json.dataPercent["1h"] * 10000) / 100;
+  const sevenDay = Math.round(json.dataPercent["7d"] * 10000) / 100;
+  const thirtyDay = Math.round(json.dataPercent["30d"] * 10000) / 100;
   // const volume = json.market_data.total_volume.usd;
-  const circSupply = shorthandMcap(Math.round(json.circSupply));
+  const circSupply = shorthandMcap(Math.round(json.dataBasic.circSupply));
 
   searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats">${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
-      <td id="24" class="stats">%${"TBD"}</td>
+      <td id="24h" class="stats">${twentyFourHr}%</td>
+      <td id="1h" class="stats">${oneHr}%</td>
+      <td id="7d" class="stats">${sevenDay}%</td>
+      <td id="30d" class="stats">${thirtyDay}%</td>
       <td id="volume" class="stats">$${"TBD"}</td>
       <td id="liquidity" class="stats">$${"TBD"}</td>
       <td id="circ-supply" class="stats">${circSupply}</td>
@@ -180,7 +176,7 @@ searchInput.addEventListener("keydown", (e) => {
         closeBtn.style.visibility = "visible";
       }
     });
-    console.log(fetchDataResult);
+    // console.log(fetchDataResult);
   }
 });
 
