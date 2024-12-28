@@ -1,6 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 const { response } = require("express");
+const pool = require('../db');
 
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
@@ -79,8 +80,22 @@ const getAdaPrice = (request, response) => {
             console.log(err + " third api controller");
         })
 }
+
+const dbFetch = (request, response) => {
+    pool.query("SELECT * FROM coins", (err, res) => {
+        if (err) {
+            console.log("well shitttt" + err);
+        }
+        response.status(200).json(res.rows);
+        // we are recieving an error ar .rows, for next session
+    });
+    console.log("made it to dbFetch controller function");
+
+}
+
 module.exports = {
     getCoinData,
     getSearchToken,
-    getAdaPrice
+    getAdaPrice,
+    dbFetch
 }
