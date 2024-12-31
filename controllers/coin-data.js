@@ -81,12 +81,16 @@ const getAdaPrice = (request, response) => {
         })
 }
 
+console.log(await pool.query('SELECT NOW()'))
 const dbFetch = (request, response) => {
     pool.query("SELECT * FROM coins", (err, res) => {
         if (err) {
-            console.log("well shitttt" + err);
+            console.log("well shitttt: " + err);
+            return;
         }
-        response.status(200).json(res.rows);
+        // console.log(res.rows[0])
+        // console.log("passed if");
+        response.status(200).json(res.rows[0]);
         // we are recieving an error ar .rows, for next session
     });
     console.log("made it to dbFetch controller function");
