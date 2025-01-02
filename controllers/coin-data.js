@@ -1,7 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 const { response } = require("express");
-const pool = require('../db');
+const db = require('../db');
 
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
@@ -81,15 +81,15 @@ const getAdaPrice = (request, response) => {
         })
 }
 
-console.log(await pool.query('SELECT NOW()'))
 const dbFetch = (request, response) => {
-    pool.query("SELECT * FROM coins", (err, res) => {
+    const result = db.query("SELECT * FROM coins", (err, res) => {
+        console.log(`zeroth: ${result}`)
+        console.log(`first: ${result.rows[0]}`);
         if (err) {
-            console.log("well shitttt: " + err);
+            console.log(err);
             return;
         }
-        // console.log(res.rows[0])
-        // console.log("passed if");
+        console.log(result.rows[0]);
         response.status(200).json(res.rows[0]);
         // we are recieving an error ar .rows, for next session
     });
