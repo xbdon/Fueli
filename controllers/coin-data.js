@@ -1,7 +1,7 @@
 require("dotenv").config();
 const axios = require("axios");
 const { response } = require("express");
-const db = require('../db');
+const db = require('../db/index.js');
 
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
