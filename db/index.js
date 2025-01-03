@@ -13,11 +13,10 @@ const pool = new Pool({
     allowExitOnIdle: false
 });
 
-const getDatabase = async () => {
+(async () => {
     const client = await pool.connect(process.env.DATABASE_URL);
+
     const { rows } = await client.query('SELECT * FROM coins')
     console.log(rows);
     client.release(true);
-}
-
-getDatabase();
+})();
