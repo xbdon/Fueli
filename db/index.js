@@ -4,7 +4,7 @@ const { Pool } = require('pg');
 const pool = new Pool({
     user: "postgres",
     host: "localhost",
-    database: "postgres",
+    database: "coin_list",
     password: process.env.SQL_KEY,
     port: 5432,
     max: 5,
@@ -14,7 +14,7 @@ const pool = new Pool({
 });
 
 (async () => {
-    const client = await pool.connect(process.env.DATABASE_URL);
+    const client = await pool.connect();
 
     const { rows } = await client.query('SELECT * FROM coins')
     console.log(rows);
