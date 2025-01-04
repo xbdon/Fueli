@@ -4,22 +4,25 @@ const { Pool } = require('pg');
 const pool = new Pool({
     user: "postgres",
     host: "localhost",
-    database: "postgres",
+    database: "coin_list",
     password: process.env.SQL_KEY,
     port: 5432
 });
 
 module.exports = pool;
 
-// require("dotenv").config();
-// const { Client } = require('pg');
+// const pg = require("pg");
 
-// const client = new Client({
+// const client = new pg.Client({
 //     host: "localhost",
-//     user: "postgres",
 //     port: 3000,
+//     database: "coin_list",
+//     user: "postgres",
 //     password: process.env.SQL_KEY,
-//     database: "coin_list"
 // })
 
-// module.exports = client;
+// client.connect((err) => {
+//     if (err) throw err;
+
+//     console.log("Connection Established");
+// })
