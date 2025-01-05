@@ -2,6 +2,9 @@ const searchBtn = document.getElementById("search-button");
 const hamburger = document.getElementById("hamburger");
 const searchInput = document.getElementById("search-input");
 const adaPrice = document.getElementById("ada-price");
+// remember to make this element next session
+// have to add new html and css for upcoming create user functionality
+const createUserInput = document.getElementById("createUser-input");
 
 const searchedTokenTable = document.getElementById("searched-token-table");
 const searchedTokenStats = document.getElementById("searched-token-stats");
@@ -141,6 +144,15 @@ const displayHPTable = (json) => {
         <td id="circ-supply${i}" class="stats">${circSupply}</td>
       </tr>
     `;
+  }
+}
+
+const createFueliUser = async () => {
+  try {
+    const data = await fetch(`/api/createUser/post/?unit=${/* user input value*/}`);
+
+  } catch {
+
   }
 }
 
