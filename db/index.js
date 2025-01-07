@@ -20,3 +20,5 @@ const pool = new Pool({
     console.log(rows);
     client.release(true);
 })();
+
+// quick test
