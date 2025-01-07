@@ -75,3 +75,9 @@ h1 {
 table {
     border-collapse: collapse;
 }
+
+#login-btn {
+    float: right;
+    display: inline;
+    color: #1F9AFE
+}
