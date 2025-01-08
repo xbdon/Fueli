@@ -2,3 +2,17 @@ body {
     background-color: black;
     color: white;
 }
+
+#login-cred {
+    position: absolute;
+    top: 35%;
+    left: 10%;
+}
+
+h3 {
+    margin: 0 0 5px 0;
+}
+
+h4 {
+    margin: 20px 0 5px 0;
+}
