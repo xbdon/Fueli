@@ -9,10 +9,31 @@ body {
     left: 10%;
 }
 
+h2 {
+    color: burlywood;
+}
+
 h3 {
     margin: 0 0 5px 0;
 }
 
+#email-input {
+    height: 20px;
+    width: 300px;
+}
+
+#pass-input {
+    height: 20px;
+    width: 300px;
+}
+
 h4 {
     margin: 20px 0 5px 0;
+}
+
+#si-btn {
+    margin-top: 10px;
+    background-color: #7FFFD4;
+    border: 0;
+    border-radius: 10%;
 }
