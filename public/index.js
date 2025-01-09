@@ -147,14 +147,14 @@ const displayHPTable = (json) => {
   }
 }
 
-const createFueliUser = async () => {
-  try {
-    const data = await fetch(`/api/createUser/post/?unit=${/* user input value*/}`);
+// const createFueliUser = async () => {
+//   try {
+//     const data = await fetch(`/api/createUser/post/?unit=${/* user input value*/}`);
 
-  } catch {
+//   } catch {
 
-  }
-}
+//   }
+// }
 
 const toggleSearchBar = () => {
   searchInput.style.display =
