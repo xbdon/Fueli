@@ -1,19 +1,25 @@
 const signIn = document.getElementById("sign-in");
 const signUp = document.getElementById("sign-up");
-const signUpBtn = document.getElementById("toggle");
+const signUpBtn = document.getElementById("first-toggle");
+const signInBtn = document.getElementById("second-toggle");
 
 
-
-
-// next add toggle for create account to sign in UI
 // add new post method api after
-const toggleLogin = () => {
+const toggleSignUp = () => {
     signIn.style.display = "none";
     signIn.style.visibility = "hidden";
 
     signUp.style.display = "block";
     signUp.style.visibility = "visible";
-
 };
 
-signUpBtn.addEventListener("click", toggleLogin);
+const toggleSignIn = () => {
+    signUp.style.display = "none";
+    signUp.style.visibility = "hidden";
+
+    signIn.style.display = "block";
+    signIn.style.visibility = "visible";
+}
+
+signUpBtn.addEventListener("click", toggleSignUp);
+signInBtn.addEventListener("click", toggleSignIn);
