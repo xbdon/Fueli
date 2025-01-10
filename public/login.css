@@ -3,7 +3,7 @@ body {
     color: white;
 }
 
-#login-cred {
+#si-cred {
     position: absolute;
     top: 35%;
     left: 10%;
@@ -17,12 +17,7 @@ h3 {
     margin: 0 0 5px 0;
 }
 
-#email-input {
-    height: 20px;
-    width: 300px;
-}
-
-#pass-input {
+#input {
     height: 20px;
     width: 300px;
 }
