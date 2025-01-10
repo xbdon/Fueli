@@ -6,7 +6,6 @@ const signInBtn = document.getElementById("second-toggle");
 
 
 
-// next add toggle for create account to sign in UI
 // add new post method api after
 const toggleSignUp = () => {
     signIn.style.display = "none";

@@ -5,8 +5,8 @@ body {
 
 .cred-div {
     position: absolute;
-    top: 35%;
-    left: 10%;
+    top: 25%;
+    left: 2%;
 }
 
 #sign-up {
@@ -16,10 +16,15 @@ body {
 
 h2 {
     color: burlywood;
+    padding-bottom: 10px;
+    font-size: 35px;
 }
 
 h3 {
     margin: 10px 0 5px 0;
+    font-size: small;
+    font-weight: 50;
+    color: grey;
 }
 
 .input {
@@ -28,14 +33,14 @@ h3 {
 }
 
 #si-btn {
-    margin-top: 10px;
+    margin-top: 20px;
     background-color: #7FFFD4;
     border: 0;
     border-radius: 10%;
 }
 
 #su-btn {
-    margin-top: 10px;
+    margin-top: 20px;
     background-color: #7FFFD4;
     border: 0;
     border-radius: 10%;
