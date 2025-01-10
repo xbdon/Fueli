@@ -27,7 +27,12 @@ h3 {
     color: grey;
 }
 
-.input {
+.si-input {
+    height: 20px;
+    width: 300px;
+}
+
+.ca-input {
     height: 20px;
     width: 300px;
 }

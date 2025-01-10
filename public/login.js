@@ -4,8 +4,6 @@ const signUpBtn = document.getElementById("first-toggle");
 const signInBtn = document.getElementById("second-toggle");
 
 
-
-
 // add new post method api after
 const toggleSignUp = () => {
     signIn.style.display = "none";
