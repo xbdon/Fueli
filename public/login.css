@@ -3,10 +3,15 @@ body {
     color: white;
 }
 
-#login-cred {
+.cred-div {
     position: absolute;
     top: 35%;
     left: 10%;
+}
+
+#sign-up {
+    display: none;
+    visibility: hidden;
 }
 
 h2 {
@@ -17,12 +22,7 @@ h3 {
     margin: 0 0 5px 0;
 }
 
-#email-input {
-    height: 20px;
-    width: 300px;
-}
-
-#pass-input {
+.input {
     height: 20px;
     width: 300px;
 }
@@ -36,4 +36,8 @@ h4 {
     background-color: #7FFFD4;
     border: 0;
     border-radius: 10%;
+}
+
+#in2up {
+    padding-left: 60px;
 }

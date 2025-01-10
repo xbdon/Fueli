@@ -10,18 +10,42 @@
 <body>
     <h1>Fueli</h1>
 
-    <div id="login-cred">
+    <div id="sign-in" class="cred-div">
         <h2>Welcome, fello fueler</h2>
-        <div id="email-div">
-            <h3>Email</h3>
-            <input id="email-input" type="text" />
-        </div>
-        <div id="pass-div">
-            <h4>Password</h4>
-            <input id="pass-input" type="text" />
-        </div>
+
+        <h3>Email</h3>
+        <input class="input" type="text" />
+
+
+        <h4>Password</h4>
+        <input class="input" type="text" />
+        <br />
         <button id="si-btn">Sign in</button>
+        <br />
+        <p id="in2up">Don't have an account? <button id="toggle">Sign up</button></p>
     </div>
+
+    <div id="sign-up" class="cred-div">
+        <h2>Create Account</h2>
+
+        <h3>Email</h3>
+        <input class="input" type="text" />
+
+
+        <h3>Username</h3>
+        <input class="input" type="text" />
+
+
+        <h3>Password</h3>
+        <input class="input" type="text" />
+
+        <h3>Confirm Password</h3>
+        <input class="input" type="text" />
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+
+    <script src="./login.js"></script>
 </body>
 
 </html>
