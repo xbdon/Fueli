@@ -5,16 +5,14 @@ const signUpBtn = document.getElementById("toggle");
 
 
 
-
+// next add toggle for create account to sign in UI
+// add new post method api after
 const toggleLogin = () => {
-    signIn.style.display =
-        signIn.style.display = "none";
+    signIn.style.display = "none";
     signIn.style.visibility = "hidden";
 
-    signUp.style.display =
-        signUp.style.display === "block";
-    signUp.style.visibility =
-        signUp.style.visibility === "visible";
+    signUp.style.display = "block";
+    signUp.style.visibility = "visible";
 
 };
 
