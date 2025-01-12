@@ -81,6 +81,15 @@ const getAdaPrice = (request, response) => {
         })
 }
 
+/**
+ this db function will be utilized soon but I am working on 
+ implementing my new post method api to do a basic post of data
+ from the front-end to the back-end server. this is my first use
+ of the post method. After this, I then will integrate a
+ db to hold account information and coin information. I will
+ need to know how to use post method for this
+ */
+
 const dbFetch = (request, response) => {
     const result = db.query("SELECT * FROM coins", (err, res) => {
         console.log(`zeroth: ${result}`)
