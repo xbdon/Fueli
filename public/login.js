@@ -5,8 +5,18 @@ const signInBtn = document.getElementById("second-toggle");
 
 const caInputs = document.querySelectorAll("ca-input");
 
-
 // add new post method api after
+
+const createAccount = () => {
+    try {
+        const values = Array.from(caInputs)
+            .map(input => input.value);
+        const accData = fetch(`/api/create-user/post/?acc-info=${values}`)
+    } catch {
+        console.log("error error error");
+    }
+}
+
 const toggleSignUp = () => {
     signIn.style.display = "none";
     signIn.style.visibility = "hidden";
