@@ -11,7 +11,7 @@ const createAccount = () => {
     try {
         const values = Array.from(caInputs)
             .map(input => input.value);
-        const accData = fetch(`/api/create-user/post/?acc-info=${values}`)
+        const accData = fetch(`/api/create-user/post/?accData=${values}`)
     } catch {
         console.log("error error error");
     }
