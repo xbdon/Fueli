@@ -147,15 +147,6 @@ const displayHPTable = (json) => {
   }
 }
 
-// const createFueliUser = async () => {
-//   try {
-//     const data = await fetch(`/api/createUser/post/?unit=${/* user input value*/}`);
-
-//   } catch {
-
-//   }
-// }
-
 const toggleSearchBar = () => {
   searchInput.style.display =
     searchInput.style.display === "block" ? "" : "block";
@@ -209,5 +200,3 @@ hamburger.addEventListener("click", getHomePageTable);
   as I learn how to implement a DB. Hopefully tomorrow, 10/03/2024, we figure out which DB to learn and go from there.
   PS! Dont forget to add some icons to the Fueli site. #Hamburger needs to be an an actual hamburger icon!
 */
-
-// Been busy but my final conclusion is to write in postgreSQL
