@@ -3,6 +3,8 @@ const signUp = document.getElementById("sign-up");
 const signUpBtn = document.getElementById("first-toggle");
 const signInBtn = document.getElementById("second-toggle");
 
+const caInputs = document.querySelectorAll("ca-input");
+
 
 // add new post method api after
 const toggleSignUp = () => {
