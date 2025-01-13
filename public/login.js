@@ -1,8 +1,8 @@
 const signIn = document.getElementById("sign-in");
 const signUp = document.getElementById("sign-up");
-const signUpBtn = document.getElementById("first-toggle");
-const signInBtn = document.getElementById("second-toggle");
-
+const firstToggle = document.getElementById("first-toggle");
+const secondToggle = document.getElementById("second-toggle");
+const
 const caInputs = document.querySelectorAll("ca-input");
 
 // add new post method api after
@@ -33,5 +33,6 @@ const toggleSignIn = () => {
     signIn.style.visibility = "visible";
 }
 
-signUpBtn.addEventListener("click", toggleSignUp);
-signInBtn.addEventListener("click", toggleSignIn);
+firstToggle.addEventListener("click", toggleSignUp);
+secondToggle.addEventListener("click", toggleSignIn);
+.addEventListener("click", createAccount);
