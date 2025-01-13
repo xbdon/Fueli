@@ -1,11 +1,11 @@
-const signIn = document.getElementById("sign-in");
-const signUp = document.getElementById("sign-up");
-const signUpBtn = document.getElementById("first-toggle");
-const signInBtn = document.getElementById("second-toggle");
+const signInUI = document.getElementById("sign-in");
+const signUpUI = document.getElementById("sign-up");
+const firstToggle = document.getElementById("first-toggle");
+const secondToggle = document.getElementById("second-toggle");
+const siBtn = document.getElementById("si-btn");
+const suBtn = document.getElementById("su-btn");
 
 const caInputs = document.querySelectorAll("ca-input");
-
-// add new post method api after
 
 const createAccount = () => {
     try {
@@ -18,22 +18,23 @@ const createAccount = () => {
 }
 
 const toggleSignUp = () => {
-    signIn.style.display = "none";
-    signIn.style.visibility = "hidden";
+    signInUI.style.display = "none";
+    signInUI.style.visibility = "hidden";
 
-    signUp.style.display = "block";
-    signUp.style.visibility = "visible";
+    signUpUI.style.display = "block";
+    signUpUI.style.visibility = "visible";
 };
 
 const toggleSignIn = () => {
-    signUp.style.display = "none";
-    signUp.style.visibility = "hidden";
+    signUpUI.style.display = "none";
+    signUpUI.style.visibility = "hidden";
 
-    signIn.style.display = "block";
-    signIn.style.visibility = "visible";
+    signInUI.style.display = "block";
+    signInUI.style.visibility = "visible";
 }
 
-signUpBtn.addEventListener("click", toggleSignUp);
-signInBtn.addEventListener("click", toggleSignIn);
+firstToggle.addEventListener("click", toggleSignUp);
+secondToggle.addEventListener("click", toggleSignIn);
+suBtn.addEventListener("click", createAccount);
 
 // i should convert my sign in and sign up divs with a form element to take data from. this is probably the standard. also i have to look if i need to stringify or parse my data before or after the post method
