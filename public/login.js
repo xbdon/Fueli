@@ -8,6 +8,7 @@ const suBtn = document.getElementById("su-btn");
 const caInputs = document.getElementsByClassName("ca-input");
 
 const createAccount = async () => {
+    // changed post method
     console.log(caInputs);
     const values = Array.from(caInputs)
         .map(input => input.value);
