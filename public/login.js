@@ -13,16 +13,21 @@ const createAccount = async () => {
     const values = Array.from(caInputs)
         .map(input => input.value);
     console.log(`these are the createAccount inputs: ${values}`);
-    if (values == '') { return };
+    if (values == '') {
+        console.log("error: values variable undefined")
+        return;
+    }
 
-    const res = await fetch(`/api/create-user/post/?accData=${values}`,
+    const apiCall = `/api/create-user/post/?key1=${values[0]}&key2=${values[1]}&key3=${values[2]}&key4=${values[3]}`;
+    const res = await fetch(apiCall,
         {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json'
             },
-            query: JSON.stringify(values)
+            body: JSON.stringify(values)
         })
+
     // try {
     //     const values = Array.from(caInputs)
     //         .map(input => input.value);
