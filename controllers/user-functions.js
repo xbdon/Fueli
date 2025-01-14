@@ -4,10 +4,13 @@ const db = require('../db');
 
 const createUser = (request, response) => {
     const { accData } = request.query;
+    if (!accData) {
+        return response.status(400).send({ status: 'failed' });
+    }
     console.log(`We made it to createUser function. And here is the data: ${accData}`);
     // userData.push(accData.user);
     console.log(accData);
-    response.sendStatus(201);
+    response.sendStatus(200).send({ status: 'recieved' });
 }
 
 module.exports = {

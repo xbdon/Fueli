@@ -5,16 +5,36 @@ const secondToggle = document.getElementById("second-toggle");
 const siBtn = document.getElementById("si-btn");
 const suBtn = document.getElementById("su-btn");
 
-const caInputs = document.querySelectorAll("ca-input");
+const caInputs = document.getElementsByClassName("ca-input");
 
-const createAccount = () => {
-    try {
-        const values = Array.from(caInputs)
-            .map(input => input.value);
-        const accData = fetch(`/api/create-user/post/?accData=${values}`)
-    } catch {
-        console.log("error error error");
+const createAccount = async () => {
+    // changed post method
+    console.log(caInputs);
+    const values = Array.from(caInputs)
+        .map(input => input.value);
+    console.log(`these are the createAccount inputs: ${values}`);
+    if (values == '') {
+        console.log("error: values variable undefined")
+        return;
     }
+
+    const apiCall = `/api/create-user/post/?key1=${values[0]}&key2=${values[1]}&key3=${values[2]}&key4=${values[3]}`;
+    const res = await fetch(apiCall,
+        {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            body: JSON.stringify(values)
+        })
+
+    // try {
+    //     const values = Array.from(caInputs)
+    //         .map(input => input.value);
+    //     const accData = fetch(`/api/create-user/post/?accData=${values}`)
+    // } catch {
+    //     console.log("error error error");
+    // }
 }
 
 const toggleSignUp = () => {
