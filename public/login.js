@@ -5,16 +5,30 @@ const secondToggle = document.getElementById("second-toggle");
 const siBtn = document.getElementById("si-btn");
 const suBtn = document.getElementById("su-btn");
 
-const caInputs = document.querySelectorAll("ca-input");
+const caInputs = document.getElementsByClassName("ca-input");
 
-const createAccount = () => {
-    try {
-        const values = Array.from(caInputs)
-            .map(input => input.value);
-        const accData = fetch(`/api/create-user/post/?accData=${values}`)
-    } catch {
-        console.log("error error error");
-    }
+const createAccount = async () => {
+    console.log(caInputs);
+    const values = Array.from(caInputs)
+        .map(input => input.value);
+    console.log(`these are the createAccount inputs: ${values}`);
+    if (values == '') { return };
+
+    const res = await fetch(`/api/create-user/post/?accData=${values}`,
+        {
+            method: 'POST',
+            headers: {
+                "Content-Type": 'application/json'
+            },
+            query: JSON.stringify(values)
+        })
+    // try {
+    //     const values = Array.from(caInputs)
+    //         .map(input => input.value);
+    //     const accData = fetch(`/api/create-user/post/?accData=${values}`)
+    // } catch {
+    //     console.log("error error error");
+    // }
 }
 
 const toggleSignUp = () => {
