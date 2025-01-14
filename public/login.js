@@ -19,7 +19,7 @@ const createAccount = async () => {
     }
 
     const apiCall = `/api/create-user/post/?key1=${values[0]}&key2=${values[1]}&key3=${values[2]}&key4=${values[3]}`;
-    const res = await fetch(apiCall,
+    const res = await fetch("/api/create-user/post/",
         {
             method: 'POST',
             headers: {
