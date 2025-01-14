@@ -57,3 +57,4 @@ secondToggle.addEventListener("click", toggleSignIn);
 suBtn.addEventListener("click", createAccount);
 
 // i should convert my sign in and sign up divs with a form element to take data from. this is probably the standard. also i have to look if i need to stringify or parse my data before or after the post method
+// i need to read up on how to use git to avoid future meltdowns like today, my local-top-20 branch is fried atm
