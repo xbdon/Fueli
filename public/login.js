@@ -33,7 +33,6 @@ const createAccount = async () => {
     //         .map(input => input.value);
     //     const accData = fetch(`/api/create-user/post/?accData=${values}`)
     // } catch {
-    //     console.log("error error error");
     // }
 }
 
