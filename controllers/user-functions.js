@@ -3,7 +3,7 @@ const axios = require("axios");
 const db = require('../db');
 
 const createUser = (request, response) => {
-    const { accData } = request.body;
+    const accData = request.body;
     console.log(accData);
     if (!accData) {
         return response.status(400).send({ status: 'failed' });

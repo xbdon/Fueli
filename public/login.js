@@ -1,5 +1,6 @@
 const signInUI = document.getElementById("sign-in");
 const signUpUI = document.getElementById("sign-up");
+const form = document.getElementById("form");
 const firstToggle = document.getElementById("first-toggle");
 const secondToggle = document.getElementById("second-toggle");
 const siBtn = document.getElementById("si-btn");
@@ -43,6 +44,9 @@ const createAccount = async () => {
 }
 
 const toggleSignUp = () => {
+    form.style.display = "none";
+    form.style.visibility = "hidden";
+
     signInUI.style.display = "none";
     signInUI.style.visibility = "hidden";
 

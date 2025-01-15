@@ -20,6 +20,17 @@ h2 {
     font-size: 35px;
 }
 
+label {
+    margin: 20px 0 5px 0;
+    font-size: small;
+    font-weight: 50;
+    color: grey;
+}
+
+.space {
+    margin-top: 20px;
+}
+
 h3 {
     margin: 10px 0 5px 0;
     font-size: small;
