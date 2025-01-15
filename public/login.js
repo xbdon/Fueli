@@ -18,14 +18,20 @@ const createAccount = async () => {
         return;
     }
 
-    const apiCall = `/api/create-user/post/?key1=${values[0]}&key2=${values[1]}&key3=${values[2]}&key4=${values[3]}`;
-    const res = await fetch("/api/create-user/post/",
+    const apiCall = `/api/create-user/post/?accData=${values[0]}`;
+    const testObj = {
+        name: "Jeff",
+        purpose: "stoicism"
+    }
+    const res = await fetch("/api/create-user/post",
         {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json'
             },
-            body: JSON.stringify(values)
+            body: JSON.stringify({
+                accData: testObj.name
+            })
         })
 
     // try {
