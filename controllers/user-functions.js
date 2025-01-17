@@ -4,15 +4,15 @@ const db = require('../db');
 
 const createUser = (request, response) => {
     console.log("made it to user-function controllers!")
-    const { accData } = request.body;
-    console.log(accData);
-    if (!accData) {
+    const { data } = request.body;
+    console.log(data);
+    if (!data) {
         return response.status(400).send({ status: 'failed' });
     }
-    console.log(`We made it to createUser function. And here is the data: ${accData}`);
+    console.log(`We made it to createUser function. And here is the data: ${data}`);
     // userData.push(accData.user);
-    console.log(accData);
-    response.sendStatus(200).send({ status: 'recieved' });
+    console.log(data);
+    return response.sendStatus(200).send({ status: 'recieved' });
 }
 
 module.exports = {

@@ -14,25 +14,18 @@ const createAccount = async (e) => {
 
     const formData = new FormData(formEl);
     console.log(formData)
+    const data = Object.fromEntries(formData);
+    console.log(data);
 
-    const apiCall = `/api/create-user/post/?`;
-    const res = await fetch("/api/create-user/post",
+    const apiCall = `/api/create-user/post/`;
+    const res = await fetch("http://localhost:3000/api/create-user/post",
         {
             method: 'POST',
             headers: {
                 "Content-Type": 'application/json'
             },
-            body: JSON.stringify({
-                accData: formData.get('Username')
-            })
-        })
-
-    // try {
-    //     const values = Array.from(caInputs)
-    //         .map(input => input.value);
-    //     const accData = fetch(`/api/create-user/post/?accData=${values}`)
-    // } catch {
-    // }
+            body: JSON.stringify(data)
+        });
 }
 
 const toggleSignUp = () => {

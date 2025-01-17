@@ -31,7 +31,7 @@
 
     <div id="sign-up" class="cred-div">
         <h2>Create Account</h2>
-        <form class="form">
+        <form class="form" action="/api/create-user/post" method="post">
             <label for="test">Email</label>
             <div class="space"></div>
             <input name="email" class="ca-input" type="text" />
@@ -42,7 +42,6 @@
             <input name="username" class="ca-input" type="text" />
             <div class="space"></div>
 
-
             <label for="test">Password</label>
             <div class="space"></div>
             <input name="password" type="password" class="ca-input" type="text" />
@@ -50,7 +49,7 @@
 
             <label for="test">Confirm Password</label>
             <div class="space"></div>
-            <input name="password" type="password" class="ca-input" type="text" />
+            <input name="c-password" type="password" class="ca-input" type="text" />
             <br />
             <button id="su-btn" type="submit">Sign up</button>
             <br />
