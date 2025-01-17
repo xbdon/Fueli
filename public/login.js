@@ -1,30 +1,21 @@
 const signInUI = document.getElementById("sign-in");
 const signUpUI = document.getElementById("sign-up");
-// const formOne = document.getElementById("form-one");
-// const formTwo = document.getElementById("form-two");
+
 const firstToggle = document.getElementById("first-toggle");
 const secondToggle = document.getElementById("second-toggle");
 const siBtn = document.getElementById("si-btn");
 const suBtn = document.getElementById("su-btn");
 
-const caInputs = document.getElementsByClassName("ca-input");
+const formEl = document.querySelector('.form');
 
-const createAccount = async () => {
+const createAccount = async (e) => {
     // changed post method
-    console.log(caInputs);
-    const values = Array.from(caInputs)
-        .map(input => input.value);
-    console.log(`these are the createAccount inputs: ${values}`);
-    if (values == '') {
-        console.log("error: values variable undefined")
-        return;
-    }
+    e.preventDefault();
 
-    const apiCall = `/api/create-user/post/?accData=${values[0]}`;
-    const testObj = {
-        name: "Jeff",
-        purpose: "stoicism"
-    }
+    const formData = new FormData(formEl);
+    console.log(formData)
+
+    const apiCall = `/api/create-user/post/?`;
     const res = await fetch("/api/create-user/post",
         {
             method: 'POST',
@@ -32,7 +23,7 @@ const createAccount = async () => {
                 "Content-Type": 'application/json'
             },
             body: JSON.stringify({
-                accData: testObj.name
+                accData: formData.get('Username')
             })
         })
 
@@ -62,7 +53,7 @@ const toggleSignIn = () => {
 
 firstToggle.addEventListener("click", toggleSignUp);
 secondToggle.addEventListener("click", toggleSignIn);
-suBtn.addEventListener("click", createAccount);
+formEl.addEventListener("submit", createAccount);
 
 // i should convert my sign in and sign up divs with a form element to take data from. this is probably the standard. also i have to look if i need to stringify or parse my data before or after the post method
 // i need to read up on how to use git to avoid future meltdowns like today, my local-top-20 branch is fried atm

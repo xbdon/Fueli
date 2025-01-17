@@ -12,7 +12,7 @@
 
     <div id="sign-in" class="cred-div">
         <h2>Welcome, fello fueler</h2>
-        <form id="form-one">
+        <form>
             <label for="test">Email</label>
             <div class="space"></div>
             <input class="si-input" type="text" />
@@ -31,28 +31,28 @@
 
     <div id="sign-up" class="cred-div">
         <h2>Create Account</h2>
-        <form id="form-two">
+        <form class="form">
             <label for="test">Email</label>
             <div class="space"></div>
-            <input class="ca-input" type="text" />
+            <input name="email" class="ca-input" type="text" />
             <div class="space"></div>
 
             <label for="test">Username</label>
             <div class="space"></div>
-            <input class="ca-input" type="text" />
+            <input name="username" class="ca-input" type="text" />
             <div class="space"></div>
 
 
             <label for="test">Password</label>
             <div class="space"></div>
-            <input class="ca-input" type="text" />
+            <input name="password" type="password" class="ca-input" type="text" />
             <div class="space"></div>
 
             <label for="test">Confirm Password</label>
             <div class="space"></div>
-            <input class="ca-input" type="text" />
+            <input name="password" type="password" class="ca-input" type="text" />
             <br />
-            <button id="su-btn">Sign up</button>
+            <button id="su-btn" type="submit">Sign up</button>
             <br />
             <p class="toggle">Have an account already? <button type="button" id="second-toggle">Sign in</button></p>
         </form>

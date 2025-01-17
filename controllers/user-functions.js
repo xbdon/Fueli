@@ -3,7 +3,8 @@ const axios = require("axios");
 const db = require('../db');
 
 const createUser = (request, response) => {
-    const accData = request.body;
+    console.log("made it to user-function controllers!")
+    const { accData } = request.body;
     console.log(accData);
     if (!accData) {
         return response.status(400).send({ status: 'failed' });
