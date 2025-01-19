@@ -16,6 +16,7 @@ app.use('/api/search-coin/get/', searchToken);
 app.use('/api/ada-price/get', adaPrice);
 app.use('/api/db-fetch/get', dbFetch);
 app.use('/api/create-user/post', createUser);
+// app.post('/api/create-user/post', createUser);
 
 app.listen(3000, () => {
   console.log("It's alive HAUHAHUAHUAHUA!!!!")
