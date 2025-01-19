@@ -18,11 +18,11 @@ const createAccount = async (e) => {
     console.log(data);
 
     const apiCall = `/api/create-user/post/`;
-    const res = await fetch("http://localhost:3000/api/create-user/post",
+    const res = await fetch("http://localhost:3000/login.html/api/create-user/post",
         {
             method: 'POST',
             headers: {
-                "Content-Type": 'application/json'
+                "Content-Type": 'application/x-www-form-urlencoded'
             },
             body: JSON.stringify(data)
         });
