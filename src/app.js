@@ -21,3 +21,5 @@ app.use('/api/create-user/post', createUser);
 app.listen(3000, () => {
   console.log("It's alive HAUHAHUAHUAHUA!!!!")
 })
+
+// will convert server to modules type instead of commonjs next session
