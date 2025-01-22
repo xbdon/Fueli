@@ -21,14 +21,3 @@ app.use('/api/create-user/post', createUser);
 app.listen(3000, () => {
   console.log("It's alive HAUHAHUAHUAHUA!!!!")
 })
-
-// in the future this object will be added to a database but for
-// learning purposes atm
-
-let userData = {
-  user: []
-}
-
-// look at how to specify we are using a post request in our back-end
-// how does the node server know this is a post request we are calling for
-// how does the node server know we want a get request, read up on it
