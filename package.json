@@ -2,9 +2,10 @@
   "name": "fueli-example",
   "version": "1.0.0",
   "main": "public/index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch --experimental-strip-types --experimental-sqlite src/app.js"
+    "start": "node --watch --env-file=.env --experimental-strip-types --experimental-sqlite src/app.js"
   },
   "keywords": [],
   "author": "",

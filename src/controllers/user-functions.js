@@ -1,5 +1,7 @@
-const axios = require("axios");
-const db = require('../db');
+// const axios = require("axios");
+// const db = require('../db');
+import axios from 'axios';
+import db from '../db.js'
 
 const createUser = (request, response) => {
     console.log(request.body);
@@ -14,6 +16,4 @@ const createUser = (request, response) => {
     }
 }
 
-module.exports = {
-    createUser
-}
+export default createUser;

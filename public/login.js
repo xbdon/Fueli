@@ -17,8 +17,7 @@ const createAccount = async (e) => {
     const data = Object.fromEntries(formData);
     console.log(data);
 
-    const apiCall = `/api/create-user/post/`;
-    const res = await fetch("/api/create-user/post",
+    const res = await fetch("/auth/register",
         {
             method: 'POST',
             headers: {

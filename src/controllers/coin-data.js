@@ -1,7 +1,9 @@
-require("dotenv").config();
-const axios = require("axios");
-// const { response } = require("express");
-const db = require('../db');
+// require("dotenv").config();
+// const axios = require("axios");
+// const db = require('../db');
+import axios from 'axios';
+import db from '../db.js'
+
 
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'
@@ -106,9 +108,10 @@ const dbFetch = (request, response) => {
 
 }
 
-module.exports = {
-    getCoinData,
-    getSearchToken,
-    getAdaPrice,
-    dbFetch
-}
+export { getCoinData, getSearchToken, getAdaPrice, dbFetch };
+// module.exports = {
+//     getCoinData,
+//     getSearchToken,
+//     getAdaPrice,
+//     dbFetch
+// }

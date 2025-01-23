@@ -1,15 +1,47 @@
-require("dotenv").config();
-const { Pool } = require('pg');
+import { DatabaseSync } from 'node:sqlite'
+const db = new DatabaseSync(':memory:')
 
-const pool = new Pool({
-    user: "postgres",
-    host: "localhost",
-    database: "coin_list",
-    password: process.env.SQL_KEY,
-    port: 5432
-});
+// Execute SQL statements from strings
+db.exec(`
+    CREATE TABLE users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE,
+        password TEXT
+    )
+    `)
 
-module.exports = pool;
+db.exec(`
+        CREATE TABLE savedCoins (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER,
+            coin TEXT,
+            ticker TEXT,
+            coin_id TEXT,
+            FOREIGN KEY(user_id) REFERENCES users(id)
+        )
+        `)
+
+export default db
+
+
+
+
+
+// require("dotenv").config();
+// const { Pool } = require('pg');
+
+// const pool = new Pool({
+//     user: "postgres",
+//     host: "localhost",
+//     database: "coin_list",
+//     password: process.env.SQL_KEY,
+//     port: 5432
+// });
+
+// module.exports = pool;
+
+
+
 
 // const pg = require("pg");
 
