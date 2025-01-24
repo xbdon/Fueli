@@ -9,9 +9,19 @@ const router = express.Router();
 // const { createUser } = require('../controllers/user-functions.js')
 import createUser from '../controllers/user-functions.js'
 
+// when users want to create an account
 router.post('/register', createUser);
 
-router.post('/login',)
+// when users want to login
+router.post('/login',);
+
+// when users want to delete their account
+router.delete('/delete');
+
+// for when users want to change their username
+router.put('/:id',);
+
+
 
 // module.exports = router;
 export default router;
