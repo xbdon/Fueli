@@ -99,7 +99,7 @@ const displayTokenData = (json) => {
 // find out how to add search input value to back-end server api call
 const getHomePageTable = async () => {
   try {
-    const jsonData = await fetch("/api/coin-data/get");
+    const jsonData = await fetch("/coin-data");
     const data = await jsonData.json();
     console.log("start up test")
     displayHPTable(data);

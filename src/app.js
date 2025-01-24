@@ -21,7 +21,7 @@ app.use((express.static("./public")))
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/api/coin-data/get', coinData);
+app.use('/coin-data', coinData);
 app.use('/api/search-coin/get/', searchToken);
 app.use('/api/ada-price/get', adaPrice);
 app.use('/api/db-fetch/get', dbFetch);
