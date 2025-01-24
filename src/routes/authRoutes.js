@@ -16,7 +16,7 @@ router.post('/register', createUser);
 router.post('/login',);
 
 // when users want to delete their account
-router.delete('/delete');
+router.delete('/delete',);
 
 // for when users want to change their username
 router.put('/:id',);
