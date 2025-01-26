@@ -1,18 +1,18 @@
 ### GET /
 GET http://localhost:3000
 
-###
+### register a user POSS /AUTH/REGISTER
 POST    http://localhost:3000/auth/register
 Content-type: application/json
 
 {
-    "email": "",
-    "username": "",
-    "password": "",
-    "c-password": ""
+    "email": "42",
+    "username": "41",
+    "password": "hello",
+    "cPassword": "hello"
 }
 
-###
+### login a user POST AUTH/LOGIN
 POST http://localhost:3000/auth/login
 Content-Type: application/json
 

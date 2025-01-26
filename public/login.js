@@ -16,6 +16,11 @@ const createAccount = async (e) => {
     const data = Object.fromEntries(formData);
     console.log(data)
 
+    if (data.password !== data.cPassword) {
+        console.log("will add more functionality later");
+        return
+    }
+
     const res = await fetch("/auth/register",
         {
             method: 'POST',
