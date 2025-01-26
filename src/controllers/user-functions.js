@@ -13,6 +13,7 @@ const createUser = (req, res) => {
 
     // save the new user and hashed password to the db
     try {
+        const insertUser = db.prepare(``)
         console.log("Your Fueli account was created!");
     } catch (err) {
         console.log(err.message);
