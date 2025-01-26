@@ -13,7 +13,6 @@ const createAccount = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(formEl);
-    console.log(formData + "what is wrong")
     const data = Object.fromEntries(formData);
     console.log(data)
 
