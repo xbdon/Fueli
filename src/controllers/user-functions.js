@@ -3,16 +3,17 @@
 import axios from 'axios';
 import db from '../db.js'
 
-const createUser = (request, response) => {
-    console.log(request.body);
+const createUser = (req, res) => {
+    const { email, username, password, cPassword } = req.body;
+    console.log("XxX")
+    console.log(email, username, password, cPassword)
+
     try {
-        console.log("made it to user-function controllers!")
-        const data = request.body;
         console.log("Your Fueli account was created!");
-        // return response.sendStatus(200).send({ status: 'recieved' });
+        // return res.sendStatus(200).send({ status: 'recieved' });
     } catch (err) {
         console.log(err)
-        response.status(400).send({ status: 'failed' });
+        res.status(400).send({ status: 'failed' });
     }
 }
 

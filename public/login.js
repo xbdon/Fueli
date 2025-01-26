@@ -13,15 +13,15 @@ const createAccount = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(formEl);
-    console.log(formData)
+    console.log(formData + "what is wrong")
     const data = Object.fromEntries(formData);
-    console.log(data);
+    console.log(data)
 
     const res = await fetch("/auth/register",
         {
             method: 'POST',
             headers: {
-                "Content-Type": 'application/x-www-form-urlencoded'
+                "Content-Type": 'application/json'
             },
             body: JSON.stringify(data)
         });
