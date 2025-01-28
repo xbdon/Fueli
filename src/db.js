@@ -11,7 +11,7 @@ db.exec(`
     `)
 
 db.exec(`
-        CREATE TABLE savedCoins (
+        CREATE TABLE watchlist (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
             coin TEXT,

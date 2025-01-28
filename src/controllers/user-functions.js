@@ -16,6 +16,12 @@ const createUser = (req, res) => {
         const insertUser = db.prepare(`INSERT INTO users (username, password)
             VALUES (?, ?)`)
         const result = insertUser.run(username, hashedPassword)
+
+        // now that we have a user, I want to add thier first coin for them
+        const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, coin, ticker, coin_id)
+            VALUES (?, ?, ?)`)
+        insertCoin.run(result.lastInsertRowid,)
+
         console.log("Your Fueli account was created!");
     } catch (err) {
         console.log(err.message);
