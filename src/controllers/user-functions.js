@@ -6,14 +6,16 @@ import jwt from 'jsonwebtoken'
 import db from '../db.js'
 
 const createUser = (req, res) => {
-    const { email, username, password, cPassword } = req.body;
+    const { username, password } = req.body;
     // save username and irreversibly encrypt password
 
     const hashedPassword = bcrypt.hashSync(password, 8)
 
     // save the new user and hashed password to the db
     try {
-        const insertUser = db.prepare(``)
+        const insertUser = db.prepare(`INSERT INTO users (username, password)
+            VALUES (?, ?)`)
+        const result = insertUser.run(username, hashedPassword)
         console.log("Your Fueli account was created!");
     } catch (err) {
         console.log(err.message);
