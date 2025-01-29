@@ -84,7 +84,7 @@ const displayTokenData = (json) => {
   // to interact with a new post request that sends save coins to db
   searchedTokenStats.innerHTML = `
     <tr>
-      <td id="token-name" class="stats"><button class="save-button"><img src="fueli-star.png" /></button>${name}</td>
+      <td id="token-name" class="stats"><button <span class="material-symbols-outlined">star</span></button>  ${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
       <td id="24h" class="stats">${twentyFourHr}%</td>
