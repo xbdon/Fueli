@@ -81,7 +81,6 @@ const displayTokenData = (json) => {
   const circSupply = shorthandMcap(Math.round(json.dataBasic.circSupply));
 
 
-  {/* <button class="save-button"><span aria-hidden="true">&times;</span></button> */ }
   // will be linking to icons for my button and adding a saveCoin function
   // to interact with a new post request that sends save coins to db
   searchedTokenStats.innerHTML = `
