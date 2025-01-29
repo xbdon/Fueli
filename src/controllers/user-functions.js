@@ -17,7 +17,7 @@ const createUser = (req, res) => {
             VALUES (?, ?)`)
         const result = insertUser.run(username, hashedPassword)
 
-        // now that we have a user, I want to add their first coin for them
+        // now that we have a user, I want to add a saving coin to watchlist functionality
         const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, coin, ticker, coin_id)
             VALUES (?, ?, ?)`)
 

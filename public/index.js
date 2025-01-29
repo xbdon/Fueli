@@ -2,15 +2,14 @@ const searchBtn = document.getElementById("search-button");
 const hamburger = document.getElementById("hamburger");
 const searchInput = document.getElementById("search-input");
 const adaPrice = document.getElementById("ada-price");
-// remember to make this element next session
-// have to add new html and css for upcoming create user functionality
-const createUserInput = document.getElementById("createUser-input");
 
 const searchedTokenTable = document.getElementById("searched-token-table");
 const searchedTokenStats = document.getElementById("searched-token-stats");
 const closeBtn = document.getElementById("close-button");
 
 const tokenStats = document.getElementById("token-stats");
+
+const saveBtn = document.getElementsByClassName("save-button");
 
 /* checks result from fetchData() api call; 
 if no coin is found from search input,
@@ -85,7 +84,7 @@ const displayTokenData = (json) => {
   // to interact with a new post request that sends save coins to db
   searchedTokenStats.innerHTML = `
     <tr>
-      <td id="token-name" class="stats"><button><img src="fueli-star.png" /></button>${name}</td>
+      <td id="token-name" class="stats"><button class="save-button"><img src="fueli-star.png" /></button>${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
       <td id="24h" class="stats">${twentyFourHr}%</td>
@@ -187,6 +186,20 @@ searchInput.addEventListener("keydown", (e) => {
 });
 
 hamburger.addEventListener("click", getHomePageTable);
+
+saveBtn.addEventListener("click", async () => {
+
+  const res = await fetch('/save-coin',
+    {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+})
+
+
 
 /*
   Todays session was to understand where to go next with the Fueli project.
