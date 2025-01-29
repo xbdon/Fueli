@@ -21,7 +21,7 @@ const createUser = (req, res) => {
         const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, coin, ticker, coin_id)
             VALUES (?, ?, ?)`)
 
-        // need to add a frontend and backend to use facilitate
+        // need to add a frontend and backend to facilitate
         // data entries into watchlist database
         insertCoin.run(result.lastInsertRowid,)
 
