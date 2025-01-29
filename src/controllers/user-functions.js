@@ -23,6 +23,7 @@ const createUser = (req, res) => {
 
         // need to add a frontend and backend to facilitate
         // data entries into watchlist database
+        // i may need to have a login function first
         insertCoin.run(result.lastInsertRowid,)
 
         console.log("Your Fueli account was created!");
