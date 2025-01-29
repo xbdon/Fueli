@@ -81,3 +81,8 @@ table {
     display: inline;
     color: #1F9AFE
 }
+
+.save-button {
+    all: unset;
+    cursor: pointer;
+}

@@ -17,9 +17,12 @@ const createUser = (req, res) => {
             VALUES (?, ?)`)
         const result = insertUser.run(username, hashedPassword)
 
-        // now that we have a user, I want to add thier first coin for them
+        // now that we have a user, I want to add their first coin for them
         const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, coin, ticker, coin_id)
             VALUES (?, ?, ?)`)
+
+        // need to add a frontend and backend to use facilitate
+        // data entries into watchlist database
         insertCoin.run(result.lastInsertRowid,)
 
         console.log("Your Fueli account was created!");
