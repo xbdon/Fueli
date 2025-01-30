@@ -17,7 +17,7 @@ const createAccount = async (e) => {
     console.log(data)
 
     if (data.password !== data.cPassword) {
-        console.log("will add more functionality later");
+        console.log("PASSWORD DOESN'T MATCH!!! will add more functionality later");
         return
     }
 
@@ -29,6 +29,7 @@ const createAccount = async (e) => {
             },
             body: JSON.stringify(data)
         });
+    accountData = await res.json()
 }
 
 const toggleSignUp = () => {

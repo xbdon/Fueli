@@ -17,6 +17,31 @@ const createUser = (req, res) => {
             VALUES (?, ?)`)
         const result = insertUser.run(username, hashedPassword)
 
+        // creating token for login
+        const token = jwt.sign({ id: result.lastInsertRowid }, process.env.JWT_SECRET, { expiresIn: '24h' })
+        // sending back json as a response
+        // providing an object as a key value
+        res.json({ token })
+        console.log(token)
+
+        console.log("Your Fueli account was created!");
+    } catch (err) {
+        console.log(err.message);
+        res.sendStatus(503)
+    }
+
+    console.log("Explore Fueli!");
+}
+
+const login = (req, res) => {
+    // we get their email, and we look up the password associated with that email in the db 
+    //  if we compare the encrypted password with password input of login it wont match
+    //  we must encrypt the password input and then compare it to db on file
+
+}
+
+const saveCoin = (req, res) => {
+    try {
         // now that we have a user, I want to add a saving coin to watchlist functionality
         const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, coin, ticker, coin_id)
             VALUES (?, ?, ?)`)
@@ -31,16 +56,6 @@ const createUser = (req, res) => {
         console.log(err.message);
         res.sendStatus(503)
     }
-
-    console.log("Your Fueli account was created!");
-    res.sendStatus(201);
-}
-
-const login = (req, res) => {
-    // we get their email, and we look up the password associated with that email in the db 
-    //  if we compare the encrypted password with password input of login it wont match
-    //  we must encrypt the password input and then compare it to db on file
-
 }
 
 export default createUser;
