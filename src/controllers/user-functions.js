@@ -40,6 +40,8 @@ const login = (req, res) => {
 
 }
 
+
+// currently going through coin-data.js router, may need to change
 const saveCoin = (req, res) => {
     try {
         // now that we have a user, I want to add a saving coin to watchlist functionality
