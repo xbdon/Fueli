@@ -87,7 +87,8 @@ const displayTokenData = (json) => {
   const circSupply = shorthandMcap(Math.round(json.dataBasic.circSupply));
 
 
-  // will be linking to icons for my button and adding a saveCoin function
+  // trying to figure out how to interact with <tr>s and their respective <td>'s
+  // adding a saveCoin function
   // to interact with a new post request that sends save coins to db
   searchedTokenStats.innerHTML = `
     <tr>
@@ -204,6 +205,10 @@ saveBtn.addEventListener("click", async () => {
       },
       body: JSON.stringify(data)
     });
+
+  // will need to add a function to array-arize in order to match the button
+  // with its table row values
+
 })
 
 

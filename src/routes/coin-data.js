@@ -9,6 +9,8 @@ import { getCoinData } from '../controllers/coin-data.js'
 // uploads coin data by marketcap
 router.get('/', getCoinData);
 
+router.get('/getSavedCoins',);
+
 // for when user saves a coin to their watchlist
 router.post('/save-coin',);
 
