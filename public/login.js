@@ -37,7 +37,7 @@ const createAccount = async (e) => {
         token = accountData.token
         localStorage.setItem('token', token)
 
-
+        suBtn.innerText = 'Loading...'
     }
 }
 

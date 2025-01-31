@@ -11,6 +11,13 @@ const tokenStats = document.getElementById("token-stats");
 
 const saveBtn = document.getElementsByClassName("save-button");
 
+let token = localStorage.getItem('token');
+
+// checking to see if token is in cookie to log user in
+if (token) {
+
+}
+
 /* checks result from fetchData() api call; 
 if no coin is found from search input,
 then value changes to false*/
