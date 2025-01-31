@@ -22,7 +22,6 @@ const createUser = (req, res) => {
         // sending back json as a response
         // providing an object as a key value
         res.json({ token })
-        console.log(token)
 
         console.log("Your Fueli account was created!");
     } catch (err) {

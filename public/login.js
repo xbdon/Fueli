@@ -8,6 +8,8 @@ const suBtn = document.getElementById("su-btn");
 
 const formEl = document.querySelector('.form');
 
+let token = localStorage.getItem('token');
+
 const createAccount = async (e) => {
     // changed post method
     e.preventDefault();
@@ -30,6 +32,13 @@ const createAccount = async (e) => {
             body: JSON.stringify(data)
         });
     accountData = await res.json()
+
+    if (accountData.token) {
+        token = accountData.token
+        localStorage.setItem('token', token)
+
+
+    }
 }
 
 const toggleSignUp = () => {
