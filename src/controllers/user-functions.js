@@ -36,7 +36,8 @@ const login = (req, res) => {
     // we get their email, and we look up the password associated with that email in the db 
     //  if we compare the encrypted password with password input of login it wont match
     //  we must encrypt the password input and then compare it to db on file
-
+    // before we create the login function, I would like to finish 
+    // the save coin post method, so we can add funcitonality to a logged in user
 }
 
 
