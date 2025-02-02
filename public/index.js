@@ -195,6 +195,7 @@ searchInput.addEventListener("keydown", (e) => {
 
 hamburger.addEventListener("click", getHomePageTable);
 
+// this saveBtn functionality will only pertain to the searchedTokenTable for now
 saveBtn.addEventListener("click", async () => {
 
   const res = await fetch('/save-coin',
