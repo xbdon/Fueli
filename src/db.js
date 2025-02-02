@@ -14,8 +14,7 @@ db.exec(`
         CREATE TABLE watchlist (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
-            coin TEXT UNIQUE,
-            ticker TEXT,
+            ticker TEXT UNIQUE,
             coin_id TEXT,
             FOREIGN KEY(user_id) REFERENCES users(id)
         )

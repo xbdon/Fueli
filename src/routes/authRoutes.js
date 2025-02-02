@@ -7,7 +7,7 @@ import db from '../db.js'
 const router = express.Router();
 
 // const { createUser } = require('../controllers/user-functions.js')
-import createUser from '../controllers/user-functions.js'
+import { createUser } from '../controllers/user-functions.js'
 
 // when users want to create an account
 router.post('/register', createUser);

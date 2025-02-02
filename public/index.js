@@ -9,9 +9,11 @@ const closeBtn = document.getElementById("close-button");
 
 const tokenStats = document.getElementById("token-stats");
 
-const saveBtn = document.getElementsByClassName("save-button");
+// let saveBtn = document.getElementById("save-button");
 
 let token = localStorage.getItem('token');
+
+let mostRecentSearch = '';
 
 // checking to see if token is in cookie to log user in
 if (token) {
@@ -49,6 +51,7 @@ const shorthandMcap = (mcap) => {
 
 const searchToken = async () => {
   try {
+    mostRecentSearch = searchInput.value;
     const data = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
     console.log("promise.all bug testing");
     const tokenData = await data.json();
@@ -92,7 +95,7 @@ const displayTokenData = (json) => {
   // to interact with a new post request that sends save coins to db
   searchedTokenStats.innerHTML = `
     <tr>
-      <td id="token-name" class="stats"><button <span class="material-symbols-outlined">star</span></button>  ${name}</td>
+      <td id="token-name" class="stats"><button id="save-button <span class="material-symbols-outlined">star</span></button>  ${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
       <td id="24h" class="stats">${twentyFourHr}%</td>
@@ -196,9 +199,17 @@ searchInput.addEventListener("keydown", (e) => {
 hamburger.addEventListener("click", getHomePageTable);
 
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
-saveBtn.addEventListener("click", async () => {
 
-  const res = await fetch('/save-coin',
+const saveCoin = async () => {
+  const ticker = getElementById('token-name');
+
+  const data = {
+    'ticker': ticker,
+    'coin-id': mostRecentSearch
+  }
+
+
+  const res = await fetch('coin-data/save-coin',
     {
       method: 'POST',
       headers: {
@@ -209,8 +220,11 @@ saveBtn.addEventListener("click", async () => {
 
   // will need to add a function to array-arize in order to match the button
   // with its table row values
+}
 
-})
+// function has a an error because saveBtn only exists after a token is searched for
+// need to figure out how to declare saveBtn under these conditions
+// saveBtn.addEventListener("click", saveCoin);
 
 
 

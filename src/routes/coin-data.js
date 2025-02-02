@@ -5,6 +5,7 @@ const router = express.Router();
 
 // const { getCoinData } = require('../controllers/coin-data')
 import { getCoinData } from '../controllers/coin-data.js'
+import { saveCoin } from '../controllers/user-functions.js';
 
 // uploads coin data by marketcap
 router.get('/', getCoinData);
@@ -12,7 +13,7 @@ router.get('/', getCoinData);
 router.get('/getSavedCoins',);
 
 // for when user saves a coin to their watchlist
-router.post('/save-coin',);
+router.post('/save-coin', saveCoin);
 
 // for when users remove coin from watchlist
 router.delete('/',);

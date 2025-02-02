@@ -43,6 +43,7 @@ const login = (req, res) => {
 
 // currently going through coin-data.js router, may need to change
 const saveCoin = (req, res) => {
+    console.log("Eureka!!!");
     try {
         // now that we have a user, I want to add a saving coin to watchlist functionality
         const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, coin, ticker, coin_id)
@@ -60,4 +61,4 @@ const saveCoin = (req, res) => {
     }
 }
 
-export default createUser;
+export { createUser, saveCoin };
