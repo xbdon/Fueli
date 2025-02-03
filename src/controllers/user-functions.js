@@ -46,7 +46,7 @@ const saveCoin = (req, res) => {
     console.log("Eureka!!!");
     try {
         // now that we have a user, I want to add a saving coin to watchlist functionality
-        const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, coin, ticker, coin_id)
+        const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, ticker, coin_id)
             VALUES (?, ?, ?)`)
 
         // need to add a frontend and backend to facilitate
