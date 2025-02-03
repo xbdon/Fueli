@@ -201,16 +201,15 @@ hamburger.addEventListener("click", getHomePageTable);
 const saveCoin = async (e) => {
   if (e.target === document.getElementById('save-button')) {
 
-    console.log("at this rate!!!!")
-    const ticker = document.getElementById('token-name');
+    const coinTicker = document.getElementById('token-name').textContent;
 
-    const data = {
-      'ticker': ticker,
-      'coin-id': mostRecentSearch
+    let data = {
+      ticker: coinTicker,
+      coinId: mostRecentSearch
     }
 
-
-    const res = await fetch('coin-data/save-coin',
+    console.log(data);
+    const res = await fetch('/coin-data/save-coin',
       {
         method: 'POST',
         headers: {
