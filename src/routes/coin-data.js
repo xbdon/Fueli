@@ -10,7 +10,7 @@ import { saveCoin } from '../controllers/user-functions.js';
 // uploads coin data by marketcap
 router.get('/', getCoinData);
 
-router.get('/getSavedCoins',);
+router.get('/getWatchlist', getWatchlist);
 
 // for when user saves a coin to their watchlist
 router.post('/save-coin', saveCoin);
