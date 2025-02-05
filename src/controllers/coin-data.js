@@ -83,10 +83,13 @@ const getAdaPrice = (request, response) => {
         })
 }
 
-export { getCoinData, getSearchToken, getAdaPrice, dbFetch };
+const getWatchlist = (req, res) => {
+
+}
+
+export { getCoinData, getSearchToken, getAdaPrice, getWatchlist };
 // module.exports = {
 //     getCoinData,
 //     getSearchToken,
 //     getAdaPrice,
-//     dbFetch
 // }
