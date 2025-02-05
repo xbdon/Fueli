@@ -64,4 +64,4 @@ const saveCoin = (req, res) => {
     }
 }
 
-export { createUser, saveCoin };
+export { createUser, saveCoin, login };

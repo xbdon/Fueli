@@ -7,13 +7,13 @@ import db from '../db.js'
 const router = express.Router();
 
 // const { createUser } = require('../controllers/user-functions.js')
-import { createUser } from '../controllers/user-functions.js'
+import { createUser, login } from '../controllers/user-functions.js'
 
 // when users want to create an account
 router.post('/register', createUser);
 
 // when users want to login
-router.post('/login',);
+router.post('/login', login);
 
 // when users want to delete their account
 router.delete('/delete',);
