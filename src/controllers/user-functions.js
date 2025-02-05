@@ -33,7 +33,21 @@ const createUser = (req, res) => {
 }
 
 const login = (req, res) => {
+    const { username, password } = req.body
 
+    const hashedPassword = bcrypt.hashSync(password, 8);
+
+    try {
+        const getUser = db.prepare('SELECT * FROM users WHERE username = ?');
+        const user = getUser.get(username);
+
+        if (!user) {
+            return res.status(404).send({ message: "User not found" })
+        };
+    } catch (err) {
+        console.log(err.message);
+        res.sendStatus(503);
+    }
 }
 
 
