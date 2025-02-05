@@ -7,6 +7,7 @@ const siBtn = document.getElementById("si-btn");
 const suBtn = document.getElementById("su-btn");
 
 const formEl = document.querySelector('.form');
+const formLogin = document.querySelector('.login-form');
 
 let token = localStorage.getItem('token');
 
@@ -41,6 +42,12 @@ const createAccount = async (e) => {
     } else {
         throw Error('Failed to authenticate');
     }
+}
+
+const login = async (e) => {
+    e.preventDefault();
+
+    const for
 }
 
 const toggleSignUp = () => {
