@@ -47,7 +47,17 @@ const createAccount = async (e) => {
 const login = async (e) => {
     e.preventDefault();
 
-    const for
+    const formData = new FormData(formLogin);
+    const data = Object.fromEntries(formData);
+    console.log(data)
+
+    const res = await fetch('/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            body: JSON.stringify(data)
+        }
+    })
 }
 
 const toggleSignUp = () => {
