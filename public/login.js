@@ -38,6 +38,8 @@ const createAccount = async (e) => {
         localStorage.setItem('token', token)
 
         suBtn.innerText = 'Loading...'
+    } else {
+        throw Error('Failed to authenticate');
     }
 }
 

@@ -231,17 +231,5 @@ document.addEventListener("click", saveCoin);
 
 
 /*
-  Todays session was to understand where to go next with the Fueli project.
-  Although visually the project needs work to be done, most likely with the help of a js framework,
-  I would like to add a database to the project to further my understanding with back-end servers.
-
-  So my next goal is to implement either mongoDB or postgreSQL in my project and today I was doing research
-  on what technology best suits my needs. However, the main goal will be to implement a database to Fueli.
-  During this exploration I will most likely adjust with what we have so far in the Fueli project to welcome the DB.
-  I have plans to add an interface to track liqwid portfolios in Fueli after I finish with the basic crypto data aggregation.
-
-  For the data aggregation, I would like a database that will help me with storing
-  icons, basic coin data, as well as policyID and hexnames of coins being searched for. All this will be figured out
-  as I learn how to implement a DB. Hopefully tomorrow, 10/03/2024, we figure out which DB to learn and go from there.
   PS! Dont forget to add some icons to the Fueli site. #Hamburger needs to be an an actual hamburger icon!
 */
