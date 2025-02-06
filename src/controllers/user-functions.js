@@ -6,16 +6,16 @@ import jwt from 'jsonwebtoken'
 import db from '../db.js'
 
 const createUser = (req, res) => {
-    const { username, password } = req.body;
+    const { email, username, password } = req.body;
     // save username and irreversibly encrypt password
 
     const hashedPassword = bcrypt.hashSync(password, 8)
 
     // save the new user and hashed password to the db
     try {
-        const insertUser = db.prepare(`INSERT INTO users (username, password)
-            VALUES (?, ?)`)
-        const result = insertUser.run(username, hashedPassword)
+        const insertUser = db.prepare(`INSERT INTO users (email, username, password)
+            VALUES (?, ?, ?)`)
+        const result = insertUser.run(email, username, hashedPassword)
 
         // creating token for login
         const token = jwt.sign({ id: result.lastInsertRowid }, process.env.JWT_SECRET, { expiresIn: '24h' })
@@ -34,14 +34,10 @@ const createUser = (req, res) => {
 
 const login = (req, res) => {
     const { email, password } = req.body
-    console.log("made it to users   " + email, password)
-    console.log(email);
 
     try {
         const getUser = db.prepare('SELECT * FROM users WHERE email = ?');
         const user = getUser.get(email);
-
-        console.log(user);
 
         // searches database to see if any user is associated with that email above
         if (!user) {

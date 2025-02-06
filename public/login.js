@@ -66,7 +66,7 @@ const login = async (e) => {
         token = accountData.token
         localStorage.setItem('token', token)
 
-        siBtn.innerText = 'User is loggen in'
+        siBtn.innerText = 'User is loggeg in'
     } else {
         throw Error('Failed to authenticate');
     }
