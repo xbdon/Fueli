@@ -35,15 +35,17 @@ const createUser = (req, res) => {
 const login = (req, res) => {
     const { email, password } = req.body
     console.log("made it to users   " + email, password)
-    const hashedPassword = bcrypt.hashSync(password, 8);
 
     try {
-        const getUser = db.prepare('SELECT * FROM users WHERE username = ?');
+        const getUser = db.prepare('SELECT * FROM users WHERE email = ?');
         const user = getUser.get(email);
 
         if (!user) {
             return res.status(404).send({ message: "User not found" })
         };
+
+        // compareSync() hashes first argument(password) and compares it with 2nd arg (user.password) which is the hashed password in database for user
+        const passIsValid = bcrypt.compareSync(password, user.password)
     } catch (err) {
         console.log(err.message);
         res.sendStatus(503);
