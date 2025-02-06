@@ -12,18 +12,18 @@
 
     <div id="sign-in" class="cred-div">
         <h2>Welcome, fello fueler</h2>
-        <form class="login-form">
+        <form class="login-form" action="/auth/login/post" method="POST">
             <label for="test">Email</label>
             <div class="space"></div>
-            <input class="si-input" type="text" />
+            <input name="email" class="si-input" type="text" />
             <div class="space"></div>
 
             <label for="test">Password</label>
             <div class="space"></div>
-            <input class="si-input" type="text" />
+            <input name="password" class="si-input" type="text" />
             <br />
 
-            <button id="si-btn">Sign in</button>
+            <button id="si-btn" type="submit">Sign in</button>
             <br />
             <p class="toggle">Don't have an account? <button type="button" id="first-toggle">Sign up</button></p>
         </form>
@@ -31,7 +31,7 @@
 
     <div id="sign-up" class="cred-div">
         <h2>Create Account</h2>
-        <form class="form" action="/api/create-user/post" method="POST">
+        <form class="form" action="/auth/create-user/post" method="POST">
             <label for="test">Email</label>
             <div class="space"></div>
             <input name="email" class="ca-input" type="text" />

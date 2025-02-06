@@ -51,13 +51,14 @@ const login = async (e) => {
     const data = Object.fromEntries(formData);
     console.log(data)
 
-    const res = await fetch('/auth/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
+    const res = await fetch('/auth/login',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
             body: JSON.stringify(data)
-        }
-    })
+        })
 }
 
 const toggleSignUp = () => {
