@@ -35,10 +35,13 @@ const createUser = (req, res) => {
 const login = (req, res) => {
     const { email, password } = req.body
     console.log("made it to users   " + email, password)
+    console.log(email);
 
     try {
         const getUser = db.prepare('SELECT * FROM users WHERE email = ?');
         const user = getUser.get(email);
+
+        console.log(user);
 
         // searches database to see if any user is associated with that email above
         if (!user) {
