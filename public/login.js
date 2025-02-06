@@ -59,6 +59,17 @@ const login = async (e) => {
             },
             body: JSON.stringify(data)
         })
+
+    accountData = await res.json()
+
+    if (accountData.token) {
+        token = accountData.token
+        localStorage.setItem('token', token)
+
+        siBtn.innerText = 'User is loggen in'
+    } else {
+        throw Error('Failed to authenticate');
+    }
 }
 
 const toggleSignUp = () => {

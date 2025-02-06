@@ -47,7 +47,9 @@ const login = (req, res) => {
 
         // compareSync() hashes first argument(password) and compares it with 2nd arg (user.password) which is the hashed password in database for user
         const passIsValid = bcrypt.compareSync(password, user.password)
-        if (!passIsValid) { return res.status(401).send({ message: "Invalid password" }) }
+        if (!passIsValid) {
+            return res.status(401).send({ message: "Invalid password" })
+        }
 
         // succesful authentication
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' })
