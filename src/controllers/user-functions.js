@@ -40,12 +40,19 @@ const login = (req, res) => {
         const getUser = db.prepare('SELECT * FROM users WHERE email = ?');
         const user = getUser.get(email);
 
+        // searches database to see if any user is associated with that email above
         if (!user) {
             return res.status(404).send({ message: "User not found" })
         };
 
         // compareSync() hashes first argument(password) and compares it with 2nd arg (user.password) which is the hashed password in database for user
         const passIsValid = bcrypt.compareSync(password, user.password)
+        if (!passIsValid) { return res.status(401).send({ message: "Invalid password" }) }
+
+        // succesful authentication
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '24h' })
+        res.json({ token });
+
     } catch (err) {
         console.log(err.message);
         res.sendStatus(503);
