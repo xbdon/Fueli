@@ -216,6 +216,8 @@ const saveCoin = async (e) => {
         body: JSON.stringify(data)
       });
 
+  } else {
+    console.log("saveCoin function edgecases did not pass")
   }
 
   // will need to add a function to array-arize in order to match the button
