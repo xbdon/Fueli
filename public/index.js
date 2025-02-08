@@ -11,7 +11,7 @@ const tokenStats = document.getElementById("token-stats");
 
 let token = localStorage.getItem('token');
 
-let mostRecentSearch = '';
+let mostRecentSearch;
 
 // checking to see if token is in cookie to log user in
 if (token) {
@@ -49,12 +49,9 @@ const shorthandMcap = (mcap) => {
 
 const searchToken = async () => {
   try {
-    mostRecentSearch = searchInput.value;
     const data = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
-    console.log("promise.all bug testing");
     const tokenData = await data.json();
-    console.log(tokenData);
-
+    if (tokenData) { mostRecentSearch = searchInput.value };
     displayTokenData(tokenData);
   } catch (err) {
     console.log(err + " searchToken() bug");
@@ -199,8 +196,7 @@ hamburger.addEventListener("click", getHomePageTable);
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
 
 const saveCoin = async (e) => {
-  if (e.target === document.getElementById('save-button')) {
-
+  if (e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) {
     const coinTicker = document.getElementById('token-name').textContent;
 
     let data = {

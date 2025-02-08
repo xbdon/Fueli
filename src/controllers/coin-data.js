@@ -84,7 +84,7 @@ const getAdaPrice = (request, response) => {
 }
 
 const getWatchlist = (req, res) => {
-
+    const getSavedCoins = db.prepare('SELECT * FROM ')
 }
 
 export { getCoinData, getSearchToken, getAdaPrice, getWatchlist };
