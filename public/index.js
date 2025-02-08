@@ -10,6 +10,7 @@ const closeBtn = document.getElementById("close-button");
 const tokenStats = document.getElementById("token-stats");
 
 let token = localStorage.getItem('token');
+console.log(token);
 
 let mostRecentSearch;
 
@@ -205,19 +206,17 @@ const saveCoin = async (e) => {
     }
 
     console.log(data);
-    const res = await fetch('/coin-data/save-coin',
+    const res = await fetch('/user-functions/save-coin',
       {
-
         method: 'POST',
         headers: {
-          "Authorization": token,
-          "Content-Type": 'application/json'
+          "Content-Type": 'application/json',
+          "Authorization": token
         },
         body: JSON.stringify(data)
       });
-
   } else {
-    console.log("saveCoin function edgecases did not pass")
+    console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
   }
 
   // will need to add a function to array-arize in order to match the button

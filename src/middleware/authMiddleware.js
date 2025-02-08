@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 
 function authMiddleware(req, res, next) {
+    console.log("made it to authMiddleware")
     const token = req.headers['Authorization']
 
     // undefined token edge case was already put in front-end but this step will be added regardless
@@ -8,9 +9,9 @@ function authMiddleware(req, res, next) {
 
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         if (err) { return res.status(401).json({ message: "invalid token" }) }
+
         req.userId = decoded.id
         next()
-
     })
 }
 
