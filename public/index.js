@@ -201,7 +201,8 @@ const saveCoin = async (e) => {
 
     let data = {
       ticker: coinTicker,
-      coinId: mostRecentSearch
+      coinId: mostRecentSearch,
+      userToken: token
     }
 
     console.log(data);
