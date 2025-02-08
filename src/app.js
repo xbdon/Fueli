@@ -11,6 +11,8 @@ import coinData from './routes/coin-data.js';
 import searchToken from './routes/search-token.js';
 import adaPrice from './routes/ada-price.js';
 import authRoutes from './routes/authRoutes.js';
+import userFunctions from './routes/user-functions.js';
+import authMiddleware from './middleware/authMiddleware.js';
 
 const app = express();
 
@@ -24,6 +26,7 @@ app.use('/coin-data', coinData);
 app.use('/api/search-coin/get/', searchToken);
 app.use('/api/ada-price/get', adaPrice);
 app.use('/auth', authRoutes);
+app.use('/user-functions', authMiddleware, userFunctions);
 
 
 app.listen(3000, () => {
