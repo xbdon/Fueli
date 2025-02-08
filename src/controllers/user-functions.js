@@ -64,9 +64,9 @@ const login = (req, res) => {
 // currently going through coin-data.js router, may need to change
 const saveCoin = (req, res) => {
     console.log("Eureka!!!");
-    const { ticker, coinId } = req.body;
+    const { ticker, coinId, userToken } = req.body;
     try {
-        console.log(ticker, coinId)
+        console.log(ticker, coinId, userToken)
         // now that we have a user, I want to add a saving coin to watchlist functionality
         const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, ticker, coin_id)
             VALUES (?, ?, ?)`)

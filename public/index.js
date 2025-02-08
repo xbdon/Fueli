@@ -201,15 +201,16 @@ const saveCoin = async (e) => {
 
     let data = {
       ticker: coinTicker,
-      coinId: mostRecentSearch,
-      userToken: token
+      coinId: mostRecentSearch
     }
 
     console.log(data);
     const res = await fetch('/coin-data/save-coin',
       {
+
         method: 'POST',
         headers: {
+          "Authorization": token,
           "Content-Type": 'application/json'
         },
         body: JSON.stringify(data)
