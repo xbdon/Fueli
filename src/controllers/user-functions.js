@@ -72,12 +72,6 @@ const saveCoin = (req, res) => {
         const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, ticker, coin_id)
             VALUES (?, ?, ?)`)
 
-        // frontend and backend integration successful
-        // post method is erroring however because result variable
-        // below is undefined. Need to figure out how to get user_ID
-        // of user who saved coin to watchlist, next sesh goal
-        // insertCoin.run(result.lastInsertRowid,)
-
         console.log("Your Fueli account was created!");
     } catch (err) {
         console.log(err.message);
