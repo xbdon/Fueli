@@ -65,7 +65,7 @@ const login = (req, res) => {
 const saveCoin = (req, res) => {
     console.log("Eureka!!!");
     const { ticker, coinId } = req.body;
-    const userId = res.userId;
+    const userId = req.userId;
     try {
         console.log(ticker, coinId, userId)
         // now that we have a user, I want to add a saving coin to watchlist functionality
