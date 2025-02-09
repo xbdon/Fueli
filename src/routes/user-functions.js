@@ -2,8 +2,7 @@ import express from 'express';
 import db from '../db.js'
 const router = express.Router();
 
-import { getWatchlist } from '../controllers/coin-data.js'
-import { saveCoin } from '../controllers/user-functions.js';
+import { saveCoin, getWatchlist } from '../controllers/user-functions.js';
 
 // gets watchlist to display on front-end
 router.get('/getWatchlist', getWatchlist);

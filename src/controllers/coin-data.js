@@ -83,13 +83,7 @@ const getAdaPrice = (request, response) => {
         })
 }
 
-const getWatchlist = (req, res) => {
-    const getSavedCoins = db.prepare('SELECT * FROM watchlist WHERE user_id = ?')
-    const watchlist = getSavedCoins.all(/* user id*/)
-    res.json(watchlist)
-}
-
-export { getCoinData, getSearchToken, getAdaPrice, getWatchlist };
+export { getCoinData, getSearchToken, getAdaPrice };
 // module.exports = {
 //     getCoinData,
 //     getSearchToken,

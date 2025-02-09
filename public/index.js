@@ -218,9 +218,6 @@ const saveCoin = async (e) => {
   } else {
     console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
   }
-
-  // will need to add a function to array-arize in order to match the button
-  // with its table row values
 }
 
 // function has a an error because saveBtn only exists after a token is searched for

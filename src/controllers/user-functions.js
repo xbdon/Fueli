@@ -79,4 +79,17 @@ const saveCoin = (req, res) => {
     }
 }
 
-export { createUser, saveCoin, login };
+const getWatchlist = (req, res) => {
+    const userId = req.userId
+
+    try {
+        const getSavedCoins = db.prepare('SELECT * FROM watchlist WHERE user_id = ?')
+        const watchlist = getSavedCoins.all(userId)
+        res.json(watchlist)
+    } catch {
+        console.log(err.message)
+        res.sendStatus(503)
+    }
+}
+
+export { createUser, saveCoin, login, getWatchlist };
