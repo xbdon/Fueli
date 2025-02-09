@@ -85,6 +85,7 @@ const getWatchlist = (req, res) => {
     try {
         const getSavedCoins = db.prepare('SELECT * FROM watchlist WHERE user_id = ?')
         const watchlist = getSavedCoins.all(userId)
+        console.log(watchlist)
         res.json(watchlist)
     } catch {
         console.log(err.message)

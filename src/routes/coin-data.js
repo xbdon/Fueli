@@ -4,8 +4,7 @@ import db from '../db.js'
 const router = express.Router();
 
 // const { getCoinData } = require('../controllers/coin-data')
-import { getCoinData, getWatchlist } from '../controllers/coin-data.js'
-import { saveCoin } from '../controllers/user-functions.js';
+import { getCoinData } from '../controllers/coin-data.js'
 
 // uploads coin data by marketcap
 router.get('/', getCoinData);

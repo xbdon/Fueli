@@ -223,8 +223,21 @@ const saveCoin = async (e) => {
 document.addEventListener("click", saveCoin);
 
 const getWatchlist = async () => {
+  try {
+    const data = await fetch('/user-functions/getWatchlist', {
+      headers: {
+        "Authorization": token
+      }
+    });
+    const watchlist = await data.json();
+    console.log(watchlist)
 
+  } catch (err) {
+    console.log(err);
+  }
 }
+
+document.getElementById('watchlist-button').addEventListener("click", getWatchlist);
 
 
 

@@ -16,6 +16,18 @@ h1 {
     margin-top: 10px;
 }
 
+#watchlist-button {
+    float: right;
+    display: inline;
+    margin-top: 10px;
+}
+
+#hamburger {
+    float: right;
+    display: inline;
+    margin: 10px 5px 0 5px;
+}
+
 #searched-token-table {
     display: none;
     visibility: hidden;
@@ -36,17 +48,6 @@ h1 {
     display: none;
     visibility: hidden;
 }
-
-
-#hamburger {
-    float: right;
-    display: inline;
-    margin-top: 10px;
-    /* display: inline-block; */
-
-
-}
-
 
 #ada-price {
     display: inline-block;
