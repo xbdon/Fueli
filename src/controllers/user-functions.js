@@ -72,7 +72,9 @@ const saveCoin = (req, res) => {
         const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, ticker, coin_id)
             VALUES (?, ?, ?)`)
 
-        console.log("Your Fueli account was created!");
+        insertCoin.run(userId, ticker, coinId)
+
+        console.log("Success! Coin saved to watchlist!");
     } catch (err) {
         console.log(err.message);
         res.sendStatus(503)
