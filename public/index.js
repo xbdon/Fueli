@@ -220,9 +220,11 @@ const saveCoin = async (e) => {
   }
 }
 
-// function has a an error because saveBtn only exists after a token is searched for
-// need to figure out how to declare saveBtn under these conditions
 document.addEventListener("click", saveCoin);
+
+const getWatchlist = async () => {
+
+}
 
 
 
