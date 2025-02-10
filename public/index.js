@@ -233,6 +233,8 @@ const getWatchlist = async () => {
   }
 }
 
+// add a function below to use at the end of getWatchlist current place in the function so getWatchlist function isnt hard to follow
+
 document.getElementById('watchlist-button').addEventListener("click", getWatchlist);
 
 // adding toggle buttons to switch between watchlist and main token table
