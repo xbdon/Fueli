@@ -57,8 +57,6 @@ const searchToken = async () => {
 
 const displayTokenData = (json) => {
   // checks if API call didn't find coin to then alert user
-  console.log("made it to displayTokenData()");
-
   if (json.dataBasic.circSupply === undefined) {
     alert(
       "Token search failed! Coin not found. Try a different token address."
@@ -190,22 +188,6 @@ searchInput.addEventListener("keydown", (e) => {
 
 hamburger.addEventListener("click", getHomePageTable);
 
-const switchToWatchlist = () => {
-  mainTable.style.display = "none";
-  mainTable.style.visibility = "hidden";
-
-  signUpUI.style.display = "block";
-  signUpUI.style.visibility = "visible";
-};
-
-const switchToMainTable = () => {
-  signUpUI.style.display = "none";
-  signUpUI.style.visibility = "hidden";
-
-  mainTable.style.display = "block";
-  mainTable.style.visibility = "visible";
-}
-
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
 
 const saveCoin = async (e) => {
@@ -234,6 +216,8 @@ const saveCoin = async (e) => {
 
 document.addEventListener("click", saveCoin);
 
+// function to call getWatchlist api and generate data in watchlist table
+
 const getWatchlist = async () => {
   try {
     const data = await fetch('/user-functions/getWatchlist', {
@@ -251,7 +235,22 @@ const getWatchlist = async () => {
 
 document.getElementById('watchlist-button').addEventListener("click", getWatchlist);
 
+// adding toggle buttons to switch between watchlist and main token table
+const switchToWatchlist = () => {
+  mainTable.style.display = "none";
+  mainTable.style.visibility = "hidden";
 
+  signUpUI.style.display = "block";
+  signUpUI.style.visibility = "visible";
+};
+
+const switchToMainTable = () => {
+  signUpUI.style.display = "none";
+  signUpUI.style.visibility = "hidden";
+
+  mainTable.style.display = "block";
+  mainTable.style.visibility = "visible";
+}
 
 /*
   PS! Dont forget to add some icons to the Fueli site. #Hamburger needs to be an an actual hamburger icon!
