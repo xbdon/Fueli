@@ -7,7 +7,7 @@ const searchedTokenTable = document.getElementById("searched-token-table");
 const searchedTokenStats = document.getElementById("searched-token-stats");
 const closeBtn = document.getElementById("close-button");
 
-const maintable = document.getElementById("token-table");
+const mainTable = document.getElementById("token-table");
 const tokenStats = document.getElementById("token-stats");
 
 let token = localStorage.getItem('token');
@@ -189,6 +189,22 @@ searchInput.addEventListener("keydown", (e) => {
 });
 
 hamburger.addEventListener("click", getHomePageTable);
+
+const switchToWatchlist = () => {
+  mainTable.style.display = "none";
+  mainTable.style.visibility = "hidden";
+
+  signUpUI.style.display = "block";
+  signUpUI.style.visibility = "visible";
+};
+
+const switchToMainTable = () => {
+  signUpUI.style.display = "none";
+  signUpUI.style.visibility = "hidden";
+
+  mainTable.style.display = "block";
+  mainTable.style.visibility = "visible";
+}
 
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
 
