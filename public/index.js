@@ -10,6 +10,9 @@ const closeBtn = document.getElementById("close-button");
 const mainTable = document.getElementById("token-table");
 const tokenStats = document.getElementById("token-stats");
 
+const watchlist = document.getElementById("watchlist");
+const watchlistStats = document.getElementById("watchlist-stats");
+
 let token = localStorage.getItem('token');
 console.log(token);
 
