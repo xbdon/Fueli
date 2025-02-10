@@ -7,17 +7,13 @@ const searchedTokenTable = document.getElementById("searched-token-table");
 const searchedTokenStats = document.getElementById("searched-token-stats");
 const closeBtn = document.getElementById("close-button");
 
+const maintable = document.getElementById("token-table");
 const tokenStats = document.getElementById("token-stats");
 
 let token = localStorage.getItem('token');
 console.log(token);
 
 let mostRecentSearch;
-
-// checking to see if token is in cookie to log user in
-if (token) {
-
-}
 
 /* checks result from fetchData() api call; 
 if no coin is found from search input,
