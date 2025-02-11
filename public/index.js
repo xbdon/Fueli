@@ -262,7 +262,7 @@ const displayWatchlist = (json) => {
     `;
   }
 
-
+  // add toggle functionality between watchlist and main token table. need to finish existing funcitons and call them
 }
 
 document.getElementById('watchlist-button').addEventListener("click", getWatchlist);
