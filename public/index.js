@@ -119,12 +119,10 @@ const displayHPTable = (json) => {
   console.log(json[0].ticker);
   if (json[0] === undefined) {
     //must complete after basic function ready
-    console.log("Will add an error message to front-end");
+    console.log("displayHpTable(), arg is undefined");
     fetchDataResult = false;
     return;
   }
-
-  console.log("passed if statement")
 
   /* reinitalizes variable to true to restart 
   interaction for future use */
@@ -185,7 +183,6 @@ searchInput.addEventListener("keydown", (e) => {
         closeBtn.style.visibility = "visible";
       }
     });
-    // console.log(fetchDataResult);
   }
 });
 
@@ -230,13 +227,43 @@ const getWatchlist = async () => {
     });
     const watchlist = await data.json();
     console.log(watchlist)
-
+    console.log(`The length of the watchlist json is ${watchlist.length}`)
+    displayWatchlist(watchlist);
   } catch (err) {
     console.log(err);
   }
 }
 
-// add a function below to use at the end of getWatchlist current place in the function so getWatchlist function isnt hard to follow
+// add a function below to use at the end of getWatchlist that displays the watchlist coin data
+const displayWatchlist = (json) => {
+  if (json[0].ticker === undefined) {
+    console.log("displayWatchlist() arg equals undefined, user may not have saved any coins!")
+    return
+  }
+
+  for (let i = 0; i < json.length; i++) {
+
+    // ticker keys' values must remove first 6 characters because (star  ) will be a part of every value due to the structure of the html
+    let ticker = json[i].ticker.slice(6);
+
+    // will be used to get data of coin in the future depending on Taptools api constraints
+    let coinId = json[i].coin_id;
+
+    watchlistStats.innerHTML += `
+      <tr>
+        <td id="token-name${i}" class="stats">${ticker}</td>
+        <td id="price${i}" class="stats">$${"TBD"}</td>
+        <td id="mc${i}" class="stats">$${"TBD"}</td>
+        <td id="24-${i}" class="stats">%${"TBD"}</td>
+        <td id="volume${i}" class="stats">$${"TBD"}</td>
+        <td id="liquidity${i}" class="stats">$${"TBD"}</td>
+        <td id="circ-supply${i}" class="stats">${"TBD"}</td>
+      </tr>
+    `;
+  }
+
+
+}
 
 document.getElementById('watchlist-button').addEventListener("click", getWatchlist);
 
