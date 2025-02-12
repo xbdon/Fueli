@@ -17,9 +17,13 @@ h1 {
 }
 
 #watchlist-button {
-    float: right;
-    display: inline;
-    margin-top: 10px;
+    display: inline-block;
+    margin: 0 0 5px 20px
+}
+
+#main-table-button {
+    display: none;
+    visibility: hidden;
 }
 
 #hamburger {

@@ -12,6 +12,8 @@ const tokenStats = document.getElementById("token-stats");
 
 const watchlist = document.getElementById("watchlist");
 const watchlistStats = document.getElementById("watchlist-stats");
+const watchlistBtn = document.getElementById("watchlist-button");
+const mainTableBtn = document.getElementById("main-table-button");
 
 let token = localStorage.getItem('token');
 console.log(token);
@@ -260,14 +262,12 @@ const displayWatchlist = (json) => {
         <td id="circ-supply${i}" class="stats">${"TBD"}</td>
       </tr>
     `;
-
-    switchToWatchlist();
   }
 
-  // add toggle functionality between watchlist and main token table. need to finish existing funcitons and call them
+  switchToWatchlist();
 }
 
-document.getElementById('watchlist-button').addEventListener("click", getWatchlist);
+watchlistBtn.addEventListener("click", getWatchlist);
 
 // adding toggle buttons to switch between watchlist and main token table
 const switchToWatchlist = () => {
@@ -276,14 +276,22 @@ const switchToWatchlist = () => {
 
   watchlist.style.display = "block";
   watchlist.style.visibility = "visible";
+
+  // button switches to a main table button that does the vice versa
+  mainTableBtn.style.display = "inline-block";
+  mainTableBtn.style.visibility = "visible";
 };
 
 const switchToMainTable = () => {
-  signUpUI.style.display = "none";
-  signUpUI.style.visibility = "hidden";
+  watchlist.style.display = "none";
+  watchlist.style.visibility = "hidden";
 
   mainTable.style.display = "block";
   mainTable.style.visibility = "visible";
+
+  // button switches to switches to watchlist button
+  watchlistBtn.style.display = "inline-block";
+  watchlistBtn.style.visibility = "visible";
 }
 
 /*
