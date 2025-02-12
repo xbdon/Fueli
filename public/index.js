@@ -266,8 +266,6 @@ const displayWatchlist = (json) => {
   }
 }
 
-watchlistBtn.addEventListener("click", getWatchlist);
-
 // adding toggle buttons to switch between watchlist and main token table
 const switchToWatchlist = () => {
   mainTable.style.display = "none";
@@ -284,6 +282,8 @@ const switchToWatchlist = () => {
   mainTableBtn.style.display = "inline-block";
   mainTableBtn.style.visibility = "visible";
 };
+
+watchlistBtn.addEventListener("click", getWatchlist);
 
 const switchToMainTable = () => {
   watchlist.style.display = "none";
