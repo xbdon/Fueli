@@ -260,6 +260,8 @@ const displayWatchlist = (json) => {
         <td id="circ-supply${i}" class="stats">${"TBD"}</td>
       </tr>
     `;
+
+    switchToWatchlist();
   }
 
   // add toggle functionality between watchlist and main token table. need to finish existing funcitons and call them
