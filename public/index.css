@@ -83,6 +83,11 @@ table {
     color: #1F9AFE
 }
 
+#watchlist {
+    display: none;
+    visibility: hidden;
+}
+
 /* .save-button {
     all: unset;
     cursor: pointer;

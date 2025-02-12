@@ -272,8 +272,8 @@ const switchToWatchlist = () => {
   mainTable.style.display = "none";
   mainTable.style.visibility = "hidden";
 
-  signUpUI.style.display = "block";
-  signUpUI.style.visibility = "visible";
+  watchlist.style.display = "block";
+  watchlist.style.visibility = "visible";
 };
 
 const switchToMainTable = () => {
