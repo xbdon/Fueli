@@ -221,7 +221,6 @@ document.addEventListener("click", saveCoin);
 // function to call getWatchlist api and generate data in watchlist table
 
 const getWatchlist = async () => {
-  switchToWatchlist();
   try {
     const data = await fetch('/user-functions/getWatchlist', {
       headers: {
@@ -232,6 +231,7 @@ const getWatchlist = async () => {
     console.log(watchlist)
     console.log(`The length of the watchlist json is ${watchlist.length}`)
     displayWatchlist(watchlist);
+    switchToWatchlist();
   } catch (err) {
     console.log(err);
   }
