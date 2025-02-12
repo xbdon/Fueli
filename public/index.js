@@ -286,6 +286,7 @@ const switchToWatchlist = () => {
 watchlistBtn.addEventListener("click", getWatchlist);
 
 const switchToMainTable = () => {
+  watchlistStats.innerHTML = ``;
   watchlist.style.display = "none";
   watchlist.style.visibility = "hidden";
 
