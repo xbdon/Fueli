@@ -221,6 +221,7 @@ document.addEventListener("click", saveCoin);
 // function to call getWatchlist api and generate data in watchlist table
 
 const getWatchlist = async () => {
+  switchToWatchlist();
   try {
     const data = await fetch('/user-functions/getWatchlist', {
       headers: {
@@ -263,8 +264,6 @@ const displayWatchlist = (json) => {
       </tr>
     `;
   }
-
-  switchToWatchlist();
 }
 
 watchlistBtn.addEventListener("click", getWatchlist);
@@ -278,6 +277,10 @@ const switchToWatchlist = () => {
   watchlist.style.visibility = "visible";
 
   // button switches to a main table button that does the vice versa
+
+  watchlistBtn.style.display = "none";
+  watchlistBtn.style.visibility = "hidden";
+
   mainTableBtn.style.display = "inline-block";
   mainTableBtn.style.visibility = "visible";
 };
@@ -290,6 +293,10 @@ const switchToMainTable = () => {
   mainTable.style.visibility = "visible";
 
   // button switches to switches to watchlist button
+
+  mainTableBtn.style.display = "none";
+  mainTableBtn.style.visibility = "hidden";
+
   watchlistBtn.style.display = "inline-block";
   watchlistBtn.style.visibility = "visible";
 }

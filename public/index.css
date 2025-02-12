@@ -18,12 +18,13 @@ h1 {
 
 #watchlist-button {
     display: inline-block;
-    margin: 0 0 5px 20px
+    margin: 0 0 5px 20px;
 }
 
 #main-table-button {
     display: none;
     visibility: hidden;
+    margin: 0 0 5px 20px;
 }
 
 #hamburger {
