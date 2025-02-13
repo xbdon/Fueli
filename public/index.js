@@ -190,50 +190,46 @@ searchInput.addEventListener("keydown", (e) => {
 
 hamburger.addEventListener("click", getHomePageTable);
 
+// function for switching save button to an unsave button
+const switchToUnsaveBtn = () => {
+  const saveBtn = document.getElementById("save-button");
+  const unsaveBtn = document.getElementById("unsave-button");
+
+  saveBtn.style.display = "none";
+  saveBtn.style.visibility = "hidden";
+
+  unsaveBtn.style.display = "block";
+  unsaveBtn.style.visibility = "visible";
+}
+
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
 
 const saveCoin = async (e) => {
-  try {
-    if (e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) {
-      const coinTicker = document.getElementById('token-name').textContent;
+  if (e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) {
+    const coinTicker = document.getElementById('token-name').textContent;
 
-      let data = {
-        ticker: coinTicker,
-        coinId: mostRecentSearch
-      }
-
-      console.log(data);
-      const res = await fetch('/user-functions/save-coin',
-        {
-          method: 'POST',
-          headers: {
-            "Content-Type": 'application/json',
-            "Authorization": token
-          },
-          body: JSON.stringify(data)
-        });
-    } else {
-      console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
-      return
+    let data = {
+      ticker: coinTicker,
+      coinId: mostRecentSearch
     }
-  } catch (err) {
-    console.log(err)
+
+    console.log(data);
+    const res = await fetch('/user-functions/save-coin',
+      {
+        method: 'POST',
+        headers: {
+          "Content-Type": 'application/json',
+          "Authorization": token
+        },
+        body: JSON.stringify(data)
+      });
+
+    console.log("made it after save-coin api");
+    switchToUnsaveBtn();
+  } else {
+    console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
+    return
   }
-
-  console.log("made it after save-coin api");
-  // function for switching save button to an unsave button
-  function switchToUnsaveBtn() {
-    const saveBtn = document.getElementById("save-button");
-    const unsaveBtn = document.getElementById("unsave-button");
-
-    saveBtn.style.display = "none";
-    saveBtn.style.visibility = "hidden";
-
-    unsaveBtn.style.display = "block";
-    unsaveBtn.style.visibility = "visible";
-  }
-
-  switchToUnsaveBtn();
 }
 
 document.addEventListener("click", saveCoin);
@@ -264,7 +260,7 @@ const displayWatchlist = (json) => {
 
   for (let i = 0; i < json.length; i++) {
 
-    // ticker keys' values must remove first 6 characters because (star  ) will be a part of every value due to the structure of the html
+    // ticker keys' values must remove first 12 characters because (star  ) will be a part of every value due to the structure of the html
     let ticker = json[i].ticker.slice(12);
 
     // will be used to get data of coin in the future depending on Taptools api constraints
