@@ -33,7 +33,7 @@ h1 {
     margin: 10px 5px 0 5px;
 }
 
-#unsave-coin {
+#unsave-button {
     display: none;
     visibility: hidden;
 }

@@ -93,7 +93,7 @@ const displayTokenData = (json) => {
   // to interact with a new post request that sends save coins to db
   searchedTokenStats.innerHTML = `
     <tr>
-      <td id="token-name" class="stats"><button id="save-button" <span class="material-symbols-outlined">star</span></button>  ${name}</td>
+      <td id="token-name" class="stats"><button id="save-button" <span class="material-symbols-outlined">star</span></button><button id="unsave-button">Unsave</button>  ${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
       <td id="24h" class="stats">${twentyFourHr}%</td>
@@ -196,34 +196,43 @@ hamburger.addEventListener("click", getHomePageTable);
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
 
 const saveCoin = async (e) => {
-  if (e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) {
-    const coinTicker = document.getElementById('token-name').textContent;
+  try {
+    if (e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) {
+      const coinTicker = document.getElementById('token-name').textContent;
 
-    let data = {
-      ticker: coinTicker,
-      coinId: mostRecentSearch
+      let data = {
+        ticker: coinTicker,
+        coinId: mostRecentSearch
+      }
+
+      console.log(data);
+      const res = await fetch('/user-functions/save-coin',
+        {
+          method: 'POST',
+          headers: {
+            "Content-Type": 'application/json',
+            "Authorization": token
+          },
+          body: JSON.stringify(data)
+        });
+    } else {
+      console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
+      return
     }
-
-    console.log(data);
-    const res = await fetch('/user-functions/save-coin',
-      {
-        method: 'POST',
-        headers: {
-          "Content-Type": 'application/json',
-          "Authorization": token
-        },
-        body: JSON.stringify(data)
-      });
-
-    // function for switching save button to an unsave button
-    function switchToUnsaveBtn() {
-      const unsaveBtn = document.getElementById("save-button");
-
-
-    }
-  } else {
-    console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
+  } catch (err) {
+    console.log(err)
   }
+
+  // function for switching save button to an unsave button
+  function switchToUnsaveBtn() {
+    saveBtn.style.display = "none";
+    saveBtn.style.visibility = "hidden";
+
+    unsaveBtn.style.display = "block";
+    unsaveBtn.style.visibility = "visible";
+  }
+
+  switchToUnsaveBtn();
 }
 
 document.addEventListener("click", saveCoin);
@@ -238,8 +247,6 @@ const getWatchlist = async () => {
       }
     });
     const watchlist = await data.json();
-    console.log(watchlist)
-    console.log(`The length of the watchlist json is ${watchlist.length}`)
     displayWatchlist(watchlist);
     switchToWatchlist();
   } catch (err) {
