@@ -15,8 +15,6 @@ const watchlistStats = document.getElementById("watchlist-stats");
 const watchlistBtn = document.getElementById("watchlist-button");
 const mainTableBtn = document.getElementById("main-table-button");
 
-const unsaveBtn = document.getElementById("unsave-button");
-
 let token = localStorage.getItem('token');
 console.log(token);
 
@@ -222,8 +220,12 @@ const saveCoin = async (e) => {
     console.log(err)
   }
 
+  console.log("made it after save-coin api");
   // function for switching save button to an unsave button
   function switchToUnsaveBtn() {
+    const saveBtn = document.getElementById("save-button");
+    const unsaveBtn = document.getElementById("unsave-button");
+
     saveBtn.style.display = "none";
     saveBtn.style.visibility = "hidden";
 
@@ -263,7 +265,7 @@ const displayWatchlist = (json) => {
   for (let i = 0; i < json.length; i++) {
 
     // ticker keys' values must remove first 6 characters because (star  ) will be a part of every value due to the structure of the html
-    let ticker = json[i].ticker.slice(6);
+    let ticker = json[i].ticker.slice(12);
 
     // will be used to get data of coin in the future depending on Taptools api constraints
     let coinId = json[i].coin_id;
