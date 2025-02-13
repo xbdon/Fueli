@@ -33,6 +33,11 @@ h1 {
     margin: 10px 5px 0 5px;
 }
 
+#unsave-coin {
+    display: none;
+    visibility: hidden;
+}
+
 #searched-token-table {
     display: none;
     visibility: hidden;

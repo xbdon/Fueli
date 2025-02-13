@@ -15,6 +15,9 @@ const watchlistStats = document.getElementById("watchlist-stats");
 const watchlistBtn = document.getElementById("watchlist-button");
 const mainTableBtn = document.getElementById("main-table-button");
 
+const saveBtn = document.getElementById("save-button");
+const unsaveBtn = document.getElementById("unsave-button");
+
 let token = localStorage.getItem('token');
 console.log(token);
 
@@ -211,6 +214,13 @@ const saveCoin = async (e) => {
         },
         body: JSON.stringify(data)
       });
+
+    // function for switching save button to an unsave button
+    function switchToUnsaveBtn() {
+      const unsaveBtn = document.getElementById("save-button");
+
+
+    }
   } else {
     console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
   }
