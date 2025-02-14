@@ -213,10 +213,7 @@ const saveCoin = async (e) => {
       });
 
     const response = await res.json()
-    console.log(response)
-    console.log(response.outcome)
     if (response.outcome === "Successful") {
-      console.log("we arrived<>")
       switchToUnsaveBtn()
     } else {
       console.log("response from back-end controller unsuccessful")
