@@ -75,6 +75,8 @@ const saveCoin = (req, res) => {
         insertCoin.run(userId, ticker, coinId)
 
         console.log("Success! Coin saved to watchlist!");
+
+        res.json({ outcome: "Successful" })
     } catch (err) {
         console.log(err.message);
         res.sendStatus(503)

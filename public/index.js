@@ -212,6 +212,16 @@ const saveCoin = async (e) => {
         body: JSON.stringify(data)
       });
 
+    const response = await res.json()
+    console.log(response)
+    console.log(response.outcome)
+    if (response.outcome === "Successful") {
+      console.log("we arrived<>")
+      switchToUnsaveBtn()
+    } else {
+      console.log("response from back-end controller unsuccessful")
+    }
+
   } else {
     console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
     return
@@ -231,7 +241,7 @@ const switchToUnsaveBtn = () => {
 }
 
 document.addEventListener("click", saveCoin);
-document.addEventListener("click", switchToUnsaveBtn)
+// document.addEventListener("click", switchToUnsaveBtn)
 
 // function to call getWatchlist api and generate data in watchlist table
 
