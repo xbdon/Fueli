@@ -241,7 +241,6 @@ const switchToUnsaveBtn = () => {
 }
 
 document.addEventListener("click", saveCoin);
-// document.addEventListener("click", switchToUnsaveBtn)
 
 // function to call getWatchlist api and generate data in watchlist table
 
