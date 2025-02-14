@@ -190,18 +190,6 @@ searchInput.addEventListener("keydown", (e) => {
 
 hamburger.addEventListener("click", getHomePageTable);
 
-// function for switching save button to an unsave button
-const switchToUnsaveBtn = () => {
-  const saveBtn = document.getElementById("save-button");
-  const unsaveBtn = document.getElementById("unsave-button");
-
-  saveBtn.style.display = "none";
-  saveBtn.style.visibility = "hidden";
-
-  unsaveBtn.style.display = "block";
-  unsaveBtn.style.visibility = "visible";
-}
-
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
 
 const saveCoin = async (e) => {
@@ -224,15 +212,26 @@ const saveCoin = async (e) => {
         body: JSON.stringify(data)
       });
 
-    console.log("made it after save-coin api");
-    switchToUnsaveBtn();
   } else {
     console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
     return
   }
 }
 
+// function for switching save button to an unsave button
+const switchToUnsaveBtn = () => {
+  const saveBtn = document.getElementById("save-button");
+  const unsaveBtn = document.getElementById("unsave-button");
+
+  saveBtn.style.display = "none";
+  saveBtn.style.visibility = "hidden";
+
+  unsaveBtn.style.display = "block";
+  unsaveBtn.style.visibility = "visible";
+}
+
 document.addEventListener("click", saveCoin);
+document.addEventListener("click", switchToUnsaveBtn)
 
 // function to call getWatchlist api and generate data in watchlist table
 
