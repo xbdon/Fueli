@@ -365,7 +365,7 @@ const switchToSaveBtn = () => {
 document.addEventListener("click", unsaveCoin)
 
 /*
-  Next session we need to test unsaveCoin function and we need to handle edge case of:
+  We need to handle edge case of:
   when user searches for a coin that they already saved to their watchlist, they should have the option to remove it
   from their watchlist. Also if the saved coin is rendered to the main token table
 */
