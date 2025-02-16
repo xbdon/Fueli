@@ -340,11 +340,15 @@ const unsaveCoin = async (e) => {
             "Authorization": token
           }
         });
+    } else {
+      console.log("function call did meet specific criteria, unable to remove coin from watchlist")
     }
-  } catch {
-
+  } catch (err) {
+    console.log(err)
   }
 }
+
+document.addEventListener("click", unsaveCoin)
 
 /*
   PS! Dont forget to add some icons to the Fueli site. #Hamburger needs to be an an actual hamburger icon!
