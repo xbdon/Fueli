@@ -329,22 +329,16 @@ const unsaveCoin = async (e) => {
   try {
     if (e.target === document.getElementById('unsave-button') && token !== undefined && mostRecentSearch !== undefined) {
       const coinTicker = document.getElementById('token-name').textContent;
+      const coinId = mostRecentSearch
 
-      const data = {
-        ticker: coinTicker,
-        coinId: mostRecentSearch
-      }
+      console.log(coinTicker, coinId);
 
-      console.log(data);
-
-      const res = await fetch('/user-functions/delete-coin',
+      const res = await fetch(`/user-functions/delete-coin/${coinTicker}/${coinId}`,
         {
-          method: 'POST',
+          method: 'DELETE',
           headers: {
-            "Content-Type": 'application/json',
             "Authorization": token
-          },
-          body: JSON.stringify(data)
+          }
         });
     }
   } catch {
