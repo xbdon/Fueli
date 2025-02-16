@@ -85,9 +85,7 @@ const displayTokenData = (json) => {
   const circSupply = shorthandMcap(Math.round(json.dataBasic.circSupply));
 
 
-  // trying to figure out how to interact with <tr>s and their respective <td>'s
-  // adding a saveCoin function
-  // to interact with a new post request that sends save coins to db
+  // need to add a template literal to decide whether save-button or unsave-button appears
   searchedTokenStats.innerHTML = `
     <tr>
       <td id="token-name" class="stats"><button id="save-button" <span class="material-symbols-outlined">star</span></button><button id="unsave-button">Unsave</button>  ${name}</td>
