@@ -105,4 +105,4 @@ const deleteWatchlist = (req, res) => {
     res.json({ message: "Todo deleted" })
 }
 
-export { createUser, saveCoin, login, getWatchlist };
+export { createUser, saveCoin, login, getWatchlist, deleteWatchlist };
