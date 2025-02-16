@@ -323,7 +323,7 @@ const switchToMainTable = () => {
 
 mainTableBtn.addEventListener("click", switchToMainTable);
 
-// function to delete coin from watchlist
+// function to delete coin from watchlist.
 
 const unsaveCoin = async (e) => {
   try {
@@ -341,6 +341,7 @@ const unsaveCoin = async (e) => {
           }
         });
 
+      switchToSaveBtn()
 
     } else {
       console.log("function call did meet specific criteria, unable to remove coin from watchlist")
@@ -348,6 +349,17 @@ const unsaveCoin = async (e) => {
   } catch (err) {
     console.log(err)
   }
+}
+
+const switchToSaveBtn = () => {
+  const saveBtn = document.getElementById("save-button");
+  const unsaveBtn = document.getElementById("unsave-button");
+
+  saveBtn.style.display = "block";
+  saveBtn.style.visibility = "visible";
+
+  unsaveBtn.style.display = "none";
+  unsaveBtn.style.visibility = "hidden";
 }
 
 document.addEventListener("click", unsaveCoin)
