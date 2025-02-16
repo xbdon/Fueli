@@ -249,8 +249,8 @@ const getWatchlist = async () => {
       }
     });
     const watchlist = await data.json();
-    displayWatchlist(watchlist);
     switchToWatchlist();
+    displayWatchlist(watchlist);
   } catch (err) {
     console.log(err);
   }
@@ -340,6 +340,8 @@ const unsaveCoin = async (e) => {
             "Authorization": token
           }
         });
+
+
     } else {
       console.log("function call did meet specific criteria, unable to remove coin from watchlist")
     }
