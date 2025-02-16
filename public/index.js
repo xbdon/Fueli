@@ -196,7 +196,7 @@ const saveCoin = async (e) => {
   if (e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) {
     const coinTicker = document.getElementById('token-name').textContent;
 
-    let data = {
+    const data = {
       ticker: coinTicker,
       coinId: mostRecentSearch
     }
@@ -322,6 +322,35 @@ const switchToMainTable = () => {
 }
 
 mainTableBtn.addEventListener("click", switchToMainTable);
+
+// function to delete coin from watchlist
+
+const unsaveCoin = async (e) => {
+  try {
+    if (e.target === document.getElementById('unsave-button') && token !== undefined && mostRecentSearch !== undefined) {
+      const coinTicker = document.getElementById('token-name').textContent;
+
+      const data = {
+        ticker: coinTicker,
+        coinId: mostRecentSearch
+      }
+
+      console.log(data);
+
+      const res = await fetch('/user-functions/delete-coin',
+        {
+          method: 'POST',
+          headers: {
+            "Content-Type": 'application/json',
+            "Authorization": token
+          },
+          body: JSON.stringify(data)
+        });
+    }
+  } catch {
+
+  }
+}
 
 /*
   PS! Dont forget to add some icons to the Fueli site. #Hamburger needs to be an an actual hamburger icon!
