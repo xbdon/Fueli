@@ -11,6 +11,6 @@ router.get('/getWatchlist', getWatchlist);
 router.post('/save-coin', saveCoin);
 
 // deletes coins from watchlist db
-router.delete('/delete-coin/:token/:coinId', deleteCoin);
+router.delete('/delete-coin/:ticker/:coinId', deleteCoin);
 
 export default router;

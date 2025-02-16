@@ -98,11 +98,11 @@ const getWatchlist = (req, res) => {
 }
 
 const deleteCoin = (req, res) => {
-    const { id } = req.params
-    const userId = req.userId
-    const deleteCoin = db.prepare(`DELETE FROM watchlist WHERE id = ? AND user_id = ?`)
-    deleteCoin.run(id, userId)
-    res.json({ message: "Todo deleted" })
+    const { ticker, coinId } = req.params
+    const userId = req.userId;
+    const deleteCoin = db.prepare(`DELETE FROM watchlist WHERE user_id = ? AND ticker = ? AND coin_id = ?`)
+    deleteCoin.run(userId, ticker, coinId)
+    res.json({ message: "Coin removed from watchlist" })
 }
 
 export { createUser, saveCoin, login, getWatchlist, deleteCoin };
