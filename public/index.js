@@ -120,8 +120,8 @@ const isCoinSaved = async () => {
       }
     })
     const bool = await coinBool.json()
-    console.log(bool)
-    console.log(bool.coin.changes)
+    console.log(bool.coin)
+    console.log(bool.coin[0])
     return bool
   } catch (err) {
     console.log(err)
