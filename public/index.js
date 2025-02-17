@@ -101,25 +101,7 @@ const displayTokenData = (json) => {
     </tr>
   `;
 
-  const coinExists = isCoinSaved();
-  const unsaveBtn = document.getElementById('unsave-button')
-  const saveBtn = document.getElementById('save-button')
-  console.log(coinExists)
-
-  // if coinExists === 1 (true) make activate unsaveBtn else activate saveBtn
-  if (coinExists === 1) {
-    unsaveBtn.style.display = "block";
-    unsaveBtn.style.visibility = "visible";
-
-    saveBtn.style.display = "none";
-    saveBtn.style.visibility = "hidden";
-  } else {
-    saveBtn.style.display = "block";
-    saveBtn.style.visibility = "visible";
-
-    unsaveBtn.style.display = "none";
-    unsaveBtn.style.visibility = "hidden";
-  }
+  isCoinSaved()
 };
 
 // check if coin is saved to the watchlist already
@@ -139,9 +121,28 @@ const isCoinSaved = async () => {
         "Authorization": token
       }
     })
+
     const bool = await coinBool.json()
     console.log("this is the result: " + bool.coin.coin_exists)
-    return bool.coin.coin_exists
+    coinExists = bool.coin.coin_exists
+
+    const unsaveBtn = document.getElementById('unsave-button')
+    const saveBtn = document.getElementById('save-button')
+
+    // if coinExists === 1 (true) make activate unsaveBtn else activate saveBtn
+    if (coinExists === 1) {
+      unsaveBtn.style.display = "block";
+      unsaveBtn.style.visibility = "visible";
+
+      saveBtn.style.display = "none";
+      saveBtn.style.visibility = "hidden";
+    } else {
+      saveBtn.style.display = "block";
+      saveBtn.style.visibility = "visible";
+
+      unsaveBtn.style.display = "none";
+      unsaveBtn.style.visibility = "hidden";
+    }
   } catch (err) {
     console.log(err)
   }
