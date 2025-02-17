@@ -88,7 +88,9 @@ const displayTokenData = (json) => {
   // need to add a template literal to decide whether save-button or unsave-button appears
   searchedTokenStats.innerHTML = `
     <tr>
-      <td id="token-name" class="stats"><button id="save-button" <span class="material-symbols-outlined">star</span></button><button id="unsave-button">Unsave</button>  ${name}</td>
+      <td id="token-name" class="stats">
+        <button id="save-button" <span class="material-symbols-outlined">star</span></button>
+        <button id="unsave-button">Unsave</button>  ${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
       <td id="24h" class="stats">${twentyFourHr}%</td>
@@ -101,6 +103,13 @@ const displayTokenData = (json) => {
     </tr>
   `;
 };
+
+// check if coin is saved to the watchlist already
+const isCoinSaved = async () => {
+  try {
+    const coinBool = await fetch()
+  }
+}
 
 // find out how to add search input value to back-end server api call
 const getHomePageTable = async () => {
