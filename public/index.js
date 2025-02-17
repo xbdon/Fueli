@@ -54,7 +54,6 @@ const searchToken = async () => {
     const data = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
     const tokenData = await data.json();
     if (tokenData) { mostRecentSearch = searchInput.value };
-    const coinExists = isCoinSaved();
     displayTokenData(tokenData);
   } catch (err) {
     console.log(err + " searchToken() bug");
@@ -101,6 +100,19 @@ const displayTokenData = (json) => {
       <td id="circ-supply" class="stats">${circSupply}</td>
     </tr>
   `;
+
+  const coinExists = isCoinSaved();
+  console.log(coinExists)
+  if (coinExists === 1) {
+    const unsaveBtn = document.getElementById('unsave-button')
+    const saveBtn = document.getElementById('save-button')
+
+    unsaveBtn.style.display = "block";
+    unsaveBtn.style.visibility = "visible";
+
+    saveBtn.style.display = "none";
+    saveBtn.style.visibility = "hidden";
+  }
 };
 
 // check if coin is saved to the watchlist already
@@ -114,13 +126,14 @@ const isCoinSaved = async () => {
       // Handle the case where the token is not found
       return console.log('Token not found in local storage');
     }
+
     const coinBool = await fetch(`/user-functions/check-coin/${mostRecentSearch}`, {
       headers: {
         "Authorization": token
       }
     })
     const bool = await coinBool.json()
-    console.log(bool.coin)
+    console.log("this is the result: " + bool.coin.coin_exists)
     return bool.coin.coin_exists
   } catch (err) {
     console.log(err)

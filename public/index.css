@@ -38,6 +38,11 @@ h1 {
     visibility: hidden;
 }
 
+#save-button {
+    display: none;
+    visibility: none;
+}
+
 #searched-token-table {
     display: none;
     visibility: hidden;
