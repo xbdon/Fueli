@@ -107,7 +107,7 @@ const displayTokenData = (json) => {
 // check if coin is saved to the watchlist already
 const isCoinSaved = async () => {
   try {
-    const coinBool = await fetch()
+    const coinBool = await fetch(`/check-coin/${mostRecentSearch}`)
     const bool = await coinBool.json()
     console.log(bool)
     return bool

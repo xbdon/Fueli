@@ -14,6 +14,6 @@ router.post('/save-coin', saveCoin);
 router.delete('/delete-coin/:ticker/:coinId', deleteCoin);
 
 // checks if coin is already in watchlist
-router.get('/check-coin', checkCoin);
+router.get('/check-coin/:coinId', checkCoin);
 
 export default router;
