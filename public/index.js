@@ -108,6 +108,11 @@ const displayTokenData = (json) => {
 const isCoinSaved = async () => {
   try {
     const coinBool = await fetch()
+    const bool = await coinBool.json()
+    console.log(bool)
+    return bool
+  } catch (err) {
+    console.log(err)
   }
 }
 
