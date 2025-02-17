@@ -106,6 +106,12 @@ const displayTokenData = (json) => {
 // check if coin is saved to the watchlist already
 const isCoinSaved = async () => {
   try {
+    if (token) {
+      console.log('token exists');
+    } else {
+      // Handle the case where the token is not found
+      return console.log('Token not found in local storage');
+    }
     const coinBool = await fetch(`/user-functions/check-coin/${mostRecentSearch}`, {
       headers: {
         "Authorization": token
@@ -212,8 +218,7 @@ const saveCoin = async (e) => {
   const token = localStorage.getItem('token');
 
   if (token) {
-    // Use the token
-    console.log('token:', token);
+    console.log('token exists');
   } else {
     // Handle the case where the token is not found
     return console.log('Token not found in local storage');
