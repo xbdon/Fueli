@@ -54,7 +54,7 @@ const searchToken = async () => {
     const data = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
     const tokenData = await data.json();
     if (tokenData) { mostRecentSearch = searchInput.value };
-    isCoinSaved();
+    const coinExists = isCoinSaved();
     displayTokenData(tokenData);
   } catch (err) {
     console.log(err + " searchToken() bug");
