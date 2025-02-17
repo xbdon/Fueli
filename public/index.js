@@ -105,6 +105,8 @@ const displayTokenData = (json) => {
 
 // check if coin is saved to the watchlist already
 const isCoinSaved = async () => {
+  const token = localStorage.getItem('token');
+
   try {
     if (token) {
       console.log('token exists');
