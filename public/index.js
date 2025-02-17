@@ -121,8 +121,7 @@ const isCoinSaved = async () => {
     })
     const bool = await coinBool.json()
     console.log(bool.coin)
-    console.log(bool.coin[0])
-    return bool
+    return bool.coin.coin_exists
   } catch (err) {
     console.log(err)
   }
