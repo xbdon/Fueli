@@ -105,4 +105,13 @@ const deleteCoin = (req, res) => {
     res.json({ message: "Coin removed from watchlist" })
 }
 
-export { createUser, saveCoin, login, getWatchlist, deleteCoin };
+const checkCoin = (req, res) => {
+    const { coinId } = req.body
+    const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE coin_id = ?) AS coinExists`)
+    const bool = checkCoin.get(coinId)
+    console.log(bool);
+    res.json({ coin: bool })
+
+}
+
+export { createUser, saveCoin, login, getWatchlist, deleteCoin, checkCoin };
