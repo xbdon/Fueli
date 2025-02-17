@@ -102,16 +102,23 @@ const displayTokenData = (json) => {
   `;
 
   const coinExists = isCoinSaved();
+  const unsaveBtn = document.getElementById('unsave-button')
+  const saveBtn = document.getElementById('save-button')
   console.log(coinExists)
-  if (coinExists === 1) {
-    const unsaveBtn = document.getElementById('unsave-button')
-    const saveBtn = document.getElementById('save-button')
 
+  // if coinExists === 1 (true) make activate unsaveBtn else activate saveBtn
+  if (coinExists === 1) {
     unsaveBtn.style.display = "block";
     unsaveBtn.style.visibility = "visible";
 
     saveBtn.style.display = "none";
     saveBtn.style.visibility = "hidden";
+  } else {
+    saveBtn.style.display = "block";
+    saveBtn.style.visibility = "visible";
+
+    unsaveBtn.style.display = "none";
+    unsaveBtn.style.visibility = "hidden";
   }
 };
 
