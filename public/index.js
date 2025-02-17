@@ -113,6 +113,7 @@ const isCoinSaved = async () => {
     })
     const bool = await coinBool.json()
     console.log(bool)
+    console.log(bool.coin.changes)
     return bool
   } catch (err) {
     console.log(err)
@@ -208,6 +209,15 @@ hamburger.addEventListener("click", getHomePageTable);
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
 
 const saveCoin = async (e) => {
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    // Use the token
+    console.log('token:', token);
+  } else {
+    // Handle the case where the token is not found
+    return console.log('Token not found in local storage');
+  }
   if (e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) {
     const coinTicker = document.getElementById('token-name').textContent;
 

@@ -108,10 +108,11 @@ const deleteCoin = (req, res) => {
 const checkCoin = (req, res) => {
     const { coinId } = req.params
     const userId = req.userId
-    const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND coin_id = ?) AS coinExists`)
+    const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND coin_id = ?) AS coin_exists`)
     const bool = checkCoin.run(userId, coinId)
-    console.log(`this coin is in the watchlist: ${bool}`);
-    res.json({ coin: bool.changes })
+    console.log(bool)
+    console.log(`this coin is in the watchlist: ${bool.changes}`);
+    res.json({ coin: bool })
 
 }
 
