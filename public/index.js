@@ -54,6 +54,7 @@ const searchToken = async () => {
     const data = await fetch(`/api/search-coin/get/?unit=${searchInput.value}`);
     const tokenData = await data.json();
     if (tokenData) { mostRecentSearch = searchInput.value };
+    isCoinSaved();
     displayTokenData(tokenData);
   } catch (err) {
     console.log(err + " searchToken() bug");
@@ -105,7 +106,11 @@ const displayTokenData = (json) => {
 // check if coin is saved to the watchlist already
 const isCoinSaved = async () => {
   try {
-    const coinBool = await fetch(`/user-functions/check-coin/${mostRecentSearch}`)
+    const coinBool = await fetch(`/user-functions/check-coin/${mostRecentSearch}`, {
+      headers: {
+        "Authorization": token
+      }
+    })
     const bool = await coinBool.json()
     console.log(bool)
     return bool

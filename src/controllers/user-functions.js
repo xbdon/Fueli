@@ -110,7 +110,7 @@ const checkCoin = (req, res) => {
     const userId = req.userId
     const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND coin_id = ?) AS coinExists`)
     const bool = checkCoin.get(userId, coinId)
-    console.log(bool);
+    console.log(`this coin is in the watchlist: ${bool}`);
     res.json({ coin: bool })
 
 }
