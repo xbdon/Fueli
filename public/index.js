@@ -185,7 +185,7 @@ const displayHPTable = (json) => {
 
     tokenStats.innerHTML += `
       <tr>
-        <td id="token-name${i}" class="stats">${chooseBtn()}  ${name}</td>
+        <td id="token-name${i}" class="stats">${chooseBtn(i)}  ${name}</td>
         <td id="price${i}" class="stats">$${price}</td>
         <td id="mc${i}" class="stats">$${marketCap}</td>
         <td id="24-${i}" class="stats">%${name}</td>
@@ -197,7 +197,7 @@ const displayHPTable = (json) => {
   }
 }
 
-const chooseBtnMain = async () => {
+const chooseBtnMain = async (row_num) => {
   const token = localStorage.getItem('token');
 
   try {
@@ -208,8 +208,9 @@ const chooseBtnMain = async () => {
       return console.log('Token not found in local storage');
     }
 
-    // need to figure out how to access dom element for coins ticker element in main table respective to their button
-    const coinTicker = document.getElementById('').textContent;
+    // coinTicker is extracted using row_num arg to get specific token-name,
+    //  this will also be used to get specific associated btn
+    const coinTicker = document.getElementById(`token-name${row_num}`).textContent;
 
     const coinBool = await fetch(`user-functions/check-coin-main/${ticker}`, {
       headers: {
