@@ -215,6 +215,8 @@ const chooseBtnMain = async (row_num, ticker_name) => {
     //  this will also be used to get specific associated btn
     const coinTicker = document.getElementById(`token-name${row_num}`).textContent;
 
+    // api call doesnt return expected values, will work on this next sesh
+
     const coinBool = await fetch(`user-functions/check-coin-main/${coinTicker}`, {
       headers: {
         'Authorization': token,
