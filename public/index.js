@@ -185,7 +185,7 @@ const displayHPTable = (json) => {
 
     tokenStats.innerHTML += `
       <tr>
-        <td id="token-name${i}" class="stats">${name}</td>
+        <td id="token-name${i}" class="stats">${chooseBtn()}  ${name}</td>
         <td id="price${i}" class="stats">$${price}</td>
         <td id="mc${i}" class="stats">$${marketCap}</td>
         <td id="24-${i}" class="stats">%${name}</td>
@@ -196,6 +196,11 @@ const displayHPTable = (json) => {
     `;
   }
 }
+
+const chooseBtn = () => {
+
+}
+
 
 const toggleSearchBar = () => {
   searchInput.style.display =
