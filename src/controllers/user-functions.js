@@ -114,4 +114,8 @@ const checkCoin = (req, res) => {
 
 }
 
-export { createUser, saveCoin, login, getWatchlist, deleteCoin, checkCoin };
+const checkCoinMain = (req, res) => {
+
+}
+
+export { createUser, saveCoin, login, getWatchlist, deleteCoin, checkCoin, checkCoinMain };
