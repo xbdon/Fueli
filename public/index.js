@@ -197,8 +197,28 @@ const displayHPTable = (json) => {
   }
 }
 
-const chooseBtn = () => {
+const chooseBtn = async () => {
+  const token = localStorage.getItem('token');
 
+  try {
+    if (token) {
+      console.log('token exists');
+    } else {
+      // Handle the case where the token is not found
+      return console.log('Token not found in local storage');
+    }
+
+    // need to figure out how to access dom element for coins ticker element in main table respective to their button
+    const coinTicker = document.getElementById('').textContent;
+
+    const coinBool = await fetch(`user-functions/check-coin-main/${ticker}`, {
+      headers: {
+        'Authorization': token,
+      }
+    })
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 
