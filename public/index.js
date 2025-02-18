@@ -187,7 +187,7 @@ const displayHPTable = (json) => {
 
     tokenStats.innerHTML += `
       <tr>
-        <td id="token-name${i}" class="stats">${name}</td>
+        <td id="token-name${i}" class="stats"></td>
         <td id="price${i}" class="stats">$${price}</td>
         <td id="mc${i}" class="stats">$${marketCap}</td>
         <td id="24-${i}" class="stats">%${name}</td>
@@ -196,11 +196,11 @@ const displayHPTable = (json) => {
         <td id="circ-supply${i}" class="stats">${circSupply}</td>
       </tr>
     `;
-    chooseBtnMain(i)
+    chooseBtnMain(i, name)
   }
 }
 
-const chooseBtnMain = async (row_num) => {
+const chooseBtnMain = async (row_num, ticker_name) => {
   const token = localStorage.getItem('token');
 
   try {
@@ -229,9 +229,9 @@ const chooseBtnMain = async (row_num) => {
 
     // coin doesnt exist if coinExists equals 0
     if (coinExists === 0) {
-      tokenName.textContent += `<button id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
+      tokenName.innerHTML += `${ticker_name}  <button id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
     } else {
-      tokenName.textContent += `<button id="unsave-button${row_num}">Unsave</button>`
+      tokenName.innerHTML += `${ticker_name}  <button id="unsave-button${row_num}">Unsave</button>`
     }
   } catch (err) {
     console.log(err)
