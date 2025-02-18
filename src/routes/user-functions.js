@@ -14,7 +14,7 @@ router.post('/save-coin', saveCoin);
 router.delete('/delete-coin/:ticker/:coinId', deleteCoin);
 
 // checks if searhed coin is already in watchlist
-router.get('/check-coin/:coinId', checkCoin);
+router.get('/check-coin/:coinId/:ticker', checkCoin);
 
 // checks if coin in main table is already in watchlist
 router.get('/check-coin-main/:ticker', checkCoinMain);
