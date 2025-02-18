@@ -114,8 +114,14 @@ const checkCoin = (req, res) => {
 
 }
 
+// because tap tools api for large data set load of coins(main table) does not require us to input a coin_id we have to do this db query 
+// with only a ticker variable
 const checkCoinMain = (req, res) => {
-
+    const { ticker } = req.params
+    const userId = req.userId
+    const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND ticker = ?) AS coin_exists`)
+    const bool = checkCoin.get(userId, ticker)
+    res.json({ coin: bool })
 }
 
 export { createUser, saveCoin, login, getWatchlist, deleteCoin, checkCoin, checkCoinMain };
