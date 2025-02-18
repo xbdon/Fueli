@@ -197,7 +197,7 @@ const displayHPTable = (json) => {
   }
 }
 
-const chooseBtn = async () => {
+const chooseBtnMain = async () => {
   const token = localStorage.getItem('token');
 
   try {
