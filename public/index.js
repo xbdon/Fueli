@@ -228,7 +228,9 @@ const chooseBtnMain = async (row_num) => {
 
     // coin doesnt exist if coinExists equals 0
     if (coinExists === 0) {
-      tokenName.textContent += "test"
+      tokenName.textContent += `<button id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
+    } else {
+      tokenName.textContent += `<button id="unsave-button${row_num}">Unsave</button>`
     }
   } catch (err) {
     console.log(err)

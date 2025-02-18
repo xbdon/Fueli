@@ -106,7 +106,7 @@ const deleteCoin = (req, res) => {
 }
 
 const checkCoin = (req, res) => {
-    const { coinId } = req.params
+    const { coinId, ticker } = req.params
     const userId = req.userId
     const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND coin_id = ?) AS coin_exists`)
     const bool = checkCoin.get(userId, coinId)
