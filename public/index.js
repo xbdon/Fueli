@@ -116,6 +116,7 @@ const isCoinSaved = async () => {
       return console.log('Token not found in local storage');
     }
 
+    // checks if coin exists in the watchlist or not
     const coinBool = await fetch(`/user-functions/check-coin/${mostRecentSearch}`, {
       headers: {
         "Authorization": token
@@ -123,8 +124,7 @@ const isCoinSaved = async () => {
     })
 
     const bool = await coinBool.json()
-    console.log("this is the result: " + bool.coin.coin_exists)
-    coinExists = bool.coin.coin_exists
+    const coinExists = bool.coin.coin_exists
 
     const unsaveBtn = document.getElementById('unsave-button')
     const saveBtn = document.getElementById('save-button')
@@ -212,11 +212,22 @@ const chooseBtnMain = async (row_num) => {
     //  this will also be used to get specific associated btn
     const coinTicker = document.getElementById(`token-name${row_num}`).textContent;
 
-    const coinBool = await fetch(`user-functions/check-coin-main/${ticker}`, {
+    const coinBool = await fetch(`user-functions/check-coin-main/${coinTicker}`, {
       headers: {
         'Authorization': token,
       }
     })
+
+    // based off the coinBools result we will add a main table save btn or unsave btn
+    const bool = await coinBool.json()
+    const coinExists = bool.coin.coin_exists
+
+    const tokenName = document.getElementById(`token-name${row_num}`)
+
+    // coin doesnt exist if coinExists equals 0
+    if (coinExists === 0) {
+      tokenName.textContent += 
+    }
   } catch (err) {
     console.log(err)
   }
