@@ -232,11 +232,11 @@ const chooseBtnMain = async (row_num, ticker_name) => {
     // coin doesnt exist if coinExists equals 0
     if (coinExists === 0) {
 
-      tokenName.innerHTML += `<button id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
+      tokenName.innerHTML += `<button class="main-table-save" id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
 
     } else {
 
-      tokenName.innerHTML += `<button id="unsave-button${row_num}">Unsave</button>`
+      tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
 
     }
   } catch (err) {
