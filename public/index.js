@@ -293,7 +293,7 @@ const saveCoin = async (e) => {
     // Handle the case where the token is not found
     return console.log('Token not found in local storage');
   }
-  if ((e.target === document.getElementById('save-button') || e.target === document.getElementsByClassName('main-table-save')) && token !== undefined && mostRecentSearch !== undefined) {
+  if ((e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) || (e.target === document.getElementsByClassName('main-table-save') && token !== undefined)) {
     const coinTicker = document.getElementById('token-name').textContent;
     if (e.target === document.getElementsByClassName('main-table-save')) {
       const data = {
