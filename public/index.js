@@ -468,7 +468,7 @@ const unsaveCoin = async (e) => {
   try {
     if (e.target === document.getElementById('unsave-button') && token !== undefined && mostRecentSearch !== undefined) {
       // bug lies here !!!!!!!!!!!!!!
-      const coinTicker = document.getElementById('token-name').textContent;
+      const coinTicker = document.getElementById('token-name').textContent.slice(12)
       const coinId = mostRecentSearch
 
       console.log(coinTicker, coinId);
