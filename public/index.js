@@ -321,8 +321,10 @@ const saveCoin = async (e) => {
       });
 
     const response = await res.json()
-    if (response.outcome === "Successful") {
+    if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
       switchToUnsaveBtn()
+    } else if (response.outcome === "Successful" && data.coinId === "test placeholder") {
+      switchToMainUnsaveBtn(e.target.id.slice(11))
     } else {
       console.log("response from back-end controller unsuccessful")
     }
