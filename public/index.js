@@ -308,9 +308,9 @@ const saveCoin = async (e) => {
   // next we will check if the coin being saved is a searched token or a coin from the generated main table
   if ((e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) || (e.target.classList.contains('main-table-save') && token !== undefined)) {
     // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
-    const mainCoinTicker = document.getElementById(`token-name${e.target.id.slice(11)}`).textContent.slice(0, -4)
+    const mainCoinTicker = document.getElementById(`token-name${e.target.id.slice(11)}`).textContent.slice(0, -10)
 
-    console.log(mainCoinTicker)
+    console.log("testing the output of this variable: " + mainCoinTicker)
     let data = {
       ticker: mainCoinTicker,
       coinId: "test placeholder"
