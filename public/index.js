@@ -116,7 +116,7 @@ const isCoinSaved = async () => {
       return console.log('Token not found in local storage');
     }
 
-    const coinTicker = document.getElementById('token-name').textContent;
+    const coinTicker = document.getElementById('token-name').textContent.slice(12)
 
     // checks if coin exists in the watchlist or not
     const coinBool = await fetch(`/user-functions/check-coin/${mostRecentSearch}/${coinTicker}`, {
