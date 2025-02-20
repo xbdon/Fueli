@@ -177,6 +177,7 @@ const displayHPTable = (json) => {
   fetchDataResult = true;
 
   const row = 20;
+  tokenStats.innerHTML = ``;
   for (let i = 0; i < row; i++) {
     let name = json[i].ticker;
     let price = Math.round((json[i].price * adaDollarValue) * 1000000) / 1000000;
