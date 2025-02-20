@@ -310,16 +310,17 @@ const saveCoin = async (e) => {
     // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
     const mainCoinTicker = document.getElementById(`token-name${e.target.id.slice(11)}`).textContent.slice(0, -10)
 
-    console.log("testing the output of this variable: " + mainCoinTicker)
     let data = {
       ticker: mainCoinTicker,
       coinId: "test placeholder"
     }
 
     if (e.target === document.getElementById('save-button')) {
-      data.ticker = document.getElementById('token-name').textContent
+      data.ticker = document.getElementById('token-name').textContent.slice(12)
       data.coinId = mostRecentSearch
     }
+
+
 
     console.log(data);
     const res = await fetch('/user-functions/save-coin',
