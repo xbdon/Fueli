@@ -293,6 +293,7 @@ const saveCoin = async (e) => {
     // Handle the case where the token is not found
     return console.log('Token not found in local storage');
   }
+  // next we will check if the coin being saved is a searched token or a coin from the generated main table
   if ((e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) || (e.target === document.getElementsByClassName('main-table-save') && token !== undefined)) {
     const coinTicker = document.getElementById('token-name').textContent;
     let data = {
