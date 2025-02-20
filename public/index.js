@@ -467,7 +467,6 @@ mainTableBtn.addEventListener("click", switchToMainTable);
 const unsaveCoin = async (e) => {
   try {
     if (e.target === document.getElementById('unsave-button') && token !== undefined && mostRecentSearch !== undefined) {
-      // bug lies here !!!!!!!!!!!!!!
       const coinTicker = document.getElementById('token-name').textContent.slice(12)
       const coinId = mostRecentSearch
 
@@ -504,11 +503,6 @@ const switchToSaveBtn = () => {
 
 document.addEventListener("click", unsaveCoin)
 
-/*
-  We need to handle edge case of:
-  when user searches for a coin that they already saved to their watchlist, they should have the option to remove it
-  from their watchlist. Also if the saved coin is rendered to the main token table
-*/
 /*
   PS! Dont forget to add some icons to the Fueli site. #Hamburger needs to be an an actual hamburger icon!
 */
