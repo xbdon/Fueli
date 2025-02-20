@@ -399,6 +399,12 @@ const displayWatchlist = (json) => {
   for (let i = 0; i < json.length; i++) {
 
     // ticker keys' values must remove first 12 characters because (star  ) will be a part of every value due to the structure of the html
+    // note for next session, this has bitten me in the ass, I need to do this slice before it is sent to the watchlist db in the back-end
+    // we now have a logic error because the same coin can be saved to the watchlist db twice, since the ticker value is different when the same coin
+    // is saved you can save the coin twice since the db sees a different ticker value when it is processing the data retrieved
+
+    // after this is done we need to add unsave funcitonality to the main table unsave buttons, after this most of Fuelis main features for now will be done,
+    // we should probably organize some of the functions as some of them like the save-coin function could be made more readable and more digestible logic
     let ticker = json[i].ticker.slice(12);
 
     // will be used to get data of coin in the future depending on Taptools api constraints
