@@ -234,9 +234,21 @@ const chooseBtnMain = async (row_num, ticker_name) => {
 
       tokenName.innerHTML += `<button class="main-table-save" id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
 
+      // creates unsave-button still but hides it
+      tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
+      document.getElementById(`unsave-button${row_num}`).style.display = "none"
+      document.getElementById(`unsave-button${row_num}`).style.visibility = "hidden"
+
+
     } else {
 
       tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
+
+      // creates save-button still but hides it
+      tokenName.innerHTML += `<button class="main-table-save" id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
+      document.getElementById(`unsave-button`).style.display = "none"
+      document.getElementById(`unsave-button`).style.visibility = "hidden"
+
 
     }
   } catch (err) {
