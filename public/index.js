@@ -345,6 +345,17 @@ const switchToUnsaveBtn = () => {
   unsaveBtn.style.visibility = "visible";
 }
 
+const switchToMainUnsaveBtn = (id) => {
+  const saveBtn = document.getElementById(`save-button${id}`);
+  const unsaveBtn = document.getElementById(`unsave-button${id}`);
+
+  saveBtn.style.display = "none";
+  saveBtn.style.visibility = "hidden";
+
+  unsaveBtn.style.display = "block";
+  unsaveBtn.style.visibility = "visible";
+}
+
 document.addEventListener("click", saveCoin);
 
 // function to call getWatchlist api and generate data in watchlist table
