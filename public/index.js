@@ -199,7 +199,7 @@ const displayHPTable = (json) => {
 
     tokenStats.innerHTML += `
       <tr>
-        <td id="coin-id${i} class="stats"><button id="coinIdBtn${i}" class="copyIdBtn">copy coin-id</button></td>
+        <td id="coin-id${i}" class="stats"><button id="coinIdBtn${i}" class="copyIdBtn">copy</button></td>
         <td id="token-name${i}" class="stats">${name}</td>
         <td id="price${i}" class="stats">$${price}</td>
         <td id="mc${i}" class="stats">$${marketCap}</td>
@@ -279,6 +279,7 @@ const copyCoinId = (e) => {
 
   const coinIdRow = e.target.id.textContent.slice(9)
   const text = coinIds[coinIdRow]
+  console.log(text)
 
   navigator.clipboard.writeText(text)
     .then(() => {
@@ -389,10 +390,6 @@ const saveCoin = async (e) => {
     return console.log('Token not found in local storage');
   }
 
-  // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
-  const row_num = e.target.id.slice(11)
-  const mainCoinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
-
   let data = {
     ticker: null,
     coinId: null
@@ -405,6 +402,9 @@ const saveCoin = async (e) => {
     data.coinId = mostRecentSearch
 
   } else if (e.target.classList.contains('main-table-save')) {
+    // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
+    const row_num = e.target.id.slice(11)
+    const mainCoinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
     data.ticker = mainCoinTicker
     data.coinId = coinIds[row_num]
 
