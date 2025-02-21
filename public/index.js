@@ -182,6 +182,7 @@ const displayHPTable = (json) => {
   const row = 20;
   tokenStats.innerHTML = ``;
   for (let i = 0; i < row; i++) {
+    let coinId = json[i].unit
     let name = json[i].ticker;
     let price = Math.round((json[i].price * adaDollarValue) * 1000000) / 1000000;
     let marketCap = shorthandMcap(Math.round(json[i].mcap * adaDollarValue));
@@ -191,6 +192,7 @@ const displayHPTable = (json) => {
 
     tokenStats.innerHTML += `
       <tr>
+        <td id="coin-id${i} class="stats">${coinId}<button "id=coinIdBtn${i}">copy coin-id</button></td>
         <td id="token-name${i}" class="stats">${name}</td>
         <td id="price${i}" class="stats">$${price}</td>
         <td id="mc${i}" class="stats">$${marketCap}</td>
@@ -303,55 +305,83 @@ hamburger.addEventListener("click", getHomePageTable);
 
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
 
-const saveCoin = async (e) => {
+// const saveCoin = async (e) => {
+//   const token = localStorage.getItem('token');
+
+//   if (token) {
+//     console.log('token exists');
+//   } else {
+//     // Handle the case where the token is not found
+//     return console.log('Token not found in local storage');
+//   }
+//   // next we will check if the coin being saved is a searched token or a coin from the generated main table
+//   if ((e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) || (e.target.classList.contains('main-table-save') && token !== undefined)) {
+//     // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
+//     const mainCoinTicker = document.getElementById(`token-name${e.target.id.slice(11)}`).textContent.slice(0, -10)
+
+//     let data = {
+//       ticker: mainCoinTicker,
+//       coinId: "test placeholder"
+//     }
+
+//     if (e.target === document.getElementById('save-button')) {
+//       data.ticker = document.getElementById('token-name').textContent.slice(12)
+//       data.coinId = mostRecentSearch
+//     }
+
+
+
+//     console.log(data);
+//     const res = await fetch('/user-functions/save-coin',
+//       {
+//         method: 'POST',
+//         headers: {
+//           "Content-Type": 'application/json',
+//           "Authorization": token
+//         },
+//         body: JSON.stringify(data)
+//       });
+
+//     const response = await res.json()
+//     if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
+//       switchToUnsaveBtn()
+//     } else if (response.outcome === "Successful" && data.coinId === "test placeholder") {
+//       switchToMainUnsaveBtn(e.target.id.slice(11))
+//     } else {
+//       console.log("response from back-end controller unsuccessful")
+//     }
+
+//   } else {
+//     console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
+//     return
+//   }
+// }
+
+const save = (e) => {
   const token = localStorage.getItem('token');
 
   if (token) {
-    console.log('token exists');
-  } else {
     // Handle the case where the token is not found
     return console.log('Token not found in local storage');
   }
+
+  // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
+  const mainCoinTicker = document.getElementById(`token-name${e.target.id.slice(11)}`).textContent.slice(0, -10)
+
+  let data = {
+    ticker: mainCoinTicker,
+    coinId: "placeholder"
+  }
+
   // next we will check if the coin being saved is a searched token or a coin from the generated main table
-  if ((e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) || (e.target.classList.contains('main-table-save') && token !== undefined)) {
-    // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
-    const mainCoinTicker = document.getElementById(`token-name${e.target.id.slice(11)}`).textContent.slice(0, -10)
+  if (e.target === document.getElementById('save-button') && mostRecentSearch !== undefined) {
 
-    let data = {
-      ticker: mainCoinTicker,
-      coinId: "test placeholder"
-    }
+    data.ticker = document.getElementById('token-name').textContent.slice(12)
+    coinId = mostRecentSearch
 
-    if (e.target === document.getElementById('save-button')) {
-      data.ticker = document.getElementById('token-name').textContent.slice(12)
-      data.coinId = mostRecentSearch
-    }
+  } else if (e.target.classList.contains('main-table-save')) {
 
 
-
-    console.log(data);
-    const res = await fetch('/user-functions/save-coin',
-      {
-        method: 'POST',
-        headers: {
-          "Content-Type": 'application/json',
-          "Authorization": token
-        },
-        body: JSON.stringify(data)
-      });
-
-    const response = await res.json()
-    if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
-      switchToUnsaveBtn()
-    } else if (response.outcome === "Successful" && data.coinId === "test placeholder") {
-      switchToMainUnsaveBtn(e.target.id.slice(11))
-    } else {
-      console.log("response from back-end controller unsuccessful")
-    }
-
-  } else {
-    console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
-    return
   }
 }
 
