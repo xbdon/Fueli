@@ -152,6 +152,7 @@ const isCoinSaved = async () => {
   }
 }
 
+// the start of the main table functionality xxxxxxxxxxxxxxxxxxxxxxxx
 // find out how to add search input value to back-end server api call
 const getHomePageTable = async () => {
   try {
