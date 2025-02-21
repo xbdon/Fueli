@@ -16,7 +16,7 @@ db.exec(`
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER,
             ticker TEXT UNIQUE,
-            coin_id TEXT,
+            coin_id TEXT UNIQUE,
             FOREIGN KEY(user_id) REFERENCES users(id)
         )
         `)
