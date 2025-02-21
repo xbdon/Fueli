@@ -15,7 +15,7 @@ const watchlistStats = document.getElementById("watchlist-stats");
 const watchlistBtn = document.getElementById("watchlist-button");
 const mainTableBtn = document.getElementById("main-table-button");
 
-const coinIds = []
+let coinIds = []
 
 let token = localStorage.getItem('token');
 console.log(token);
