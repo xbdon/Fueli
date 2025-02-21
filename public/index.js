@@ -15,6 +15,8 @@ const watchlistStats = document.getElementById("watchlist-stats");
 const watchlistBtn = document.getElementById("watchlist-button");
 const mainTableBtn = document.getElementById("main-table-button");
 
+const coinIds = []
+
 let token = localStorage.getItem('token');
 console.log(token);
 
@@ -180,7 +182,10 @@ const displayHPTable = (json) => {
   fetchDataResult = true;
 
   const row = 20;
+  // resetting tokenStats so no duplicate values are displayed
   tokenStats.innerHTML = ``;
+  // resetting coinIds array so array can be indexed accurately
+  coinIds = []
   for (let i = 0; i < row; i++) {
     let coinId = json[i].unit
     let name = json[i].ticker;
@@ -190,9 +195,11 @@ const displayHPTable = (json) => {
     // let volume = json.market_data.total_volume.usd;
     let circSupply = shorthandMcap(Math.round(json[i].circSupply));
 
+    coinIds.push(coinId)
+
     tokenStats.innerHTML += `
       <tr>
-        <td id="coin-id${i} class="stats">${coinId}<button "id=coinIdBtn${i}">copy coin-id</button></td>
+        <td id="coin-id${i} class="stats"><button id="coinIdBtn${i}" class="copyIdBtn">copy coin-id</button></td>
         <td id="token-name${i}" class="stats">${name}</td>
         <td id="price${i}" class="stats">$${price}</td>
         <td id="mc${i}" class="stats">$${marketCap}</td>
@@ -204,21 +211,6 @@ const displayHPTable = (json) => {
     `;
     chooseBtnMain(i, name)
   }
-}
-
-const copyCoinId = (e) => {
-  const coinIdRow = e.target.id.textContent.slice(9)
-  console.log("This is the coin id's row: " + coinIdRow)
-  const coinId = document.getElementById(`coin-id${coinIdRow}`)
-  const text = coinId.textContent
-
-  navigator.clipboard.writeText(text)
-    .then(() => {
-      console.log("Coin id copied to clipboard")
-    })
-    .catch(err => {
-      console.log("Failed to copy text: " + err)
-    })
 }
 
 const chooseBtnMain = async (row_num, ticker_name) => {
@@ -280,6 +272,22 @@ const chooseBtnMain = async (row_num, ticker_name) => {
   }
 }
 
+const copyCoinId = (e) => {
+  if (e.target.classList.contains !== "copyIdBtn") {
+    return
+  }
+
+  const coinIdRow = e.target.id.textContent.slice(9)
+  const text = coinIds[coinIdRow]
+
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      console.log("Coin id copied to clipboard")
+    })
+    .catch(err => {
+      console.log("Failed to copy text: " + err)
+    })
+}
 
 const toggleSearchBar = () => {
   searchInput.style.display =
@@ -298,6 +306,9 @@ const closeGeneratedTable = () => {
   searchedTokenStats.innerHTML = "";
 };
 
+hamburger.addEventListener("click", getHomePageTable);
+document.addEventListener("click", copyCoinId)
+
 closeBtn.addEventListener("click", closeGeneratedTable);
 searchBtn.addEventListener("click", toggleSearchBar);
 searchInput.addEventListener("keydown", (e) => {
@@ -315,8 +326,6 @@ searchInput.addEventListener("keydown", (e) => {
     });
   }
 });
-
-hamburger.addEventListener("click", getHomePageTable);
 
 // this saveBtn functionality will only pertain to the searchedTokenTable for now
 
