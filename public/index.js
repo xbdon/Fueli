@@ -408,9 +408,6 @@ const displayWatchlist = (json) => {
     // after this is done we need to add unsave funcitonality to the main table unsave buttons, after this most of Fuelis main features for now will be done,
     // we should probably organize some of the functions as some of them like the save-coin function could be made more readable and more digestible logic
 
-    // we need to fix a logic bug where any time the hamburger btn is pressed it doesnt clear the innerhtml already present and just adds to it
-
-    // searchCoin save and unsave has a bug where u cant save after u save then unsave initially
     let ticker = json[i].ticker;
 
     // will be used to get data of coin in the future depending on Taptools api constraints
