@@ -63,7 +63,7 @@ const login = (req, res) => {
 
 // currently going through coin-data.js router, may need to change
 const saveCoin = (req, res) => {
-    console.log("Eureka!!!");
+    console.log("Saving coin...");
     const { ticker, coinId } = req.body;
     const userId = req.userId;
     try {
@@ -100,16 +100,16 @@ const getWatchlist = (req, res) => {
 const deleteCoin = (req, res) => {
     const { ticker, coinId } = req.params
     const userId = req.userId;
-    const deleteCoin = db.prepare(`DELETE FROM watchlist WHERE user_id = ? AND ticker = ? AND coin_id = ?`)
-    deleteCoin.run(userId, ticker, coinId)
+    const deleteCoin = db.prepare(`DELETE FROM watchlist WHERE user_id = ? AND ticker = ?`)
+    deleteCoin.run(userId, ticker)
     res.json({ message: "Coin removed from watchlist" })
 }
 
 const checkCoin = (req, res) => {
     const { coinId, ticker } = req.params
     const userId = req.userId
-    const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND coin_id = ?) AS coin_exists`)
-    const bool = checkCoin.get(userId, coinId)
+    const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND ticker = ?) AS coin_exists`)
+    const bool = checkCoin.get(userId, ticker)
     res.json({ coin: bool })
 
 }

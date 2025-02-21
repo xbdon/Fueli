@@ -117,6 +117,7 @@ const isCoinSaved = async () => {
     }
 
     const coinTicker = document.getElementById('token-name').textContent.slice(12)
+    console.log(coinTicker)
 
     // checks if coin exists in the watchlist or not
     const coinBool = await fetch(`/user-functions/check-coin/${mostRecentSearch}/${coinTicker}`, {
@@ -132,8 +133,8 @@ const isCoinSaved = async () => {
     const saveBtn = document.getElementById('save-button')
     console.log(coinExists)
 
-    // if coinExists === 0 (coin is not in watchlist db) activate unsaveBtn else activate saveBtn
-    if (coinExists === 0) {
+    // if coinExists === 1 (coin is in watchlist db) activate unsaveBtn else activate saveBtn
+    if (coinExists === 1) {
       unsaveBtn.style.display = "block";
       unsaveBtn.style.visibility = "visible";
 
@@ -231,7 +232,7 @@ const chooseBtnMain = async (row_num, ticker_name) => {
 
     const tokenName = document.getElementById(`token-name${row_num}`)
 
-    // coin doesnt exist if coinExists equals 0
+    // coin is not in watchlist db if coinExists equals 0
     if (coinExists === 0) {
 
       tokenName.innerHTML += `<button class="main-table-save" id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
@@ -242,17 +243,19 @@ const chooseBtnMain = async (row_num, ticker_name) => {
       document.getElementById(`unsave-button${row_num}`).style.visibility = "hidden"
 
 
-    } else {
+    } else if (coinExists === 1) {
 
       tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
 
       // creates save-button still but hides it
       tokenName.innerHTML += `<button class="main-table-save" id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
-      document.getElementById(`unsave-button`).style.display = "none"
-      document.getElementById(`unsave-button`).style.visibility = "hidden"
+      document.getElementById(`save-button`).style.display = "none"
+      document.getElementById(`save-button`).style.visibility = "hidden"
 
-
+    } else {
+      console.log("chooseBtnMain() did not receive a value for coinExists")
     }
+
   } catch (err) {
     console.log(err)
   }
