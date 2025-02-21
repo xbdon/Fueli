@@ -390,11 +390,12 @@ const save = (e) => {
   }
 
   // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
-  const mainCoinTicker = document.getElementById(`token-name${e.target.id.slice(11)}`).textContent.slice(0, -10)
+  const row_num = e.target.id.slice(11)
+  const mainCoinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
 
   let data = {
-    ticker: mainCoinTicker,
-    coinId: "placeholder"
+    ticker: null,
+    coinId: null
   }
 
   // next we will check if the coin being saved is a searched token or a coin from the generated main table
@@ -404,9 +405,14 @@ const save = (e) => {
     coinId = mostRecentSearch
 
   } else if (e.target.classList.contains('main-table-save')) {
+    data.ticker = mainCoinTicker
+    data.coinId = coinIds[row_num]
 
-
+  } else {
+    return
   }
+
+
 }
 
 // function for switching save button to an unsave button
