@@ -231,6 +231,7 @@ const chooseBtnMain = async (row_num, ticker_name) => {
     const coinExists = bool.coin.coin_exists
 
     const tokenName = document.getElementById(`token-name${row_num}`)
+    console.log(coinExists)
 
     // coin is not in watchlist db if coinExists equals 0
     if (coinExists === 0) {
@@ -249,8 +250,8 @@ const chooseBtnMain = async (row_num, ticker_name) => {
 
       // creates save-button still but hides it
       tokenName.innerHTML += `<button class="main-table-save" id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
-      document.getElementById(`save-button`).style.display = "none"
-      document.getElementById(`save-button`).style.visibility = "hidden"
+      document.getElementById(`save-button${row_num}`).style.display = "none"
+      document.getElementById(`save-button${row_num}`).style.visibility = "hidden"
 
     } else {
       console.log("chooseBtnMain() did not receive a value for coinExists")
