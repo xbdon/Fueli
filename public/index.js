@@ -206,6 +206,21 @@ const displayHPTable = (json) => {
   }
 }
 
+const copyCoinId = (e) => {
+  const coinIdRow = e.target.id.textContent.slice(9)
+  console.log("This is the coin id's row: " + coinIdRow)
+  const coinId = document.getElementById(`coin-id${coinIdRow}`)
+  const text = coinId.textContent
+
+  navigator.clipboard.writeText(text)
+    .then(() => {
+      console.log("Coin id copied to clipboard")
+    })
+    .catch(err => {
+      console.log("Failed to copy text: " + err)
+    })
+}
+
 const chooseBtnMain = async (row_num, ticker_name) => {
   const token = localStorage.getItem('token');
 
