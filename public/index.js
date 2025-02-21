@@ -381,7 +381,7 @@ searchInput.addEventListener("keydown", (e) => {
 //   }
 // }
 
-const save = (e) => {
+const save = async (e) => {
   const token = localStorage.getItem('token');
 
   if (token) {
@@ -402,7 +402,7 @@ const save = (e) => {
   if (e.target === document.getElementById('save-button') && mostRecentSearch !== undefined) {
 
     data.ticker = document.getElementById('token-name').textContent.slice(12)
-    coinId = mostRecentSearch
+    data.coinId = mostRecentSearch
 
   } else if (e.target.classList.contains('main-table-save')) {
     data.ticker = mainCoinTicker
@@ -412,7 +412,25 @@ const save = (e) => {
     return
   }
 
+  console.log(data);
+  const res = await fetch('/user-functions/save-coin',
+    {
+      method: 'POST',
+      headers: {
+        "Content-Type": 'application/json',
+        "Authorization": token
+      },
+      body: JSON.stringify(data)
+    });
 
+  const response = await res.json()
+  if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
+    switchToUnsaveBtn()
+  } else if (response.outcome === "Successful" && data.coinId === "test placeholder") {
+    switchToMainUnsaveBtn(e.target.id.slice(11))
+  } else {
+    console.log("response from back-end controller unsuccessful")
+  }
 }
 
 // function for switching save button to an unsave button
