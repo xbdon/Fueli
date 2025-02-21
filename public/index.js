@@ -199,7 +199,7 @@ const displayHPTable = (json) => {
 
     tokenStats.innerHTML += `
       <tr>
-        <td id="coin-id${i}" class="stats"><button id="coinIdBtn${i}" class="copyIdBtn">copy</button></td>
+        <td id="coin-id${i}" class="stats"><button id="coinIdBtn${i}" class="copy-id-button">copy</button></td>
         <td id="token-name${i}" class="stats">${name}</td>
         <td id="price${i}" class="stats">$${price}</td>
         <td id="mc${i}" class="stats">$${marketCap}</td>
@@ -273,7 +273,8 @@ const chooseBtnMain = async (row_num, ticker_name) => {
 }
 
 const copyCoinId = (e) => {
-  if (e.target.classList.contains !== "copyIdBtn") {
+  if (e.target.classList.contains("copy-id-button")) {
+    console.log("we are returning")
     return
   }
 
