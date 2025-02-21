@@ -273,12 +273,13 @@ const chooseBtnMain = async (row_num, ticker_name) => {
 }
 
 const copyCoinId = (e) => {
-  if (e.target.classList.contains("copy-id-button")) {
+  console.log(e.target.classList.contains('copy-id-button'))
+  if (!e.target.classList.contains('copy-id-button')) {
     console.log("we are returning")
     return
   }
 
-  const coinIdRow = e.target.id.textContent.slice(9)
+  const coinIdRow = e.target.id.slice(9)
   const text = coinIds[coinIdRow]
   console.log(text)
 
