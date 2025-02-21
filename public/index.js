@@ -330,59 +330,8 @@ searchInput.addEventListener("keydown", (e) => {
   }
 });
 
-// this saveBtn functionality will only pertain to the searchedTokenTable for now
-
-// const saveCoin = async (e) => {
-//   const token = localStorage.getItem('token');
-
-//   if (token) {
-//     console.log('token exists');
-//   } else {
-//     // Handle the case where the token is not found
-//     return console.log('Token not found in local storage');
-//   }
-//   // next we will check if the coin being saved is a searched token or a coin from the generated main table
-//   if ((e.target === document.getElementById('save-button') && token !== undefined && mostRecentSearch !== undefined) || (e.target.classList.contains('main-table-save') && token !== undefined)) {
-//     // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
-//     const mainCoinTicker = document.getElementById(`token-name${e.target.id.slice(11)}`).textContent.slice(0, -10)
-
-//     let data = {
-//       ticker: mainCoinTicker,
-//       coinId: "test placeholder"
-//     }
-
-//     if (e.target === document.getElementById('save-button')) {
-//       data.ticker = document.getElementById('token-name').textContent.slice(12)
-//       data.coinId = mostRecentSearch
-//     }
-
-
-
-//     console.log(data);
-//     const res = await fetch('/user-functions/save-coin',
-//       {
-//         method: 'POST',
-//         headers: {
-//           "Content-Type": 'application/json',
-//           "Authorization": token
-//         },
-//         body: JSON.stringify(data)
-//       });
-
-//     const response = await res.json()
-//     if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
-//       switchToUnsaveBtn()
-//     } else if (response.outcome === "Successful" && data.coinId === "test placeholder") {
-//       switchToMainUnsaveBtn(e.target.id.slice(11))
-//     } else {
-//       console.log("response from back-end controller unsuccessful")
-//     }
-
-//   } else {
-//     console.log("saveCoin function edgecases did not pass or saveBtn was not pressed")
-//     return
-//   }
-// }
+// completed objectives refactored save coin and added coin id column to have access to all coins coin-ids geerated from main table. now we have to incorporate all coins coin-ids
+// in our db queries and then have main table unsave btns use unsaveCoin()
 
 const saveCoin = async (e) => {
   const token = localStorage.getItem('token');
