@@ -381,10 +381,10 @@ searchInput.addEventListener("keydown", (e) => {
 //   }
 // }
 
-const save = async (e) => {
+const saveCoin = async (e) => {
   const token = localStorage.getItem('token');
 
-  if (token) {
+  if (!token) {
     // Handle the case where the token is not found
     return console.log('Token not found in local storage');
   }
