@@ -130,9 +130,10 @@ const isCoinSaved = async () => {
 
     const unsaveBtn = document.getElementById('unsave-button')
     const saveBtn = document.getElementById('save-button')
+    console.log(coinExists)
 
-    // if coinExists === 1 (true) make activate unsaveBtn else activate saveBtn
-    if (coinExists === 1) {
+    // if coinExists === 0 (coin is not in watchlist db) activate unsaveBtn else activate saveBtn
+    if (coinExists === 0) {
       unsaveBtn.style.display = "block";
       unsaveBtn.style.visibility = "visible";
 
@@ -471,7 +472,7 @@ const unsaveCoin = async (e) => {
       const coinTicker = document.getElementById('token-name').textContent.slice(12)
       const coinId = mostRecentSearch
 
-      console.log(coinTicker, coinId);
+      console.log(`h${coinTicker}h`, coinId);
 
       const res = await fetch(`/user-functions/delete-coin/${coinTicker}/${coinId}`,
         {
