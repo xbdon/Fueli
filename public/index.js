@@ -1,5 +1,3 @@
-import { response } from "express";
-
 const searchBtn = document.getElementById("search-button");
 const hamburger = document.getElementById("hamburger");
 const searchInput = document.getElementById("search-input");
