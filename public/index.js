@@ -549,3 +549,5 @@ document.addEventListener("click", unsaveCoin)
 */
 
 // unsave btn has a bug somehwere when called from a searched coin, must debug tmw. then add unsaveCoin() to unsave btns in main table
+// bug seems to be inconsistent, hard to reproduce. maybe it happens if i refresh my server after changing code. will look more into tmw. either way unsaveCoin() will be added 
+// to all unsave btns tmw
