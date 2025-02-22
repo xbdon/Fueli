@@ -504,31 +504,66 @@ mainTableBtn.addEventListener("click", switchToMainTable);
 
 // function to delete coin from watchlist.
 
+// const unsaveCoin = async (e) => {
+//   try {
+//     if (e.target === document.getElementById('unsave-button') && token !== undefined && mostRecentSearch !== undefined) {
+//       console.log(document.getElementById('token-name'))
+//       const coinTicker = document.getElementById('token-name').textContent.slice(12)
+//       const coinId = mostRecentSearch
+
+//       console.log(`h${coinTicker}h`, coinId);
+
+//       const res = await fetch(`/user-functions/delete-coin/${coinTicker}/${coinId}`,
+//         {
+//           method: 'DELETE',
+//           headers: {
+//             "Authorization": token
+//           }
+//         });
+
+//       switchToSaveBtn()
+
+//     } else {
+//       console.log("function call did meet specific criteria, unable to remove coin from watchlist")
+//     }
+//   } catch (err) {
+//     console.log(err)
+//   }
+// }
+
 const unsaveCoin = async (e) => {
-  try {
-    if (e.target === document.getElementById('unsave-button') && token !== undefined && mostRecentSearch !== undefined) {
-      console.log(document.getElementById('token-name'))
-      const coinTicker = document.getElementById('token-name').textContent.slice(12)
-      const coinId = mostRecentSearch
+  let coinTicker = null
+  let coinId = null
 
-      console.log(`h${coinTicker}h`, coinId);
-
-      const res = await fetch(`/user-functions/delete-coin/${coinTicker}/${coinId}`,
-        {
-          method: 'DELETE',
-          headers: {
-            "Authorization": token
-          }
-        });
-
-      switchToSaveBtn()
-
-    } else {
-      console.log("function call did meet specific criteria, unable to remove coin from watchlist")
-    }
-  } catch (err) {
-    console.log(err)
+  if (e.target === document.getElementById('unsave-button') && token !== undefined) {
+    // we need to slice here because the token ticker has a the button text in it as well
+    coinTicker = document.getElementById('token-name').textContent.slice(12)
+    console.log(coinTicker)
+    coinId = mostRecentSearch
+  } else if (e.target.classList.contains('main-table-save') && token !== undefined) {
+    const row_num = e.target.id.slice(11)
+    coinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
+    console.log(coinTicker)
+    coinId = coinIds[row_num]
+  } else {
+    console.log("function call did meet specific criteria, unable to remove coin from watchlist")
   }
+
+  console.log(`h${coinTicker}h`, coinId);
+
+  const res = await fetch(`/user-functions/delete-coin/${coinTicker}/${coinId}`,
+    {
+      method: 'DELETE',
+      headers: {
+        "Authorization": token
+      }
+    });
+
+  switchToSaveBtn()
+
+} else {
+  console.log("function call did meet specific criteria, unable to remove coin from watchlist")
+    }
 }
 
 const switchToSaveBtn = () => {
