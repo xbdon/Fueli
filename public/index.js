@@ -375,10 +375,17 @@ const saveCoin = async (e) => {
     });
 
   const response = await res.json()
-  if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
+
+  if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(11)]) {
     switchToUnsaveBtn()
-  } else if (response.outcome === "Successful" && data.coinId === "test placeholder") {
     switchToMainUnsaveBtn(e.target.id.slice(11))
+
+  } else if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
+    switchToUnsaveBtn()
+
+  } else if (response.outcome === "Successful" && data.coinId === coinIds[e.target.id.slice(11)]) {
+    switchToMainUnsaveBtn(e.target.id.slice(11))
+
   } else {
     console.log("response from back-end controller unsuccessful")
   }
@@ -500,6 +507,7 @@ mainTableBtn.addEventListener("click", switchToMainTable);
 const unsaveCoin = async (e) => {
   try {
     if (e.target === document.getElementById('unsave-button') && token !== undefined && mostRecentSearch !== undefined) {
+      console.log(document.getElementById('token-name'))
       const coinTicker = document.getElementById('token-name').textContent.slice(12)
       const coinId = mostRecentSearch
 
