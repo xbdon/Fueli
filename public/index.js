@@ -1,3 +1,5 @@
+import { response } from "express";
+
 const searchBtn = document.getElementById("search-button");
 const hamburger = document.getElementById("hamburger");
 const searchInput = document.getElementById("search-input");
@@ -546,29 +548,55 @@ const unsaveCoin = async (e) => {
     console.log(coinTicker)
     coinId = coinIds[row_num]
   } else {
-    console.log("function call did meet specific criteria, unable to remove coin from watchlist")
+    return console.log("unsaveCoin() did meet criteria")
   }
 
   console.log(`h${coinTicker}h`, coinId);
 
-  const res = await fetch(`/user-functions/delete-coin/${coinTicker}/${coinId}`,
-    {
-      method: 'DELETE',
-      headers: {
-        "Authorization": token
-      }
-    });
+  try {
+    const res = await fetch(`/user-functions/delete-coin/${coinTicker}/${coinId}`,
+      {
+        method: 'DELETE',
+        headers: {
+          "Authorization": token
+        }
+      });
 
-  switchToSaveBtn()
+    const response = await res.json()
+    switchToSaveBtn()
 
-} else {
-  console.log("function call did meet specific criteria, unable to remove coin from watchlist")
+    if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(11)]) {
+      switchToUnsaveBtn()
+      switchToMainUnsaveBtn(e.target.id.slice(11))
+
+    } else if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
+      switchToUnsaveBtn()
+
+    } else if (response.outcome === "Successful" && data.coinId === coinIds[e.target.id.slice(11)]) {
+      switchToMainUnsaveBtn(e.target.id.slice(11))
+
+    } else {
+      console.log("response from back-end controller unsuccessful")
     }
+  } catch (err) {
+    console.log(err)
+  }
 }
 
 const switchToSaveBtn = () => {
   const saveBtn = document.getElementById("save-button");
   const unsaveBtn = document.getElementById("unsave-button");
+
+  saveBtn.style.display = "block";
+  saveBtn.style.visibility = "visible";
+
+  unsaveBtn.style.display = "none";
+  unsaveBtn.style.visibility = "hidden";
+}
+
+const switchToMainSaveBtn = () => {
+  const saveBtn = document.getElementById(`save-button${id}`);
+  const unsaveBtn = document.getElementById(`unsave-button${id}`);
 
   saveBtn.style.display = "block";
   saveBtn.style.visibility = "visible";

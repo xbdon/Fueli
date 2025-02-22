@@ -74,8 +74,6 @@ const saveCoin = (req, res) => {
 
         insertCoin.run(userId, ticker, coinId)
 
-        console.log("Success! Coin saved to watchlist!");
-
         res.json({ outcome: "Successful" })
     } catch (err) {
         console.log(err.message);
@@ -98,11 +96,19 @@ const getWatchlist = (req, res) => {
 }
 
 const deleteCoin = (req, res) => {
+    console.log("deleting coin...")
     const { ticker, coinId } = req.params
     const userId = req.userId;
-    const deleteCoin = db.prepare(`DELETE FROM watchlist WHERE user_id = ? AND ticker = ? AND coin_id = ?`)
-    deleteCoin.run(userId, ticker, coinId)
-    res.json({ message: "Coin removed from watchlist" })
+
+    try {
+        const deleteCoin = db.prepare(`DELETE FROM watchlist WHERE user_id = ? AND ticker = ? AND coin_id = ?`)
+        deleteCoin.run(userId, ticker, coinId)
+
+        res.json({ outcome: "Successful" })
+    } catch (err) {
+        console.log(err)
+        res.send(503)
+    }
 }
 
 const checkCoin = (req, res) => {
