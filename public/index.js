@@ -563,17 +563,16 @@ const unsaveCoin = async (e) => {
       });
 
     const response = await res.json()
-    switchToSaveBtn()
 
     if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(11)]) {
-      switchToUnsaveBtn()
-      switchToMainUnsaveBtn(e.target.id.slice(11))
+      switchToSaveBtn()
+      switchToMainSaveBtn(e.target.id.slice(11))
 
     } else if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
-      switchToUnsaveBtn()
+      switchToSaveBtn()
 
     } else if (response.outcome === "Successful" && data.coinId === coinIds[e.target.id.slice(11)]) {
-      switchToMainUnsaveBtn(e.target.id.slice(11))
+      switchToMainSaveBtn(e.target.id.slice(11))
 
     } else {
       console.log("response from back-end controller unsuccessful")
@@ -594,7 +593,7 @@ const switchToSaveBtn = () => {
   unsaveBtn.style.visibility = "hidden";
 }
 
-const switchToMainSaveBtn = () => {
+const switchToMainSaveBtn = (id) => {
   const saveBtn = document.getElementById(`save-button${id}`);
   const unsaveBtn = document.getElementById(`unsave-button${id}`);
 
