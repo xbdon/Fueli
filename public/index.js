@@ -390,10 +390,9 @@ const saveCoin = async (e) => {
   console.log(e.target.id.slice(11))
 
   // if a coin is searched and a main table coin save btn is clicked
-  if (response.outcome === "Successful" && mostRecentSearch && mainSaveClicked === 2) {
+  if (response.outcome === "Successful" && mainSaveClicked === 1 && !coinIds.includes(mostRecentSearch)) {
     console.log("000")
     switchToUnsaveBtn()
-    switchToMainUnsaveBtn(e.target.id.slice(11))
 
     // if searched coin save btn is clicked and main table is generated; cant use e.target.id cuz searched coin save btn was clicked
   } else if (response.outcome === "Successful" && mainSaveClicked === 1 && coinIds.includes(mostRecentSearch)) {
@@ -563,21 +562,19 @@ const unsaveCoin = async (e) => {
     const response = await res.json()
     console.log("que paso test")
 
-    if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(13)]) {
+    // if SC search btn clicked and SC MT exist
+    if (response.outcome === "Successful" && mostRecentSearch && coinIds.includes(mostRecentSearch)) {
       console.log("000")
-      switchToSaveBtn()
-      switchToMainSaveBtn(e.target.id.slice(13))
-
-    } else if (response.outcome === "Successful" && mostRecentSearch && coinIds.includes(mostRecentSearch)) {
-      console.log("111")
       switchToSaveBtn()
       switchToMainSaveBtn(coinIds.indexOf(mostRecentSearch))
 
+      // bug here, i cant blanket put most recent search for the includes and index of methods as if i want to unsave a coin not related to the searched coin it will fail
     } else if (response.outcome === "Successful" && coinId === coinIds[e.target.id.slice(13)]) {
-      console.log("222")
+      console.log("111")
       switchToMainSaveBtn(e.target.id.slice(13))
 
     } else if (response.outcome === "Successful" && coinId === mostRecentSearch) {
+      console.log("222")
       switchToSaveBtn()
 
     } else {
