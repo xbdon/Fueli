@@ -545,14 +545,10 @@ const unsaveCoin = async (e) => {
   if (e.target === document.getElementById('unsave-button') && token !== undefined) {
     // we need to slice here because the token ticker has a the button text in it as well
     coinTicker = document.getElementById('token-name').textContent.slice(12)
-    console.log(coinTicker)
     coinId = mostRecentSearch
   } else if (e.target.classList.contains('main-table-unsave') && token !== undefined) {
     const row_num = e.target.id.slice(13)
-    console.log(row_num)
-    console.log(document.getElementById(`token-name${row_num}`).textContent)
     coinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
-    console.log(coinTicker)
     coinId = coinIds[row_num]
   } else {
     return console.log("unsaveCoin() did not meet criteria")
@@ -579,7 +575,7 @@ const unsaveCoin = async (e) => {
       switchToSaveBtn()
 
     } else if (response.outcome === "Successful" && coinId === coinIds[e.target.id.slice(13)]) {
-      switchToMainSaveBtn(e.target.id.slice(11))
+      switchToMainSaveBtn(e.target.id.slice(13))
 
     } else {
       console.log("response from back-end controller unsuccessful")
