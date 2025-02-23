@@ -386,7 +386,7 @@ const saveCoin = async (e) => {
   // the problem lies here, when we hit the save button, the e.target.id.slice(11) does not return the index of the coin chosen because we are clicking the searched coin save btn
   // there is no index to derive from
   console.log(e.target.id.slice(11))
-  if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(11)]) {
+  if (response.outcome === "Successful" && mostRecentSearch && mainSaveClicked === 1) {
     console.log("000")
     switchToUnsaveBtn()
     switchToMainUnsaveBtn(e.target.id.slice(11))
