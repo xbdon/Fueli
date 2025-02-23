@@ -547,7 +547,7 @@ const unsaveCoin = async (e) => {
     coinTicker = document.getElementById('token-name').textContent.slice(12)
     console.log(coinTicker)
     coinId = mostRecentSearch
-  } else if (e.target.classList.contains('main-table-save') && token !== undefined) {
+  } else if (e.target.classList.contains('main-table-unsave') && token !== undefined) {
     const row_num = e.target.id.slice(11)
     coinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
     console.log(coinTicker)
