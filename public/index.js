@@ -571,13 +571,18 @@ const unsaveCoin = async (e) => {
       switchToMainSaveBtn(coinIds.indexOf(mostRecentSearch))
 
 
-    } else if (response.outcome === "Successful" && coinId === coinIds[e.target.id.slice(13)]) {
+    } else if (response.outcome === "Successful" && mainSaveClicked === 2 && mostRecentSearch === coinIds[e.target.id.slice(13)]) {
       console.log("111")
+      switchToSaveBtn()
       switchToMainSaveBtn(e.target.id.slice(13))
 
-    } else if (response.outcome === "Successful" && coinId === mostRecentSearch) {
+    } else if (response.outcome === "Successful" && mainSaveClicked === 1) {
       console.log("222")
       switchToSaveBtn()
+
+    } else if (response.outcome === "Successful" && mainSaveClicked === 2) {
+      console.log("333")
+      switchToMainSaveBtn(e.target.id.slice(13))
 
     } else {
       console.log("response from back-end controller unsuccessful")
