@@ -346,11 +346,15 @@ const saveCoin = async (e) => {
     coinId: null
   }
 
+  // variable marker to see if save button was a searched coin or main table coin; 0 is searched. 1 is main table
+  let mainSaveClicked = null
+
   // next we will check if the coin being saved is a searched token or a coin from the generated main table
   if (e.target === document.getElementById('save-button') && mostRecentSearch !== undefined) {
 
     data.ticker = document.getElementById('token-name').textContent.slice(12)
     data.coinId = mostRecentSearch
+    mainSaveClicked = 0
 
   } else if (e.target.classList.contains('main-table-save')) {
     // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
@@ -358,6 +362,7 @@ const saveCoin = async (e) => {
     const mainCoinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
     data.ticker = mainCoinTicker
     data.coinId = coinIds[row_num]
+    mainSaveClicked = 1
 
   } else {
     return
