@@ -307,6 +307,7 @@ const closeGeneratedTable = () => {
   searchInput.style.display = "none";
   searchInput.style.visibility = "hidden";
   searchedTokenStats.innerHTML = "";
+  mostRecentSearch = null;
 };
 
 hamburger.addEventListener("click", getHomePageTable);
@@ -346,7 +347,7 @@ const saveCoin = async (e) => {
     coinId: null
   }
 
-  // variable marker to see if save button was a searched coin or main table coin; 0 is searched. 1 is main table
+  // variable marker to see if save button was a searched coin or main table coin; 1 is searched. 2 is main table
   let mainSaveClicked = null
 
   // next we will check if the coin being saved is a searched token or a coin from the generated main table
@@ -354,7 +355,7 @@ const saveCoin = async (e) => {
 
     data.ticker = document.getElementById('token-name').textContent.slice(12)
     data.coinId = mostRecentSearch
-    mainSaveClicked = 0
+    mainSaveClicked = 1
 
   } else if (e.target.classList.contains('main-table-save')) {
     // this gets the token ticker associated with the button clicked so we can add it to the data sent to the back-end
@@ -362,7 +363,7 @@ const saveCoin = async (e) => {
     const mainCoinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
     data.ticker = mainCoinTicker
     data.coinId = coinIds[row_num]
-    mainSaveClicked = 1
+    mainSaveClicked = 2
 
   } else {
     return
@@ -386,17 +387,16 @@ const saveCoin = async (e) => {
   // the problem lies here, when we hit the save button, the e.target.id.slice(11) does not return the index of the coin chosen because we are clicking the searched coin save btn
   // there is no index to derive from
   console.log(e.target.id.slice(11))
-  if (response.outcome === "Successful" && mostRecentSearch && mainSaveClicked === 1) {
+  if (response.outcome === "Successful" && mostRecentSearch && mainSaveClicked === 2) {
     console.log("000")
     switchToUnsaveBtn()
     switchToMainUnsaveBtn(e.target.id.slice(11))
 
-  } else if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
+  } else if (response.outcome === "Successful" && mainSaveClicked === 1 && coinIds.includes(mostRecentSearch)) {
     console.log("111")
     switchToUnsaveBtn()
-    switchToMainUnsaveBtn(e.target.id.slice(11))
 
-  } else if (response.outcome === "Successful" && data.coinId === coinIds[e.target.id.slice(11)] && !mostRecentSearch) {
+  } else if (response.outcome === "Successful" && mainSaveClicked === 2) {
     console.log("222")
     switchToMainUnsaveBtn(e.target.id.slice(11))
 
