@@ -378,15 +378,21 @@ const saveCoin = async (e) => {
 
   // unsaveCoin() refactor complete, main funcitonality is stable, however one logic error still exists
   // when the searched coin save and unsave btns are clicked I want the main table coin save and unsave btns to switch in unison
-
+  // the problem lies here, when we hit the save button, the e.target.id.slice(11) does not return the index of the coin chosen because we are clicking the searched coin save btn
+  // there is no index to derive from
+  console.log(e.target.id.slice(11))
   if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(11)]) {
+    console.log("000")
     switchToUnsaveBtn()
     switchToMainUnsaveBtn(e.target.id.slice(11))
 
-  } else if (response.outcome === "Successful" && data.coinId === mostRecentSearch && !coinIds[e.target.id.slice(11)]) {
+  } else if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
+    console.log("111")
     switchToUnsaveBtn()
+    switchToMainUnsaveBtn(e.target.id.slice(11))
 
   } else if (response.outcome === "Successful" && data.coinId === coinIds[e.target.id.slice(11)] && !mostRecentSearch) {
+    console.log("222")
     switchToMainUnsaveBtn(e.target.id.slice(11))
 
   } else {
