@@ -390,9 +390,10 @@ const saveCoin = async (e) => {
   console.log(e.target.id.slice(11))
 
   // if a coin is searched and a main table coin save btn is clicked
-  if (response.outcome === "Successful" && mainSaveClicked === 1 && !coinIds.includes(mostRecentSearch)) {
+  if (response.outcome === "Successful" && mainSaveClicked === 2 && coinIds[e.target.id.slice(11)] === mostRecentSearch) {
     console.log("000")
     switchToUnsaveBtn()
+    switchToMainUnsaveBtn(e.target.id.slice(11))
 
     // if searched coin save btn is clicked and main table is generated; cant use e.target.id cuz searched coin save btn was clicked
   } else if (response.outcome === "Successful" && mainSaveClicked === 1 && coinIds.includes(mostRecentSearch)) {
