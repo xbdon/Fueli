@@ -548,7 +548,9 @@ const unsaveCoin = async (e) => {
     console.log(coinTicker)
     coinId = mostRecentSearch
   } else if (e.target.classList.contains('main-table-unsave') && token !== undefined) {
-    const row_num = e.target.id.slice(11)
+    const row_num = e.target.id.slice(13)
+    console.log(row_num)
+    console.log(document.getElementById(`token-name${row_num}`).textContent)
     coinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
     console.log(coinTicker)
     coinId = coinIds[row_num]
@@ -569,14 +571,14 @@ const unsaveCoin = async (e) => {
 
     const response = await res.json()
 
-    if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(11)]) {
+    if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(13)]) {
       switchToSaveBtn()
-      switchToMainSaveBtn(e.target.id.slice(11))
+      switchToMainSaveBtn(e.target.id.slice(13))
 
     } else if (response.outcome === "Successful" && coinId === mostRecentSearch) {
       switchToSaveBtn()
 
-    } else if (response.outcome === "Successful" && coinId === coinIds[e.target.id.slice(11)]) {
+    } else if (response.outcome === "Successful" && coinId === coinIds[e.target.id.slice(13)]) {
       switchToMainSaveBtn(e.target.id.slice(11))
 
     } else {
