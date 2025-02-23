@@ -568,7 +568,7 @@ const unsaveCoin = async (e) => {
       switchToSaveBtn()
       switchToMainSaveBtn(coinIds.indexOf(mostRecentSearch))
 
-      // bug here, i cant blanket put most recent search for the includes and index of methods as if i want to unsave a coin not related to the searched coin it will fail
+
     } else if (response.outcome === "Successful" && coinId === coinIds[e.target.id.slice(13)]) {
       console.log("111")
       switchToMainSaveBtn(e.target.id.slice(13))
