@@ -507,33 +507,6 @@ mainTableBtn.addEventListener("click", switchToMainTable);
 
 // function to delete coin from watchlist.
 
-// const unsaveCoin = async (e) => {
-//   try {
-//     if (e.target === document.getElementById('unsave-button') && token !== undefined && mostRecentSearch !== undefined) {
-//       console.log(document.getElementById('token-name'))
-//       const coinTicker = document.getElementById('token-name').textContent.slice(12)
-//       const coinId = mostRecentSearch
-
-//       console.log(`h${coinTicker}h`, coinId);
-
-//       const res = await fetch(`/user-functions/delete-coin/${coinTicker}/${coinId}`,
-//         {
-//           method: 'DELETE',
-//           headers: {
-//             "Authorization": token
-//           }
-//         });
-
-//       switchToSaveBtn()
-
-//     } else {
-//       console.log("function call did meet specific criteria, unable to remove coin from watchlist")
-//     }
-//   } catch (err) {
-//     console.log(err)
-//   }
-// }
-
 const unsaveCoin = async (e) => {
   const token = localStorage.getItem('token');
 
