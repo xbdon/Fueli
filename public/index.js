@@ -452,7 +452,7 @@ const getWatchlist = async () => {
 
 // add a function below to use at the end of getWatchlist that displays the watchlist coin data
 const displayWatchlist = (json) => {
-  if (json[0].ticker === undefined) {
+  if (json[0] === undefined) {
     console.log("displayWatchlist() arg equals undefined, user may not have saved any coins!")
     return
   }
