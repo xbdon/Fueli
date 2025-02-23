@@ -376,14 +376,17 @@ const saveCoin = async (e) => {
 
   const response = await res.json()
 
+  // unsaveCoin() refactor complete, main funcitonality is stable, however one logic error still exists
+  // when the searched coin save and unsave btns are clicked I want the main table coin save and unsave btns to switch in unison
+
   if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(11)]) {
     switchToUnsaveBtn()
     switchToMainUnsaveBtn(e.target.id.slice(11))
 
-  } else if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
+  } else if (response.outcome === "Successful" && data.coinId === mostRecentSearch && !coinIds[e.target.id.slice(11)]) {
     switchToUnsaveBtn()
 
-  } else if (response.outcome === "Successful" && data.coinId === coinIds[e.target.id.slice(11)]) {
+  } else if (response.outcome === "Successful" && data.coinId === coinIds[e.target.id.slice(11)] && !mostRecentSearch) {
     switchToMainUnsaveBtn(e.target.id.slice(11))
 
   } else {
