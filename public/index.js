@@ -20,7 +20,7 @@ let coinIds = []
 let token = localStorage.getItem('token');
 console.log(token);
 
-let mostRecentSearch;
+let mostRecentSearch = null;
 
 /* checks result from fetchData() api call; 
 if no coin is found from search input,
@@ -351,7 +351,7 @@ const saveCoin = async (e) => {
   let mainSaveClicked = null
 
   // next we will check if the coin being saved is a searched token or a coin from the generated main table
-  if (e.target === document.getElementById('save-button') && mostRecentSearch !== undefined) {
+  if (e.target === document.getElementById('save-button') && mostRecentSearch !== null) {
 
     data.ticker = document.getElementById('token-name').textContent.slice(12)
     data.coinId = mostRecentSearch
@@ -386,20 +386,28 @@ const saveCoin = async (e) => {
   // when the searched coin save and unsave btns are clicked I want the main table coin save and unsave btns to switch in unison
   // the problem lies here, when we hit the save button, the e.target.id.slice(11) does not return the index of the coin chosen because we are clicking the searched coin save btn
   // there is no index to derive from
+
   console.log(e.target.id.slice(11))
+
+  // if a coin is searched and a main table coin save btn is clicked
   if (response.outcome === "Successful" && mostRecentSearch && mainSaveClicked === 2) {
     console.log("000")
     switchToUnsaveBtn()
     switchToMainUnsaveBtn(e.target.id.slice(11))
 
+    // if searched coin save btn is clicked and main table is generated; cant use e.target.id cuz searched coin save btn was clicked
   } else if (response.outcome === "Successful" && mainSaveClicked === 1 && coinIds.includes(mostRecentSearch)) {
     console.log("111")
     switchToUnsaveBtn()
+    switchToMainUnsaveBtn(coinIds.indexOf(mostRecentSearch))
+
+  } else if (response.outcome === "Successful" && mainSaveClicked === 1) {
+    console.log("222")
+    switchToUnsaveBtn()
 
   } else if (response.outcome === "Successful" && mainSaveClicked === 2) {
-    console.log("222")
+    console.log("333")
     switchToMainUnsaveBtn(e.target.id.slice(11))
-
   } else {
     console.log("response from back-end controller unsuccessful")
   }
