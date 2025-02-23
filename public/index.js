@@ -382,11 +382,6 @@ const saveCoin = async (e) => {
 
   const response = await res.json()
 
-  // unsaveCoin() refactor complete, main funcitonality is stable, however one logic error still exists
-  // when the searched coin save and unsave btns are clicked I want the main table coin save and unsave btns to switch in unison
-  // the problem lies here, when we hit the save button, the e.target.id.slice(11) does not return the index of the coin chosen because we are clicking the searched coin save btn
-  // there is no index to derive from
-
   console.log(e.target.id.slice(11))
 
   // if a coin is searched and a main table coin save btn is clicked
@@ -537,14 +532,20 @@ const unsaveCoin = async (e) => {
   let coinTicker = null
   let coinId = null
 
+  let mainSaveClicked = null
+
   if (e.target === document.getElementById('unsave-button') && token !== undefined) {
     // we need to slice here because the token ticker has a the button text in it as well
     coinTicker = document.getElementById('token-name').textContent.slice(12)
     coinId = mostRecentSearch
+    mainSaveClicked = 1
+
   } else if (e.target.classList.contains('main-table-unsave') && token !== undefined) {
     const row_num = e.target.id.slice(13)
     coinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
     coinId = coinIds[row_num]
+    mainSaveClicked = 2
+
   } else {
     return console.log("unsaveCoin() did not meet criteria")
   }
@@ -563,8 +564,8 @@ const unsaveCoin = async (e) => {
     const response = await res.json()
     console.log("que paso test")
 
-    // if SC search btn clicked and SC MT exist
-    if (response.outcome === "Successful" && mostRecentSearch && coinIds.includes(mostRecentSearch)) {
+    // if Sc unsave btn clicked and main table coin is equal to mostRecentSearch
+    if (response.outcome === "Successful" && mainSaveClicked === 1 && coinIds.includes(mostRecentSearch)) {
       console.log("000")
       switchToSaveBtn()
       switchToMainSaveBtn(coinIds.indexOf(mostRecentSearch))
