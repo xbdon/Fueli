@@ -532,6 +532,13 @@ mainTableBtn.addEventListener("click", switchToMainTable);
 // }
 
 const unsaveCoin = async (e) => {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    // Handle the case where the token is not found
+    return console.log('Token not found in local storage');
+  }
+
   let coinTicker = null
   let coinId = null
 
@@ -546,7 +553,7 @@ const unsaveCoin = async (e) => {
     console.log(coinTicker)
     coinId = coinIds[row_num]
   } else {
-    return console.log("unsaveCoin() did meet criteria")
+    return console.log("unsaveCoin() did not meet criteria")
   }
 
   console.log(`h${coinTicker}h`, coinId);
@@ -566,10 +573,10 @@ const unsaveCoin = async (e) => {
       switchToSaveBtn()
       switchToMainSaveBtn(e.target.id.slice(11))
 
-    } else if (response.outcome === "Successful" && data.coinId === mostRecentSearch) {
+    } else if (response.outcome === "Successful" && coinId === mostRecentSearch) {
       switchToSaveBtn()
 
-    } else if (response.outcome === "Successful" && data.coinId === coinIds[e.target.id.slice(11)]) {
+    } else if (response.outcome === "Successful" && coinId === coinIds[e.target.id.slice(11)]) {
       switchToMainSaveBtn(e.target.id.slice(11))
 
     } else {
