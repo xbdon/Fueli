@@ -275,7 +275,7 @@ const chooseBtnMain = async (row_num, ticker_name) => {
 const copyCoinId = (e) => {
   console.log(e.target.classList.contains('copy-id-button'))
   if (!e.target.classList.contains('copy-id-button')) {
-    console.log("we are returning")
+    console.log("we are returning from copyCoinId")
     return
   }
 
@@ -561,16 +561,24 @@ const unsaveCoin = async (e) => {
       });
 
     const response = await res.json()
+    console.log("que paso test")
 
     if (response.outcome === "Successful" && mostRecentSearch === coinIds[e.target.id.slice(13)]) {
+      console.log("000")
       switchToSaveBtn()
+      switchToMainSaveBtn(e.target.id.slice(13))
+
+    } else if (response.outcome === "Successful" && mostRecentSearch && coinIds.includes(mostRecentSearch)) {
+      console.log("111")
+      switchToSaveBtn()
+      switchToMainSaveBtn(coinIds.indexOf(mostRecentSearch))
+
+    } else if (response.outcome === "Successful" && coinId === coinIds[e.target.id.slice(13)]) {
+      console.log("222")
       switchToMainSaveBtn(e.target.id.slice(13))
 
     } else if (response.outcome === "Successful" && coinId === mostRecentSearch) {
       switchToSaveBtn()
-
-    } else if (response.outcome === "Successful" && coinId === coinIds[e.target.id.slice(13)]) {
-      switchToMainSaveBtn(e.target.id.slice(13))
 
     } else {
       console.log("response from back-end controller unsuccessful")
