@@ -130,4 +130,13 @@
   <script src="./index.js"></script>
 </body>
 
+<script>
+  let sidebarBtn = document.querySelector('#sidebar-button')
+  let sidebar = document.querySelector('.sidebar')
+
+  sidebarBtn.onclick = function () {
+    sidebar.classlist.toggle('active')
+  }
+</script>
+
 </html>
