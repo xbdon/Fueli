@@ -28,6 +28,16 @@ then value changes to false*/
 let fetchDataResult = true;
 let adaDollarValue = 0;
 
+// const sidebarBtn = document.querySelector('#sidebar-button')
+// const sidebar = document.querySelector('.sidebar')
+
+// sidebarBtn.addEventListener('click', () => {
+
+//   sidebar.classList.contains('open-side')
+//     ? sidebar.classList.remove('open-side')
+//     : sidebar.classList.add('open-side')
+// })
+
 const getAdaPrice = async () => {
   try {
     const data = await fetch('/api/ada-price/get');

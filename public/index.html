@@ -60,7 +60,7 @@
     </ul>
   </div>
 
-  <div>
+  <div class="main">
     <h1>Fueli</h1>
     <button id="search-button">Search</button>
     <button id="hamburger">Hamburger</button>
@@ -129,16 +129,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
 
     <script src="./index.js"></script>
+
+    <script>
+      const sidebarBtn = document.querySelector('#sidebar-button')
+      const sidebar = document.querySelector('.sidebar')
+
+      sidebarBtn.addEventListener('click', () => {
+
+        sidebar.classList.contains('open-side')
+          ? sidebar.classList.remove('open-side')
+          : sidebar.classList.add('open-side')
+      })
+    </script>
   </div>
 </body>
-
-<script>
-  let sidebarBtn = document.querySelector('#sidebar-button')
-  let sidebar = document.querySelector('.sidebar')
-
-  sidebarBtn.onclick = function () {
-    sidebar.classlist.toggle('active')
-  }
-</script>
 
 </html>
