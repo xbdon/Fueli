@@ -14,11 +14,11 @@
 
   <div class="sidebar">
     <div class="top">
+      <i class="fa-solid fa-bars" id="sidebar-button"></i>
       <div class="logo">
         <i class="fa-solid fa-f"></i>
         <span>Fueli</span>
       </div>
-      <i class="fa-solid fa-bars" id="sidebar-button"></i>
     </div>
 
     <ul>
@@ -134,11 +134,17 @@
       const sidebarBtn = document.querySelector('#sidebar-button')
       const sidebar = document.querySelector('.sidebar')
 
+      const main = document.querySelector('.main')
+
       sidebarBtn.addEventListener('click', () => {
 
         sidebar.classList.contains('open-side')
           ? sidebar.classList.remove('open-side')
           : sidebar.classList.add('open-side')
+
+        main.classList.contains('open-main')
+          ? main.classList.remove('open-main')
+          : main.classList.add('open-main')
       })
     </script>
   </div>
