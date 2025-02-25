@@ -136,7 +136,13 @@
 
       const main = document.querySelector('.main')
 
+      let burger = document.querySelector('.fa-bars')
+
       sidebarBtn.addEventListener('click', () => {
+
+        sidebar.classList.contains('open-side')
+          ? burger.classList.replace('fa-arrow-left', 'fa-bars')
+          : burger.classList.replace('fa-bars', 'fa-arrow-left')
 
         sidebar.classList.contains('open-side')
           ? sidebar.classList.remove('open-side')
