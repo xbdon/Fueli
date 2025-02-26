@@ -14,7 +14,7 @@ datasource db {
 }
 
 
-model User {
+model Users {
   id        Int     @id @default(autoincrement())
   email     String  @unique
   username  String  @unique
@@ -23,8 +23,8 @@ model User {
 
 model watchlist {
   id      Int       @id @default(autoincrement())
+  userId  Int
   ticker  String    @unique
   coinId  String    @unique
-  userId  Int
-  User    User  @relation(fields: [userId], references: [id])
+  user    Users  @relation(fields: [userId], references: [id])
 }
