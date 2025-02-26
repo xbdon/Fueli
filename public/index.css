@@ -12,6 +12,8 @@ body {
     background-color: black;
     padding: .4rem .8rem;
     transition: all 0.5s ease;
+    border-color: #A9A9A9;
+    border-width: 1px;
 }
 
 .open-side {
@@ -73,8 +75,8 @@ body {
     position: relative;
     list-style-type: none;
     height: 50px;
-    width: 100px;
-    margin: 0.8rem -20px;
+    width: 50px;
+    margin: 0.8rem -20px 0.8rem -20px;
     line-height: 50px;
 }
 
@@ -84,7 +86,7 @@ body {
     align-items: center;
     text-decoration: none;
     border-radius: 0.8rem;
-    margin-right: 50px;
+    margin-right: 10px;
     font-size: 2rem;
 }
 
@@ -127,10 +129,12 @@ body {
 
 .sidebar .nav-item {
     opacity: 0;
+    display: none;
 }
 
 .sidebar.open-side .nav-item {
     opacity: 1;
+    display: block;
 }
 
 .sidebar ul li a .tooltip {
@@ -174,7 +178,8 @@ body {
 
 h1 {
     display: inline-block;
-    font-size: 15px;
+    font-size: 2rem;
+    color: #D2691E;
 }
 
 
