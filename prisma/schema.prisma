@@ -14,7 +14,7 @@ datasource db {
 }
 
 
-model Users {
+model users {
   id        Int     @id @default(autoincrement())
   email     String  @unique
   username  String  @unique
