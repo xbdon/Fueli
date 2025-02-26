@@ -92,10 +92,10 @@ body {
     background-color: #A9A9A9;
 }
 
-/* .sidebar ul li a:hover~.tooltip {
+.sidebar ul li i:hover~.tooltip {
     opacity: 1;
     display: block;
-} */
+}
 
 .tool-toggle {
     opacity: 1;
@@ -133,7 +133,7 @@ body {
     opacity: 1;
 }
 
-.sidebar ul li .tooltip {
+.sidebar ul li a .tooltip {
     /* overflow: visible; */
     position: absolute;
     left: 125px;
@@ -143,6 +143,7 @@ body {
     box-shadow: 0 0.5rem 0.8rem #A9A9A9;
     border-radius: 0.6rem;
     padding: .4rem 1.2rem;
+    font-size: 1rem;
     line-height: 1.8rem;
     z-index: 20;
     opacity: 0;
