@@ -48,13 +48,17 @@ body {
     opacity: 1;
 }
 
+.top {
+    margin-bottom: 100px;
+}
+
 .top .logo {
     position: relative;
     top: 20px;
 }
 
 .top .logo i {
-    font-size: 2rem;
+    font-size: 3rem;
     margin-left: 20px;
     margin-right: 40px;
     position: relative;
@@ -84,8 +88,18 @@ body {
     font-size: 2rem;
 }
 
-.sidebar ul li a:hover {
+.sidebar ul li i:hover {
     background-color: #A9A9A9;
+}
+
+/* .sidebar ul li a:hover~.tooltip {
+    opacity: 1;
+    display: block;
+} */
+
+.tool-toggle {
+    opacity: 1;
+    display: block;
 }
 
 .sidebar.open-side ul li a {
@@ -120,7 +134,7 @@ body {
 }
 
 .sidebar ul li .tooltip {
-    overflow: visible;
+    /* overflow: visible; */
     position: absolute;
     left: 125px;
     top: 50%;
@@ -132,22 +146,17 @@ body {
     line-height: 1.8rem;
     z-index: 20;
     opacity: 0;
-
+    display: none;
 }
 
-.sidebar li:hover .tooltip {
+/* .sidebar li:hover .tooltip {
     opacity: 1;
-}
+    display: block;
+} */
 
 .sidebar.open-side li:hover .tooltip {
     opacity: 0;
 }
-
-/* .sidebar.open-side ul li .tooltip {
-    display: none;
-} */
-
-
 
 
 
@@ -248,12 +257,6 @@ h1 {
 
 table {
     border-collapse: collapse;
-}
-
-#login-btn {
-    float: right;
-    display: inline;
-    color: #1F9AFE
 }
 
 #watchlist {

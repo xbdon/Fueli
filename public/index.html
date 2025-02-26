@@ -23,7 +23,7 @@
 
     <ul>
       <li>
-        <a href="#">
+        <a href="./index.html">
           <i class="fa-solid fa-house"></i>
           <span class="nav-item">Home</span>
         </a>
@@ -44,7 +44,7 @@
         <span class="tooltip">API</span>
       </li>
       <li>
-        <a href="#">
+        <a href="./login.html">
           <i class="fa-solid fa-right-to-bracket"></i>
           <span class="nav-item">Login</span>
         </a>
@@ -65,9 +65,6 @@
     <button id="search-button">Search</button>
     <button id="hamburger">Hamburger</button>
     <br />
-    <p id="login-btn">
-      <a href="./login.html">Login</a>
-    </p>
 
     <div id="ada-price">ADA Price:</div>
     <button id="watchlist-button">Watchlist</button>
@@ -152,6 +149,19 @@
           ? main.classList.remove('open-main')
           : main.classList.add('open-main')
       })
+
+      // const sideBarIcons = document.getElementsByTagName('i')
+      // console.log(sideBarIcons)
+      // const tooltips = document.getElementsByClassName('tooltip')
+
+      // // the indexs of the side bar icons
+      // for (let i = 3; i < 8; i++) {
+      //   sideBarIcons[i].addEventListener('mouseover', () => {
+      //     tooltips[i].classList.contains('tool-toggle')
+      //       ? tooltips[i].classList.remove('tool-toggle')
+      //       : tooltips[i].classList.add('tool-toggle')
+      //   })
+      // }
     </script>
   </div>
 </body>
