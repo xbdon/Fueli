@@ -75,31 +75,48 @@ const login = async (req, res) => {
 
 
 // currently going through coin-data.js router, may need to change
-const saveCoin = (req, res) => {
+const saveCoin = async (req, res) => {
     console.log("Saving coin...");
     const { ticker, coinId } = req.body;
     const userId = req.userId;
     try {
         console.log(ticker, coinId, userId)
-        // now that we have a user, I want to add a saving coin to watchlist functionality
-        const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, ticker, coin_id)
-            VALUES (?, ?, ?)`)
+        // // now that we have a user, I want to add a saving coin to watchlist functionality
+        // const insertCoin = db.prepare(`INSERT INTO watchlist (user_id, ticker, coin_id)
+        //     VALUES (?, ?, ?)`)
 
-        insertCoin.run(userId, ticker, coinId)
+        // insertCoin.run(userId, ticker, coinId)
 
-        res.json({ outcome: "Successful" })
+        const insertCoin = await prisma.watchlist.create({
+            data: {
+                user_id: userId,
+                ticker: ticker,
+                coin_id: coinId
+            }
+        })
+
+        if (insertCoin) {
+            return res.json({ outcome: "Successful" })
+        } else {
+            console.log("coin failed to be save")
+        }
     } catch (err) {
         console.log(err.message);
         res.sendStatus(503)
     }
 }
 
-const getWatchlist = (req, res) => {
+const getWatchlist = async (req, res) => {
     const userId = req.userId
 
     try {
-        const getSavedCoins = db.prepare('SELECT * FROM watchlist WHERE user_id = ?')
-        const watchlist = getSavedCoins.all(userId)
+        // const getSavedCoins = db.prepare('SELECT * FROM watchlist WHERE user_id = ?')
+        // const watchlist = getSavedCoins.all(userId)
+        const watchlist = await prisma.watchlist.findMany({
+            where: {
+                user_id: userId
+            }
+        })
         console.log(watchlist)
         res.json(watchlist)
     } catch {
@@ -108,33 +125,52 @@ const getWatchlist = (req, res) => {
     }
 }
 
-const deleteCoin = (req, res) => {
+const deleteCoin = async (req, res) => {
     console.log("deleting coin...")
     const { ticker, coinId } = req.params
     const userId = req.userId;
 
     try {
-        const deleteCoin = db.prepare(`DELETE FROM watchlist WHERE user_id = ? AND ticker = ? AND coin_id = ?`)
-        deleteCoin.run(userId, ticker, coinId)
+        // const deleteCoin = db.prepare(`DELETE FROM watchlist WHERE user_id = ? AND ticker = ? AND coin_id = ?`)
+        // deleteCoin.run(userId, ticker, coinId)
 
-        res.json({ outcome: "Successful" })
+        const deleteCoin = await prisma.watchlist.delete({
+            data: {
+                user_id: userId,
+                ticker: ticker,
+                coin_id: coinId
+            }
+        })
+
+        if (deleteCoin) {
+            return res.json({ outcome: "Successful" })
+        } else {
+            console.log("coin was unable to be removed")
+        }
     } catch (err) {
         console.log(err)
         res.send(503)
     }
 }
 
-const checkCoin = (req, res) => {
+const checkCoin = async (req, res) => {
     const { coinId, ticker } = req.params
     const userId = req.userId
-    const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND ticker = ? AND coin_id = ?) AS coin_exists`)
-    const bool = checkCoin.get(userId, ticker, coinId)
+    // const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND ticker = ? AND coin_id = ?) AS coin_exists`)
+    // const bool = checkCoin.get(userId, ticker, coinId)
+
+    const checkCoin = await prisma.watchlist.count({
+        where: {
+            user_id: userId,
+            ticker: ticker,
+            coin_id: coinId
+        }
+    })
     res.json({ coin: bool })
 
 }
 
-// because tap tools api for large data set load of coins(main table) does not require us to input a coin_id we have to do this db query 
-// with only a ticker variable
+// coin_id can be added to this query; will be on todo list
 const checkCoinMain = (req, res) => {
     const { ticker } = req.params
     const userId = req.userId
