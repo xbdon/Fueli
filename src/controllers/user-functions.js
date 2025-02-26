@@ -166,17 +166,26 @@ const checkCoin = async (req, res) => {
             coin_id: coinId
         }
     })
-    res.json({ coin: bool })
-
+    // + is a unary operator to convert boolean value to integer
+    res.json({ coin: +checkCoin })
 }
 
 // coin_id can be added to this query; will be on todo list
-const checkCoinMain = (req, res) => {
+const checkCoinMain = async (req, res) => {
     const { ticker } = req.params
     const userId = req.userId
-    const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND ticker = ?) AS coin_exists`)
-    const bool = checkCoin.get(userId, ticker)
-    res.json({ coin: bool })
+    // const checkCoin = db.prepare(`SELECT EXISTS(SELECT 1 FROM watchlist WHERE user_id = ? AND ticker = ?) AS coin_exists`)
+    // const bool = checkCoin.get(userId, ticker)
+
+    const checkCoin = await prisma.watchlist.count({
+        where: {
+            user_id: userId,
+            ticker: ticker,
+            coin_id: coinId
+        }
+    })
+    // + is a unary operator to convert boolean value to integer
+    res.json({ coin: +checkCoin })
 }
 
 export { createUser, saveCoin, login, getWatchlist, deleteCoin, checkCoin, checkCoinMain };
