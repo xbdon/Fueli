@@ -8,13 +8,13 @@ WORKDIR /app
 COPY package*.json .
 
 # Install the dependencies
-RUN npm Install
+RUN npm install
 
 # Copy the rest of the application code // first . is the current directory of our local folder, second . is the current workdir of our docker enviroment
 COPY . .
 
 # Expose the port that the app runs on
-EXPOSE 3000
+EXPOSE ****
 
 # Define the command to run your application
 CMD ["node", "./src/app.js"]

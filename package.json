@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "adding docker,prisma ORM and postgres to existing codebase",
+  "description": "adding docker,prisma ORM and 'postgres' to existing codebase",
   "dependencies": {
     "@prisma/client": "^6.4.1",
     "axios": "^1.7.7",
