@@ -3,7 +3,6 @@
 import axios from 'axios';
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import db from '../db.js'
 import prisma from '../prismaClient.js';
 
 const createUser = async (req, res) => {
@@ -46,7 +45,7 @@ const login = async (req, res) => {
     try {
         // const getUser = db.prepare('SELECT * FROM users WHERE email = ?');
         // const user = getUser.get(email);
-        const user = await prisma.user.findUnique({
+        const user = await prisma.users.findUnique({
             where: {
                 email: email
             }

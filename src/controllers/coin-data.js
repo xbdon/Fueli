@@ -2,8 +2,6 @@
 // const axios = require("axios");
 // const db = require('../db');
 import axios from 'axios';
-import db from '../db.js'
-
 
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
 const api_params = '?type=mcap&page=1&perPage=20'

@@ -19,12 +19,13 @@ model users {
   email     String  @unique
   username  String  @unique
   password  String
+  watchlist watchlist[]
 }
 
 model watchlist {
-  id      Int       @id @default(autoincrement())
-  userId  Int
-  ticker  String    @unique
-  coinId  String    @unique
-  user    Users  @relation(fields: [userId], references: [id])
+  id        Int       @id @default(autoincrement())
+  user_id   Int
+  ticker    String    @unique
+  coin_id   String    @unique
+  user      users  @relation(fields: [user_id], references: [id])
 }
