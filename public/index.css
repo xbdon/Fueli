@@ -247,7 +247,6 @@ h1 {
 
 
 #token-table {
-    display: inline-block;
     border: 0;
 }
 
@@ -273,8 +272,4 @@ table {
 #watchlist {
     display: none;
     visibility: hidden;
-}
-
-#volume-table {
-    display: inline-block;
 }
