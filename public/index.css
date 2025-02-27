@@ -273,3 +273,19 @@ table {
     display: none;
     visibility: hidden;
 }
+
+/* #trending {
+    
+} */
+
+.trending i {
+    display: inline-block;
+}
+
+.trending span {
+    display: inline-block;
+}
+
+.trending div {
+    display: inline-block;
+}
