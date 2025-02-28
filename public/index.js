@@ -620,6 +620,14 @@ const switchToMainSaveBtn = (id) => {
 
 document.addEventListener("click", unsaveCoin)
 
+const getTokensByVolume = async () => {
+  try {
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
 /*
   PS! Dont forget to add some icons to the Fueli site. #Hamburger needs to be an an actual hamburger icon!
 */
