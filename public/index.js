@@ -310,7 +310,11 @@ const closeGeneratedTable = () => {
   mostRecentSearch = null;
 };
 
-marketCapBtn.addEventListener("click", getHomePageTable);
+marketCapBtn.addEventListener("click", () => {
+  marketCapBtn.classList.add('tab-clicked')
+  getHomePageTable
+});
+
 document.addEventListener("click", copyCoinId)
 
 closeBtn.addEventListener("click", closeGeneratedTable);

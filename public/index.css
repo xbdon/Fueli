@@ -204,12 +204,6 @@ h1 {
     margin: 0 0 5px 20px;
 }
 
-#hamburger {
-    float: right;
-    display: inline;
-    margin: 10px 5px 0 5px;
-}
-
 #unsave-button {
     display: none;
     visibility: hidden;
@@ -290,6 +284,6 @@ table {
     display: inline-block;
 }
 
-.rank-clicked {
+.tab-clicked {
     background-color: #D2691E;
 }
