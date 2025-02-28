@@ -289,3 +289,7 @@ table {
 .trending div {
     display: inline-block;
 }
+
+.rank-clicked {
+    background-color: #D2691E;
+}
