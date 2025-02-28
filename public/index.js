@@ -1,5 +1,5 @@
 const searchBtn = document.getElementById("search-button");
-const hamburger = document.getElementById("hamburger");
+const marketCapBtn = document.querySelector(".market-cap");
 const searchInput = document.getElementById("search-input");
 const adaPrice = document.getElementById("ada-price");
 
@@ -310,7 +310,7 @@ const closeGeneratedTable = () => {
   mostRecentSearch = null;
 };
 
-hamburger.addEventListener("click", getHomePageTable);
+marketCapBtn.addEventListener("click", getHomePageTable);
 document.addEventListener("click", copyCoinId)
 
 closeBtn.addEventListener("click", closeGeneratedTable);
