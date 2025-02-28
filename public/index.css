@@ -274,6 +274,7 @@ table {
 
 .trending i {
     display: inline-block;
+    font-size: 1rem;
 }
 
 .trending span {
@@ -284,6 +285,15 @@ table {
     display: inline-block;
 }
 
+.market-cap {
+    border-radius: 25px;
+}
+
+.market-cap i {
+    font-size: 1rem;
+}
+
 .tab-clicked {
-    background-color: #D2691E;
+    background-color: #f18436;
+    border: 0;
 }
