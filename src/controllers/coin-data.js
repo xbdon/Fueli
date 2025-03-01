@@ -3,6 +3,7 @@
 // const db = require('../db');
 import axios from 'axios';
 import db from '../db.js'
+import { response } from 'express';
 
 
 const tt_api_coin_by_mc = 'https://openapi.taptools.io/api/v1/token/top/mcap';
@@ -80,6 +81,18 @@ const getAdaPrice = (request, response) => {
         })
         .catch((err) => {
             console.log(err + " third api controller");
+        })
+}
+
+const getVolumeData = (req, res) => {
+    fetch('https://openapi.taptools.io/api/v1/token/top/volume', {
+        method: 'GET',
+        headers: {
+            "X-API-Key": process.env.TAPTOOLS_API_KEY,
+        }
+    })
+        .then(response => {
+            console.log(response)
         })
 }
 
