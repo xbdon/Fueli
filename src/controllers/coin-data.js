@@ -84,37 +84,38 @@ const getAdaPrice = (request, response) => {
         })
 }
 
-const getVolumeData = (request, response) => {
-    fetch('https://openapi.taptools.io/api/v1/token/top/volume', {
-        method: 'GET',
-        headers: {
-            "X-API-Key": process.env.TAPTOOLS_API_KEY,
-        }
-    })
-        .then(res => {
-            return res.json()
-        })
-        .catch((err) => {
-            console.log(err + "\n getVolumeData controller failed")
-        })
-        .then(data => {
-            console.log(data)
-        })
-}
-
 // const getVolumeData = (request, response) => {
-//     axios.defaults.headers.common = {
-//         "X-API-Key": process.env.TAPTOOLS_API_KEY,
-//     };
-//     axios
-//         .get('https://openapi.taptools.io/api/v1/token/top/volume')
-//         .then((res) => {
-//             const coinData = response.json(res.data);
+//     fetch('https://openapi.taptools.io/api/v1/token/top/volume', {
+//         method: 'GET',
+//         headers: {
+//             "X-API-Key": process.env.TAPTOOLS_API_KEY,
+//         }
+//     })
+//         .then(res => {
+//             return res.json()
+//         })
+//         .then(data => {
+//             console.log(data)
+//             response.json(data)
 //         })
 //         .catch((err) => {
-//             console.log(err + "end game");
+//             console.log(err + "\n getVolumeData controller failed")
 //         })
 // }
+
+const getVolumeData = (request, response) => {
+    axios.defaults.headers.common = {
+        "X-API-Key": process.env.TAPTOOLS_API_KEY,
+    };
+    axios
+        .get('https://openapi.taptools.io/api/v1/token/top/volume')
+        .then((res) => {
+            const coinData = response.json(res.data);
+        })
+        .catch((err) => {
+            console.log(err + "end game");
+        })
+}
 
 export { getCoinData, getSearchToken, getAdaPrice, getVolumeData };
 // module.exports = {

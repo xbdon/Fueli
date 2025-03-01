@@ -275,7 +275,6 @@ const chooseBtnMain = async (row_num, ticker_name) => {
 }
 
 const copyCoinId = (e) => {
-  console.log(e.target.classList.contains('copy-id-button'))
   if (!e.target.classList.contains('copy-id-button')) {
     console.log("we are returning from copyCoinId")
     return
@@ -625,10 +624,9 @@ document.addEventListener("click", unsaveCoin)
 const getTokensByVolume = async () => {
   try {
     const getData = await fetch('/coin-data/getVolumeData')
-    const data = getData.json()
+    const data = await getData.json()
     console.log(data)
 
-    console.log(data)
   } catch (err) {
     console.log(err)
   }
