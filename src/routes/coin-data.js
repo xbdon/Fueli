@@ -9,8 +9,8 @@ import { getCoinData, getVolumeData } from '../controllers/coin-data.js'
 // uploads coin data by marketcap
 router.get('/', getCoinData);
 
-// for when users remove coin from watchlist
-router.get('/getCoinsByVolume', getVolumeData);
+// uploads coin data by volume
+router.get('/getVolumeData', getVolumeData);
 
 // module.exports = router;
 export default router;

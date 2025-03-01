@@ -15,6 +15,8 @@ const watchlistStats = document.getElementById("watchlist-stats");
 const watchlistBtn = document.getElementById("watchlist-button");
 const mainTableBtn = document.getElementById("main-table-button");
 
+const trendingBtn = document.querySelector(".trending");
+
 let coinIds = []
 
 let token = localStorage.getItem('token');
@@ -622,11 +624,19 @@ document.addEventListener("click", unsaveCoin)
 
 const getTokensByVolume = async () => {
   try {
+    const getData = await fetch('coin-data/getVolumeData')
+    const data = getData.json()
 
+    console.log(data)
   } catch (err) {
     console.log(err)
   }
 }
+
+trendingBtn.addEventListener("click", () => {
+  trendingBtn.classList.add('tab-clicked')
+  getTokensByVolume()
+})
 
 /*
   PS! Dont forget to add some icons to the Fueli site. #Hamburger needs to be an an actual hamburger icon!
