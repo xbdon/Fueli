@@ -92,13 +92,26 @@ const getVolumeData = (request, response) => {
         }
     })
         .then((res) => {
-            console.log(res)
-            const volumeData = response.json(res.data)
+            return res.json()
         })
         .catch((err) => {
             console.log(err + "\n getVolumeData controller failed")
         })
 }
+
+// const getVolumeData = (request, response) => {
+//     axios.defaults.headers.common = {
+//         "X-API-Key": process.env.TAPTOOLS_API_KEY,
+//     };
+//     axios
+//         .get('https://openapi.taptools.io/api/v1/token/top/volume')
+//         .then((res) => {
+//             const coinData = response.json(res.data);
+//         })
+//         .catch((err) => {
+//             console.log(err + "end game");
+//         })
+// }
 
 export { getCoinData, getSearchToken, getAdaPrice, getVolumeData };
 // module.exports = {
