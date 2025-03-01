@@ -91,11 +91,14 @@ const getVolumeData = (request, response) => {
             "X-API-Key": process.env.TAPTOOLS_API_KEY,
         }
     })
-        .then((res) => {
+        .then(res => {
             return res.json()
         })
         .catch((err) => {
             console.log(err + "\n getVolumeData controller failed")
+        })
+        .then(data => {
+            console.log(data)
         })
 }
 
