@@ -84,19 +84,23 @@ const getAdaPrice = (request, response) => {
         })
 }
 
-const getVolumeData = (req, res) => {
+const getVolumeData = (request, response) => {
     fetch('https://openapi.taptools.io/api/v1/token/top/volume', {
         method: 'GET',
         headers: {
             "X-API-Key": process.env.TAPTOOLS_API_KEY,
         }
     })
-        .then(response => {
-            console.log(response)
+        .then((res) => {
+            console.log(res)
+            const volumeData = response.json(res.data)
+        })
+        .catch((err) => {
+            console.log(err + "\n getVolumeData controller failed")
         })
 }
 
-export { getCoinData, getSearchToken, getAdaPrice };
+export { getCoinData, getSearchToken, getAdaPrice, getVolumeData };
 // module.exports = {
 //     getCoinData,
 //     getSearchToken,

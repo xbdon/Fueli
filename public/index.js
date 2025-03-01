@@ -314,7 +314,7 @@ const closeGeneratedTable = () => {
 
 marketCapBtn.addEventListener("click", () => {
   marketCapBtn.classList.add('tab-clicked')
-  getHomePageTable
+  getHomePageTable()
 });
 
 document.addEventListener("click", copyCoinId)
@@ -624,7 +624,7 @@ document.addEventListener("click", unsaveCoin)
 
 const getTokensByVolume = async () => {
   try {
-    const getData = await fetch('coin-data/getVolumeData')
+    const getData = await fetch('/coin-data/getVolumeData')
     const data = getData.json()
 
     console.log(data)
