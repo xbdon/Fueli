@@ -644,6 +644,9 @@ const displayVolume = (json) => {
   tokenStats.innerHTML = ``
   // later this will be changed to be more dyanmic
   const row = 20;
+  // resetting coinIds[] when we refresh table so coin row matches coin in array
+  coinIds = []
+
   for (let i = 0; i < row; i++) {
     let price = json[i].price * adaDollarValue
     let ticker = json[i].ticker
@@ -651,7 +654,14 @@ const displayVolume = (json) => {
     let volume = shorthandMcap(Math.round(json[i].volume))
 
     tokenStats.innerHTML += `
-    
+      <td id="coin-id${i}" class="stats"><button id="coinIdBtn${i}" class="copy-id-button">copy</button></td>
+        <td id="token-name${i}" class="stats">${ticker}</td>
+        <td id="price${i}" class="stats">$${price}</td>
+        <td id="mc${i}" class="stats">$${ticker}</td>
+        <td id="24-${i}" class="stats">%${ticker}</td>
+        <td id="volume${i}" class="stats">$${volume}</td>
+        <td id="liquidity${i}" class="stats">$${"TBD"}</td>
+        <td id="circ-supply${i}" class="stats">${circSupply}</td>
     `
   }
 }
