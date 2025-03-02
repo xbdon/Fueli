@@ -679,8 +679,6 @@ trendingBtn.addEventListener("click", () => {
   getTokensByVolume()
 })
 
-// also have to take api data and display it in a the same token table or a new table altogether
-// copy id button and save buttons need to be implemented to this volume table as well lots of work next sesh
 /*
   PS! Dont forget to add some icons to the Fueli site. #Hamburger needs to be an an actual hamburger icon!
 */
