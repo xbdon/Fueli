@@ -230,8 +230,7 @@ const chooseBtnMain = async (row_num) => {
     //  this will also be used to get specific associated btn
     const coinTicker = document.getElementById(`token-name${row_num}`).textContent;
 
-    // api call doesnt return expected values, will work on this next sesh
-
+    // api call checks the db to see if coin is already saved to users watchlist db or not
     const coinBool = await fetch(`user-functions/check-coin-main/${coinTicker}`, {
       headers: {
         'Authorization': token,
