@@ -275,7 +275,7 @@ const chooseBtnMain = async (row_num) => {
 
 const copyCoinId = (e) => {
   if (!e.target.classList.contains('copy-id-button')) {
-    console.log("we are returning from copyCoinId")
+    console.log("we are returning from copyCoinId()")
     return
   }
 
