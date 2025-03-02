@@ -314,7 +314,7 @@ const closeGeneratedTable = () => {
 marketCapBtn.addEventListener("click", () => {
   const elements = document.querySelectorAll('.tab-clicked');
   elements.forEach(element => {
-    element.classList.remove(className);
+    element.classList.remove('tab-clicked');
   })
   marketCapBtn.classList.add('tab-clicked')
   getHomePageTable()
