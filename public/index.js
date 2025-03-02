@@ -639,7 +639,7 @@ const getTokensByVolume = async () => {
 trendingBtn.addEventListener("click", () => {
   const elements = document.querySelectorAll('.tab-clicked');
   elements.forEach(element => {
-    element.classList.remove(className);
+    element.classList.remove('tab-clicked');
   })
   trendingBtn.classList.add('tab-clicked')
   getTokensByVolume()
