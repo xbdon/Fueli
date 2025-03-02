@@ -647,7 +647,7 @@ const displayVolume = (json) => {
   coinIds = []
 
   for (let i = 0; i < row; i++) {
-    let price = json[i].price * adaDollarValue
+    let price = Math.round((json[i].price * adaDollarValue) * 1000000) / 1000000
     let ticker = json[i].ticker
     let coinId = json[i].unit
     let volume = shorthandMcap(Math.round(json[i].volume))
