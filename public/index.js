@@ -211,11 +211,11 @@ const displayHPTable = (json) => {
         <td id="circ-supply${i}" class="stats">${circSupply}</td>
       </tr>
     `;
-    chooseBtnMain(i, name)
+    chooseBtnMain(i)
   }
 }
 
-const chooseBtnMain = async (row_num, ticker_name) => {
+const chooseBtnMain = async (row_num) => {
   const token = localStorage.getItem('token');
 
   try {
@@ -653,16 +653,21 @@ const displayVolume = (json) => {
     let coinId = json[i].unit
     let volume = shorthandMcap(Math.round(json[i].volume))
 
+    // adds coinId of row of i to same array index so we can easily reference array when we need to get coinId of coins available to user
+    coinIds.push[coinId]
+
     tokenStats.innerHTML += `
       <td id="coin-id${i}" class="stats"><button id="coinIdBtn${i}" class="copy-id-button">copy</button></td>
         <td id="token-name${i}" class="stats">${ticker}</td>
         <td id="price${i}" class="stats">$${price}</td>
-        <td id="mc${i}" class="stats">$${ticker}</td>
-        <td id="24-${i}" class="stats">%${ticker}</td>
+        <td id="mc${i}" class="stats">$${"TBD"}</td>
+        <td id="24-${i}" class="stats">%${"TBD"}</td>
         <td id="volume${i}" class="stats">$${volume}</td>
         <td id="liquidity${i}" class="stats">$${"TBD"}</td>
-        <td id="circ-supply${i}" class="stats">${circSupply}</td>
+        <td id="circ-supply${i}" class="stats">${"TBD"}</td>
     `
+
+    chooseBtnMain(i)
   }
 }
 
