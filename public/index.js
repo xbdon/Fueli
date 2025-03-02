@@ -629,7 +629,7 @@ const getTokensByVolume = async () => {
     const getData = await fetch('/coin-data/getVolumeData')
     const data = await getData.json()
     console.log(data)
-
+    displayVolume(data)
   } catch (err) {
     console.log(err)
   }
