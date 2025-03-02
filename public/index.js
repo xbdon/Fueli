@@ -641,10 +641,18 @@ const displayVolume = (json) => {
     return
   }
 
+  tokenStats.innerHTML = ``
   // later this will be changed to be more dyanmic
   const row = 20;
   for (let i = 0; i < row; i++) {
+    let price = json[i].price * adaDollarValue
+    let ticker = json[i].ticker
+    let coinId = json[i].unit
+    let volume = shorthandMcap(Math.round(json[i].volume))
 
+    tokenStats.innerHTML += `
+    
+    `
   }
 }
 
