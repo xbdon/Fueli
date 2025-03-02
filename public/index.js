@@ -645,7 +645,6 @@ trendingBtn.addEventListener("click", () => {
   getTokensByVolume()
 })
 
-// need to work on logic for tab btns being highlighted when clicked and change back to normal when a different tab btn is clicked
 // also have to take api data and display it in a the same token table or a new table altogether
 // copy id button and save buttons need to be implemented to this volume table as well lots of work next sesh
 /*
