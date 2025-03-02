@@ -636,6 +636,18 @@ const getTokensByVolume = async () => {
   }
 }
 
+const displayVolume = (json) => {
+  if (json === undefined) {
+    return
+  }
+
+  // later this will be changed to be more dyanmic
+  const row = 20;
+  for (let i = 0; i < row; i++) {
+
+  }
+}
+
 trendingBtn.addEventListener("click", () => {
   const elements = document.querySelectorAll('.tab-clicked');
   elements.forEach(element => {
