@@ -307,3 +307,8 @@ table {
     display: none;
     visibility: hidden;
 }
+
+.hide-times {
+    display: none;
+    visibility: hidden;
+}

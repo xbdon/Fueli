@@ -316,6 +316,14 @@ marketCapBtn.addEventListener("click", () => {
     element.classList.remove('tab-clicked');
   })
   marketCapBtn.classList.add('tab-clicked')
+
+  const trending = document.querySelector('trending')
+
+  // const trendingTimes = document.querySelector('.volume-ranks')
+
+  // if (trendingTimes.classList.contains('volume-ranks')) {
+  //   trendingTimes.classList.add('volume-ranks')
+  // }
   getHomePageTable()
 });
 
@@ -678,9 +686,13 @@ trendingBtn.addEventListener("click", () => {
   trendingBtn.classList.add('tab-clicked')
   const trendingTimes = document.querySelector('.volume-ranks')
 
-  trendingTimes.classList.contains('volume-ranks')
-    ? trendingTimes.classList.remove('volume-ranks')
-    : trendingTimes.classList.add('volume-ranks')
+  // trendingTimes.classList.contains('volume-ranks')
+  //   ? trendingTimes.classList.remove('volume-ranks')
+  //   : trendingTimes.classList.add('volume-ranks')
+
+  if (trendingTimes.classList.contains('volume-ranks')) {
+    trendingTimes.classList.remove('volume-ranks')
+  }
 
   getTokensByVolume()
 })
