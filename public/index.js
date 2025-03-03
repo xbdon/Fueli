@@ -699,6 +699,7 @@ trendingBtn.addEventListener("click", () => {
 
 /* 
   objectives for next sesh include:
+      -add new class to trending volume-ranks so we can manipulate css more and finish js function with it
       - add trending btn functionality where user can pick whether he wants to get top tokens
           by volume by 24hr, 12h, 4h and 1h. Also to highlight which time frame is chosen
       -make save and unsave buttons not lose alter position of text when switched between the two
