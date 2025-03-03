@@ -297,3 +297,8 @@ table {
     background-color: #f18436;
     border-color: #f18436;
 }
+
+.volume-ranks {
+    display: none;
+    visibility: hidden;
+}
