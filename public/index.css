@@ -302,3 +302,8 @@ table {
     display: none;
     visibility: hidden;
 }
+
+.volume-ranks span {
+    display: none;
+    visibility: hidden;
+}

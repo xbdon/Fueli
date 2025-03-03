@@ -676,6 +676,12 @@ trendingBtn.addEventListener("click", () => {
     element.classList.remove('tab-clicked');
   })
   trendingBtn.classList.add('tab-clicked')
+  const trendingTimes = document.querySelector('.volume-ranks')
+
+  trendingTimes.classList.contains('volume-ranks')
+    ? trendingTimes.classList.remove('volume-ranks')
+    : trendingTimes.classList.add('volume-ranks')
+
   getTokensByVolume()
 })
 
