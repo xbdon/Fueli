@@ -320,5 +320,5 @@ table {
 .selected {
     background-color: black;
     color: #D2691E;
-    border-radius: 2px;
+    border-radius: 4px;
 }

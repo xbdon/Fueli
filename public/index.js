@@ -685,7 +685,7 @@ const displayVolume = (json) => {
 }
 
 trendingBtn.addEventListener("click", (e) => {
-  console.log(e.target.textContent)
+  console.log(e.target.textContent.length)
 
   // removes tab-clicked class from all elements aka removes highlighting from any tab button
   const elements = document.querySelectorAll('.tab-clicked');
@@ -694,10 +694,17 @@ trendingBtn.addEventListener("click", (e) => {
   })
   trendingBtn.classList.add('tab-clicked')
 
+  // manages highlighting of selected time-frame
   if (e.target.textContent !== "Trending") {
-    console.log(e.target.classList)
-    console.log(e.target.classList.add('selected'))
-    console.log(e.target.classList)
+    const elements = document.querySelectorAll('.volume-times');
+    elements.forEach(element => {
+      element.classList.remove('selected');
+    })
+
+    // if the div between the time frame elements is clicked it will not be highlighted
+    if (e.target.textContent.length < 10) {
+      e.target.classList.add('selected')
+    }
   }
   const trendingTimes = document.querySelector('.volume-ranks')
 
