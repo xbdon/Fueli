@@ -317,7 +317,10 @@ marketCapBtn.addEventListener("click", () => {
   })
   marketCapBtn.classList.add('tab-clicked')
 
-  const trending = document.querySelector('trending')
+  const trending = document.querySelector('.volume-ranks')
+  if (!trending.classList.contains('hide-times')) {
+    trending.classList.add('hide-times')
+  }
 
   // const trendingTimes = document.querySelector('.volume-ranks')
 
@@ -690,8 +693,8 @@ trendingBtn.addEventListener("click", () => {
   //   ? trendingTimes.classList.remove('volume-ranks')
   //   : trendingTimes.classList.add('volume-ranks')
 
-  if (trendingTimes.classList.contains('volume-ranks')) {
-    trendingTimes.classList.remove('volume-ranks')
+  if (trendingTimes.classList.contains('hide-times')) {
+    trendingTimes.classList.remove('hide-times')
   }
 
   getTokensByVolume()

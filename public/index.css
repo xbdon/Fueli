@@ -298,17 +298,17 @@ table {
     border-color: #f18436;
 }
 
-.volume-ranks {
+/* .volume-ranks {
     display: none;
     visibility: hidden;
-}
-
-.volume-ranks span {
-    display: none;
-    visibility: hidden;
-}
+} */
 
 .hide-times {
+    display: none;
+    visibility: hidden;
+}
+
+.volume-ranks.hide-times span {
     display: none;
     visibility: hidden;
 }
