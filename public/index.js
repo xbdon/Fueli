@@ -685,7 +685,7 @@ const displayVolume = (json) => {
 }
 
 trendingBtn.addEventListener("click", (e) => {
-  console.log(e.target.textContent.length)
+  console.log(e.target.textContent)
 
   // removes tab-clicked class from all elements aka removes highlighting from any tab button
   const elements = document.querySelectorAll('.tab-clicked');
@@ -705,12 +705,11 @@ trendingBtn.addEventListener("click", (e) => {
     if (e.target.textContent.length < 10) {
       e.target.classList.add('selected')
     }
+  } else {
+    // when the trending btn is clicked, the 24h is highlighted for UX
+    document.querySelectorAll('.volume-times')[3].classList.add('selected')
   }
   const trendingTimes = document.querySelector('.volume-ranks')
-
-  // trendingTimes.classList.contains('volume-ranks')
-  //   ? trendingTimes.classList.remove('volume-ranks')
-  //   : trendingTimes.classList.add('volume-ranks')
 
   if (trendingTimes.classList.contains('hide-times')) {
     trendingTimes.classList.remove('hide-times')
