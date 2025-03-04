@@ -10,7 +10,7 @@ import { getCoinData, getVolumeData } from '../controllers/coin-data.js'
 router.get('/', getCoinData);
 
 // uploads coin data by volume
-router.get('/getVolumeData', getVolumeData);
+router.get('/getVolumeData/:time-frame', getVolumeData);
 
 // module.exports = router;
 export default router;

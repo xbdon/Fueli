@@ -635,9 +635,9 @@ const switchToMainSaveBtn = (id) => {
 
 document.addEventListener("click", unsaveCoin)
 
-const getTokensByVolume = async () => {
+const getTokensByVolume = async (time_frame) => {
   try {
-    const getData = await fetch('/coin-data/getVolumeData')
+    const getData = await fetch(`/coin-data/getVolumeData/${time_frame}`)
     const data = await getData.json()
     console.log(data)
     displayVolume(data)
@@ -681,7 +681,10 @@ const displayVolume = (json) => {
   }
 }
 
-trendingBtn.addEventListener("click", () => {
+trendingBtn.addEventListener("click", (e) => {
+  console.log(e.target.textContent)
+
+  // removes tab-clicked class from all elements aka removes highlighting from any tab button
   const elements = document.querySelectorAll('.tab-clicked');
   elements.forEach(element => {
     element.classList.remove('tab-clicked');
@@ -697,14 +700,14 @@ trendingBtn.addEventListener("click", () => {
     trendingTimes.classList.remove('hide-times')
   }
 
-  getTokensByVolume()
+  getTokensByVolume(e)
 })
 
 /* 
   objectives for next sesh include:
-      -add new class to trending volume-ranks so we can manipulate css more and finish js function with it
       - add trending btn functionality where user can pick whether he wants to get top tokens
           by volume by 24hr, 12h, 4h and 1h. Also to highlight which time frame is chosen
+      - how to make the buttons within the trending btn not call the trendingBtn function
       -make save and unsave buttons not lose alter position of text when switched between the two
       -add a proper login where credentials must abide by industry login and account creation regex's
       -decide whether giving user watchlist its own tab or wait for more functionality first
