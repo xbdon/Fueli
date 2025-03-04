@@ -692,17 +692,21 @@ trendingBtn.addEventListener("click", (e) => {
   })
   trendingBtn.classList.add('tab-clicked')
 
+  console.log(e.target.textContent.includes("Trending"))
+
+  const time_frames_array = ["1h", "4h", "12h", "24h"]
   // manages highlighting of selected time-frame
-  if (e.target.textContent === ("1h" || "4h" || "12h" || "24h")) {
+  if (time_frames_array.includes(e.target.textContent)) {
     const elements = document.querySelectorAll('.volume-times');
     elements.forEach(element => {
       element.classList.remove('selected');
     })
 
     // if the div between the time frame elements is clicked it will not be highlighted
-    if (e.target.textContent.length < 10) {
+    if (e.target.textContent.length < 8) {
       e.target.classList.add('selected')
     }
+    console.log("why")
   } else {
     // when the trending btn is clicked, the 24h is highlighted for UX
     document.querySelectorAll('.volume-times')[3].classList.add('selected')

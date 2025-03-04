@@ -300,11 +300,6 @@ table {
     border-color: #f18436;
 }
 
-/* .volume-ranks {
-    display: none;
-    visibility: hidden;
-} */
-
 .hide-times {
     display: none;
     visibility: hidden;
@@ -323,6 +318,7 @@ table {
 
 .volume-ranks .volume-times {
     cursor: pointer;
+    padding: 2px
 }
 
 .selected {
