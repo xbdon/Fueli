@@ -312,3 +312,11 @@ table {
     display: none;
     visibility: hidden;
 }
+
+.volume-ranks .volume-times {
+    cursor: pointer;
+    border-style: ridge;
+    border-width: 1px;
+    border-color: #A9A9A9;
+    border-radius: 5px;
+}
