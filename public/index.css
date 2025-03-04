@@ -270,6 +270,7 @@ table {
 
 .trending {
     border-radius: 5px;
+    padding: 5px;
 }
 
 .trending i {
@@ -287,6 +288,7 @@ table {
 
 .market-cap {
     border-radius: 5px;
+    padding: 5px;
 }
 
 .market-cap i {
@@ -313,6 +315,12 @@ table {
     visibility: hidden;
 }
 
+.volume-ranks span:hover {
+    border: 2px solid;
+    border-color: black;
+    border-radius: 4px;
+}
+
 .volume-ranks .volume-times {
     cursor: pointer;
 }
@@ -320,5 +328,6 @@ table {
 .selected {
     background-color: black;
     color: #D2691E;
+    border: 2px solid black;
     border-radius: 4px;
 }
