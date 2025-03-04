@@ -693,6 +693,12 @@ trendingBtn.addEventListener("click", (e) => {
     element.classList.remove('tab-clicked');
   })
   trendingBtn.classList.add('tab-clicked')
+
+  if (e.target.textContent !== "Trending") {
+    console.log(e.target.classList)
+    console.log(e.target.classList.add('selected'))
+    console.log(e.target.classList)
+  }
   const trendingTimes = document.querySelector('.volume-ranks')
 
   // trendingTimes.classList.contains('volume-ranks')
@@ -708,8 +714,7 @@ trendingBtn.addEventListener("click", (e) => {
 
 /* 
   objectives for next sesh include:
-      - add trending btn functionality where user can pick whether he wants to get top tokens
-          by volume by 24hr, 12h, 4h and 1h. Also to highlight which time frame is chosen
+      - Also to highlight which time frame is chosen
       - how to make the buttons within the trending btn not call the trendingBtn function
       -make save and unsave buttons not lose alter position of text when switched between the two
       -add a proper login where credentials must abide by industry login and account creation regex's

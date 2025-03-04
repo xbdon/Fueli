@@ -315,8 +315,10 @@ table {
 
 .volume-ranks .volume-times {
     cursor: pointer;
-    border-style: ridge;
-    border-width: 1px;
-    border-color: #A9A9A9;
-    border-radius: 5px;
+}
+
+.selected {
+    background-color: black;
+    color: #D2691E;
+    border-radius: 2px;
 }
