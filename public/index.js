@@ -636,9 +636,15 @@ const switchToMainSaveBtn = (id) => {
 document.addEventListener("click", unsaveCoin)
 
 const getTokensByVolume = async (time_frame) => {
+  if (time_frame === "Trending") {
+    time_frame = "24h"
+  }
+
   try {
     const getData = await fetch(`/coin-data/getVolumeData/${time_frame}`)
+    console.log("this is")
     const data = await getData.json()
+    console.log("data is it?")
     console.log(data)
     displayVolume(data)
   } catch (err) {

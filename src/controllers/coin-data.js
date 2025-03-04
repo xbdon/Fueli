@@ -104,7 +104,10 @@ const getAdaPrice = (request, response) => {
 // }
 
 const getVolumeData = (request, response) => {
-    const { time_frame } = request.query
+    console.log("XPXPX")
+    const { time_frame } = request.params
+    console.log(time_frame)
+
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
