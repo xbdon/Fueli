@@ -700,7 +700,7 @@ trendingBtn.addEventListener("click", (e) => {
     trendingTimes.classList.remove('hide-times')
   }
 
-  getTokensByVolume(e)
+  getTokensByVolume(e.target.textContent)
 })
 
 /* 

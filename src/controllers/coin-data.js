@@ -104,11 +104,12 @@ const getAdaPrice = (request, response) => {
 // }
 
 const getVolumeData = (request, response) => {
+    const { time_frame } = request.query
     axios.defaults.headers.common = {
         "X-API-Key": process.env.TAPTOOLS_API_KEY,
     };
     axios
-        .get('https://openapi.taptools.io/api/v1/token/top/volume')
+        .get(`https://openapi.taptools.io/api/v1/token/top/volume/timeframe=${time_frame}`)
         .then((res) => {
             const coinData = response.json(res.data);
         })
