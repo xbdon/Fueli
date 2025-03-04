@@ -721,9 +721,7 @@ trendingBtn.addEventListener("click", (e) => {
 })
 
 /* 
-  objectives for next sesh include:
-      - Also to highlight which time frame is chosen
-      - how to make the buttons within the trending btn not call the trendingBtn function
+  objectives:
       -make save and unsave buttons not lose alter position of text when switched between the two
       -add a proper login where credentials must abide by industry login and account creation regex's
       -decide whether giving user watchlist its own tab or wait for more functionality first
