@@ -162,7 +162,6 @@ const getHomePageTable = async () => {
   try {
     const jsonData = await fetch("/coin-data");
     const data = await jsonData.json();
-    console.log("start up test")
     displayHPTable(data);
   } catch (err) {
     console.log(err + " trouble obtaining data from api HOMEPAGE");
@@ -581,7 +580,6 @@ const unsaveCoin = async (e) => {
       });
 
     const response = await res.json()
-    console.log("que paso test")
 
     // if Sc unsave btn clicked and main table coin is equal to mostRecentSearch
     if (response.outcome === "Successful" && mainSaveClicked === 1 && coinIds.includes(mostRecentSearch)) {
@@ -695,7 +693,7 @@ trendingBtn.addEventListener("click", (e) => {
   trendingBtn.classList.add('tab-clicked')
 
   // manages highlighting of selected time-frame
-  if (e.target.textContent !== "Trending") {
+  if (e.target.textContent === ("1h" || "4h" || "12h" || "24h")) {
     const elements = document.querySelectorAll('.volume-times');
     elements.forEach(element => {
       element.classList.remove('selected');
