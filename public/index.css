@@ -211,7 +211,7 @@ h1 {
 
 #save-button {
     display: none;
-    visibility: none;
+    visibility: hidden;
 }
 
 #searched-token-table {

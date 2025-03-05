@@ -92,7 +92,7 @@ const displayTokenData = (json) => {
   // need to add a template literal to decide whether save-button or unsave-button appears
   searchedTokenStats.innerHTML = `
     <tr>
-      <td id="token-name" class="stats"><button id="save-button" <span class="material-symbols-outlined">star</span></button><button id="unsave-button">Unsave</button>  ${name}</td>
+      <td id="token-name" class="stats"><button id="save-button"></button><button id="unsave-button">Unsave</button>  ${name}</td>
       <td id="price" class="stats">$${price}</td>
       <td id="mc" class="stats">$${marketCap}</td>
       <td id="24h" class="stats">${twentyFourHr}%</td>
