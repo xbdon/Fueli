@@ -321,11 +321,6 @@ marketCapBtn.addEventListener("click", () => {
     trending.classList.add('hide-times')
   }
 
-  // const trendingTimes = document.querySelector('.volume-ranks')
-
-  // if (trendingTimes.classList.contains('volume-ranks')) {
-  //   trendingTimes.classList.add('volume-ranks')
-  // }
   getHomePageTable()
 });
 
