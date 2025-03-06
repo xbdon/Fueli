@@ -62,6 +62,11 @@ h3 {
     border-radius: 10%;
 }
 
+.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
 .toggle {
     padding-left: 60px;
 }
