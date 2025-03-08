@@ -188,14 +188,12 @@ h1 {
 
 
 #search-button {
-    float: right;
-    display: inline;
-    margin-top: 10px;
+    display: inline-block;
+    margin: 0 0 5px 20px;
 }
 
 #watchlist-button {
     display: inline-block;
-    margin: 0 0 5px 20px;
 }
 
 #main-table-button {
