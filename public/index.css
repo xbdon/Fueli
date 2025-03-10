@@ -180,8 +180,12 @@ body {
     margin-left: 280px;
 }
 
+#ada-price {
+    display: block;
+}
+
 h1 {
-    display: inline-block;
+    display: block;
     font-size: 2rem;
     color: #D2691E;
 }
@@ -189,7 +193,7 @@ h1 {
 
 #search-button {
     display: inline-block;
-    margin: 0 0 5px 20px;
+    margin: 0 0 5px 0px;
 }
 
 #watchlist-button {
@@ -232,11 +236,6 @@ h1 {
     display: none;
     visibility: hidden;
 }
-
-#ada-price {
-    display: inline-block;
-}
-
 
 #token-table {
     border: 0;
