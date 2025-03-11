@@ -186,8 +186,9 @@ body {
 
 h1 {
     display: block;
-    font-size: 3rem;
+    font-size: 48px;
     color: #D2691E;
+    line-height: 0px;
 }
 
 
