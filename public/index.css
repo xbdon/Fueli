@@ -186,7 +186,7 @@ body {
 
 h1 {
     display: block;
-    font-size: 2rem;
+    font-size: 3rem;
     color: #D2691E;
 }
 
@@ -194,10 +194,14 @@ h1 {
 #search-button {
     display: inline-block;
     margin: 0 0 5px 0px;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 #watchlist-button {
     display: inline-block;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 #main-table-button {
