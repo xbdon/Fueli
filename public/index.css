@@ -209,7 +209,6 @@ h1 {
 #main-table-button {
     display: none;
     visibility: hidden;
-    margin: 0 0 5px 20px;
     border-radius: 5px;
     padding: 5px;
 }
