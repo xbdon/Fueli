@@ -717,6 +717,8 @@ trendingBtn.addEventListener("click", (e) => {
 
 /* 
   objectives:
+      -cause watchlist button to not disappear on click but have a different icon representing 
+          the watchlist is currently being looked at
       -add a proper login where credentials must abide by industry login and account creation regex's
       -decide whether giving user watchlist its own tab or wait for more functionality first
       -change button colors to make website more visually appealing
