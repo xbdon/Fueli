@@ -198,12 +198,14 @@ h1 {
     margin: 0 0 5px 0px;
     border-radius: 5px;
     padding: 5px;
+    font-size: 1rem;
 }
 
 #watchlist-button {
     display: inline-block;
     border-radius: 5px;
     padding: 5px;
+    font-size: 1rem;
 }
 
 #main-table-button {
@@ -211,6 +213,7 @@ h1 {
     visibility: hidden;
     border-radius: 5px;
     padding: 5px;
+    font-size: 1rem;
 }
 
 #unsave-button {
@@ -275,6 +278,7 @@ table {
 .trending {
     border-radius: 5px;
     padding: 5px;
+    font-size: 1rem;
 }
 
 .trending i {
@@ -293,6 +297,7 @@ table {
 .market-cap {
     border-radius: 5px;
     padding: 5px;
+    font-size: 1rem;
 }
 
 .market-cap i {
@@ -322,7 +327,7 @@ table {
 
 .volume-ranks .volume-times {
     cursor: pointer;
-    padding: 2px
+    /* padding: 2px */
 }
 
 .selected {
