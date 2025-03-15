@@ -198,22 +198,24 @@ h1 {
     margin: 0 0 5px 0px;
     border-radius: 5px;
     padding: 5px;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 #watchlist-button {
     display: inline-block;
     border-radius: 5px;
     padding: 5px;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 #main-table-button {
     display: none;
     visibility: hidden;
-    border-radius: 5px;
     padding: 5px;
-    font-size: 1rem;
+    font-size: 0.8rem;
+    background-color: #f18436;
+    border-color: #f18436;
+    border-radius: 5px;
 }
 
 #unsave-button {
@@ -278,12 +280,12 @@ table {
 .trending {
     border-radius: 5px;
     padding: 5px;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .trending i {
     display: inline-block;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .trending span {
@@ -297,11 +299,11 @@ table {
 .market-cap {
     border-radius: 5px;
     padding: 5px;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .market-cap i {
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .tab-clicked {
@@ -322,17 +324,18 @@ table {
 .volume-ranks span:hover {
     border: 2px solid;
     border-color: black;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .volume-ranks .volume-times {
     cursor: pointer;
     /* padding: 2px */
+    font-size: 0.8rem;
 }
 
 .selected {
     background-color: black;
     color: #D2691E;
     border: 2px solid black;
-    border-radius: 4px;
+    border-radius: 5px;
 }
