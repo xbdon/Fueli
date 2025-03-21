@@ -70,3 +70,13 @@ h3 {
 .toggle {
     padding-left: 60px;
 }
+
+#first-toggle:hover {
+    background-color: #D2691E;
+    border-radius: 5px;
+}
+
+#second-toggle:hover {
+    background-color: #D2691E;
+    border-radius: 5px;
+}
