@@ -71,7 +71,7 @@ h3 {
     padding-left: 60px;
 }
 
-#first-toggle:hover {
+/* #first-toggle:hover {
     background-color: #D2691E;
     border-radius: 5px;
 }
@@ -79,6 +79,9 @@ h3 {
 #second-toggle:hover {
     background-color: #D2691E;
     border-radius: 5px;
-}
+} */
 
-.login-toggles {}
+.login-toggles:hover {
+    background-color: #D2691E;
+    border-radius: 5px;
+}
