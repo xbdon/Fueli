@@ -88,6 +88,8 @@ const toggleSignIn = () => {
     signInUI.style.visibility = "visible";
 }
 
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+
 firstToggle.addEventListener("click", toggleSignUp);
 secondToggle.addEventListener("click", toggleSignIn);
 formEl.addEventListener("submit", createAccount);
