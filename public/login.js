@@ -88,7 +88,10 @@ const toggleSignIn = () => {
     signInUI.style.visibility = "visible";
 }
 
-const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+const passwordCheck = (password) => {
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+    return regex.test(password);
+}
 
 firstToggle.addEventListener("click", toggleSignUp);
 secondToggle.addEventListener("click", toggleSignIn);
