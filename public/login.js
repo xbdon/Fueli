@@ -11,6 +11,13 @@ const formLogin = document.querySelector('.login-form');
 
 let token = localStorage.getItem('token');
 
+const passwordCheck = (password) => {
+    console.log("made it to passwordCheck()")
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+    console.log(regex.test(password))
+    return regex.test(password);
+}
+
 const createAccount = async (e) => {
     // changed post method
     e.preventDefault();
@@ -19,10 +26,12 @@ const createAccount = async (e) => {
     const data = Object.fromEntries(formData);
     console.log(data)
 
-    if (data.password !== data.cPassword) {
+    if (data.password !== data.cPassword && passwordCheck(data.password)) {
         console.log("PASSWORD DOESN'T MATCH!!! will add more functionality later");
         return
     }
+
+
 
     const res = await fetch("/auth/register",
         {
@@ -86,11 +95,6 @@ const toggleSignIn = () => {
 
     signInUI.style.display = "block";
     signInUI.style.visibility = "visible";
-}
-
-const passwordCheck = (password) => {
-    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
-    return regex.test(password);
 }
 
 firstToggle.addEventListener("click", toggleSignUp);
