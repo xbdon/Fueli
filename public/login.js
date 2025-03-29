@@ -18,6 +18,8 @@ const passwordCheck = (password) => {
     return regex.test(password);
 }
 
+// check what regex.test(password) returns
+
 const createAccount = async (e) => {
     // changed post method
     e.preventDefault();
