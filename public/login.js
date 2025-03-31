@@ -30,7 +30,7 @@ const createAccount = async (e) => {
 
     console.log(passwordCheck(data.password) + ": testing regex.....")
     if (data.password !== data.cPassword || !passwordCheck(data.password)) {
-        console.log("PASSWORD DOESN'T MATCH!!! will add more functionality later");
+        console.log("PASSWORD DOESN'T MATCH OR DOESN'T MEET REQUIREMENTS!!! will add more functionality later");
         return
     }
 
