@@ -28,12 +28,11 @@ const createAccount = async (e) => {
     const data = Object.fromEntries(formData);
     console.log(data)
 
-    if (data.password !== data.cPassword && passwordCheck(data.password)) {
+    console.log(passwordCheck(data.password) + ": testing regex.....")
+    if (data.password !== data.cPassword || !passwordCheck(data.password)) {
         console.log("PASSWORD DOESN'T MATCH!!! will add more functionality later");
         return
     }
-
-
 
     const res = await fetch("/auth/register",
         {
