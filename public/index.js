@@ -491,6 +491,7 @@ const displayWatchlist = (json) => {
         <td id="circ-supply${i}" class="stats">${"TBD"}</td>
       </tr>
     `;
+    // chooseBtnMain(i);
   }
 }
 
