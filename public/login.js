@@ -81,6 +81,7 @@ const login = async (e) => {
 
         siBtn.innerText = 'User is logged in'
     } else {
+        alert("User not found!")
         throw Error('Failed to authenticate');
     }
 }
