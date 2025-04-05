@@ -254,6 +254,8 @@ const chooseBtnMain = async (row_num) => {
       document.getElementById(`unsave-button${row_num}`).style.visibility = "hidden"
 
 
+      // need to find a way to dynamically manipulate this function to include the watchlist unsave buttons being generated
+      // maybe just creating a seperate function would be easier
     } else if (coinExists === 1) {
 
       tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
