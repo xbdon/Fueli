@@ -274,6 +274,10 @@ const chooseBtnMain = async (row_num) => {
   }
 }
 
+const chooseBtn = async (row_num) => {
+  // create a choose button function that is table agnostic can be used for any table row of any table if possible
+}
+
 const copyCoinId = (e) => {
   if (!e.target.classList.contains('copy-id-button')) {
     console.log("we are returning from copyCoinId()")
