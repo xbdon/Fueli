@@ -274,10 +274,6 @@ const chooseBtnMain = async (row_num) => {
   }
 }
 
-const chooseBtn = async (row_num) => {
-  // create a choose button function that is table agnostic can be used for any table row of any table if possible
-}
-
 const copyCoinId = (e) => {
   if (!e.target.classList.contains('copy-id-button')) {
     console.log("we are returning from copyCoinId()")
@@ -488,7 +484,7 @@ const displayWatchlist = (json) => {
 
     watchlistStats.innerHTML += `
       <tr>
-        <td id="token-name${i}" class="stats">${ticker}</td>
+        <td id="saved-token-name${i}" class="stats">${ticker}</td>
         <td id="price${i}" class="stats">$${"TBD"}</td>
         <td id="mc${i}" class="stats">$${"TBD"}</td>
         <td id="24-${i}" class="stats">%${"TBD"}</td>
@@ -497,8 +493,18 @@ const displayWatchlist = (json) => {
         <td id="circ-supply${i}" class="stats">${"TBD"}</td>
       </tr>
     `;
-    // chooseBtnMain(i);
+    // addUnsaveBtns();
   }
+}
+
+const addUnsaveBtns = async (row_num) => {
+  const tokenName = document.getElementById(`saved-token-name${i}`)
+  tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
+
+  // creates save-button still but hides it
+  tokenName.innerHTML += `<button class="main-table-save" id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
+  document.getElementById(`save-button${row_num}`).style.display = "none"
+  document.getElementById(`save-button${row_num}`).style.visibility = "hidden"
 }
 
 // adding toggle buttons to switch between watchlist and main token table
