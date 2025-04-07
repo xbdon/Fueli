@@ -493,12 +493,12 @@ const displayWatchlist = (json) => {
         <td id="circ-supply${i}" class="stats">${"TBD"}</td>
       </tr>
     `;
-    // addUnsaveBtns();
+    addUnsaveBtns(i);
   }
 }
 
 const addUnsaveBtns = async (row_num) => {
-  const tokenName = document.getElementById(`saved-token-name${i}`)
+  const tokenName = document.getElementById(`saved-token-name${row_num}`)
   tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
 
   // creates save-button still but hides it
