@@ -493,11 +493,12 @@ const displayWatchlist = (json) => {
         <td id="circ-supply${i}" class="stats">${"TBD"}</td>
       </tr>
     `;
-    addUnsaveBtns(i);
+    // addUnsaveBtns(i);
   }
 }
 
 const addUnsaveBtns = async (row_num) => {
+  //need to make a new variables and unsave function to handle watchlist functionality
   const tokenName = document.getElementById(`saved-token-name${row_num}`)
   tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
 
