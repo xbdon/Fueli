@@ -484,7 +484,7 @@ const displayWatchlist = (json) => {
 
     watchlistStats.innerHTML += `
       <tr>
-        <td id="saved-token-name${i}" class="stats">${ticker}</td>
+        <td id="watchlist-token-name${i}" class="stats">${ticker}</td>
         <td id="price${i}" class="stats">$${"TBD"}</td>
         <td id="mc${i}" class="stats">$${"TBD"}</td>
         <td id="24-${i}" class="stats">%${"TBD"}</td>
@@ -499,7 +499,7 @@ const displayWatchlist = (json) => {
 
 const addUnsaveBtns = async (row_num) => {
   //need to make a new variables and unsave function to handle watchlist functionality
-  const tokenName = document.getElementById(`saved-token-name${row_num}`)
+  const tokenName = document.getElementById(`watchlist-token-name${row_num}`)
   tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
 
   // creates save-button still but hides it
