@@ -500,12 +500,12 @@ const displayWatchlist = (json) => {
 const addUnsaveBtns = async (row_num) => {
   //need to make a new variables and unsave function to handle watchlist functionality
   const tokenName = document.getElementById(`watchlist-token-name${row_num}`)
-  tokenName.innerHTML += `<button class="main-table-unsave" id="unsave-button${row_num}">Unsave</button>`
+  tokenName.innerHTML += `<button class="watchlist-table-unsave" id="watchlist-unsave-button${row_num}">Unsave</button>`
 
   // creates save-button still but hides it
-  tokenName.innerHTML += `<button class="main-table-save" id="save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
-  document.getElementById(`save-button${row_num}`).style.display = "none"
-  document.getElementById(`save-button${row_num}`).style.visibility = "hidden"
+  tokenName.innerHTML += `<button class="watchlist-table-save" id="watchlist-save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
+  document.getElementById(`watchlist-save-button${row_num}`).style.display = "none"
+  document.getElementById(`watchlist-save-button${row_num}`).style.visibility = "hidden"
 }
 
 // adding toggle buttons to switch between watchlist and main token table
