@@ -493,7 +493,7 @@ const displayWatchlist = (json) => {
         <td id="circ-supply${i}" class="stats">${"TBD"}</td>
       </tr>
     `;
-    // addUnsaveBtns(i);
+    addUnsaveBtns(i);
   }
 }
 
@@ -503,9 +503,22 @@ const addUnsaveBtns = async (row_num) => {
   tokenName.innerHTML += `<button class="watchlist-table-unsave" id="watchlist-unsave-button${row_num}">Unsave</button>`
 
   // creates save-button still but hides it
-  tokenName.innerHTML += `<button class="watchlist-table-save" id="watchlist-save-button${row_num}" <span class="material-symbols-outlined">star</span></button>`
+  tokenName.innerHTML += `<button class="watchlist-table-save" id="watchlist-save-button${row_num}" <i class="fa-regular fa-star"></i></button>`
   document.getElementById(`watchlist-save-button${row_num}`).style.display = "none"
   document.getElementById(`watchlist-save-button${row_num}`).style.visibility = "hidden"
+}
+
+const unsaveFromWatchlist = async (e) => {
+  const token = localStorage.getItem('token');
+
+  if (!token) {
+    // Handle the case where the token is not found
+    return console.log('Token not found in local storage');
+  }
+
+  //slices the row_num from button clicked
+  const row_num = e.target.id.slice(23);
+  const coinTicker = document.getElementById(`watchlist-token-name${row_num}`).textContent.slice(0, -6)
 }
 
 // adding toggle buttons to switch between watchlist and main token table
@@ -547,7 +560,6 @@ const switchToMainTable = () => {
 mainTableBtn.addEventListener("click", switchToMainTable);
 
 // function to delete coin from watchlist.
-
 const unsaveCoin = async (e) => {
   const token = localStorage.getItem('token');
 
@@ -561,6 +573,7 @@ const unsaveCoin = async (e) => {
 
   let mainSaveClicked = null
 
+  // this if else chain checks if unsave button is clicked from searched token or main table
   if (e.target === document.getElementById('unsave-button') && token !== undefined) {
     // we need to slice here because the token ticker has a the button text in it as well
     coinTicker = document.getElementById('token-name').textContent.slice(12)
