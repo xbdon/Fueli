@@ -574,13 +574,13 @@ const unsaveCoin = async (e) => {
   let mainSaveClicked = null
 
   // this if else chain checks if unsave button is clicked from searched token or main table
-  if (e.target === document.getElementById('unsave-button') && token !== undefined) {
+  if (e.target === document.getElementById('unsave-button')) {
     // we need to slice here because the token ticker has a the button text in it as well
     coinTicker = document.getElementById('token-name').textContent.slice(12)
     coinId = mostRecentSearch
     mainSaveClicked = 1
 
-  } else if (e.target.classList.contains('main-table-unsave') && token !== undefined) {
+  } else if (e.target.classList.contains('main-table-unsave')) {
     const row_num = e.target.id.slice(13)
     coinTicker = document.getElementById(`token-name${row_num}`).textContent.slice(0, -10)
     coinId = coinIds[row_num]
